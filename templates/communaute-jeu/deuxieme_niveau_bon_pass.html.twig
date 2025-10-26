@@ -4,7 +4,33 @@
 
 {% block body %}
     <div class="container-fluid text-center">
-        YEAH!!
+        <p>Le gnome vous laisse passer</p>
+        <p>Vous déboulez devant un immense escalier</p>
+        <p>Alors, en haut , ou tout droit ?</p>
+
+        {% include 'communaute-jeu/_passage-sous-escalier.html.twig' %}
+        {% include 'communaute-jeu/_passage-escalier.html.twig' %}
+        <div>
+            <img class="img-fluid"
+                 src="{{ asset('images/l-escalier-a-vis-du-donjon.webp') }}"
+                 alt="photo d'un escalier, avec de vieilles pierres represantant le passage vers le niveau suivante"
+                 usemap="#workmap">
+
+            <map name="workmap">
+                <area shape="rect" coords="133,639,280,830"
+                      alt="Sous l'escalier"
+                      data-bs-toggle="offcanvas"
+                      href="#passageSousEscalier"
+                      role="button"
+                      aria-controls="passageSousEscalier">
+                <area shape="rect" coords="343,430,540,816"
+                      alt="Prendre l'escalier"
+                      data-bs-toggle="offcanvas"
+                      href="#passageEscalier"
+                      role="button"
+                      aria-controls="passageEscalier">
+            </map>
+        </div>
     </div>
 
 {% endblock %}

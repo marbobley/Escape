@@ -1,0 +1,27 @@
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="passageEscalier" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">A peine le pied posé sur la première marche...</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div>
+            <p>Qu'une flèche via se loger juste au dessus de votre tête...</p>
+        </div>
+        <div class="dropdown mt-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Que faire...
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" data-bs-dismiss="offcanvas" aria-label="Close">Attendre, <p>on sait jamais après avoir toquer si poliment !</p></a></li>
+                <li><a class="dropdown-item" href="{{ path('app_communaute_jeu_deux_brute')}}">Forcer comme une brute</a></li>
+
+                {% set clef33 = app.session.get('clef-33') %}
+                {% set clef4 = app.session.get('clef-4') %}
+                {% if clef33 and clef4 %}
+                    <li><a class="dropdown-item" href="{{ path('app_communaute_jeu_deux_ouvert') }}">Ouvrir avec les clefs</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>

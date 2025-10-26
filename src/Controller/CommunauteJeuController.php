@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\SessionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,24 +23,15 @@ final class CommunauteJeuController extends AbstractController
     }
 
     #[Route('/premier_niveau/premier_pierre_descendre', name: 'app_communaute_jeu_premier_pierre_descendre', methods: ['GET'])]
-    public function premiere_pierre_descendre(Request $request) : Response
+    public function premiere_pierre_descendre(Request $request, SessionService $sessionService) : Response
     {
         $session = $request->getSession();
         $clef4 = $session->get('clef-4');
-        $clef33 = $session->get('clef-33');
         if(isset($clef4)){
             return $this->render('communaute-jeu/premier_niveau_deuxieme_pierre_descendre.html.twig', []);
         }
 
-        $currentNombreMort = $session->get('nombre-mort');
-        if(!isset($currentNombreMort))
-        {
-            $currentNombreMort = 0;
-        }
-        // stores an attribute for reuse during a later user request
-        $currentNombreMort++;
-        $session->set('nombre-mort', $currentNombreMort);
-
+        $sessionService->increateDeath($session);
 
         return $this->render('communaute-jeu/premier_niveau_premier_pierre_descendre.html.twig', []);
     }

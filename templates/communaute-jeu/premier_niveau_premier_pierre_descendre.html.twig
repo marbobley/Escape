@@ -4,9 +4,8 @@
 
 {% block body %}
     <div class="container-fluid text-center">
-        <h1>Vous tombez !!</h1>
-        <a type="button" class="btn btn-primary" href="{{ path('app_communaute_jeu_premier_niveau') }}">Remonter</a>
-
+        <h1>Vous manquez malheureusement de point d'appuie et vous tombez !!</h1>
+        {% include 'communaute-jeu/_remonter.html.twig' %}
     </div>
 
 {% endblock %}

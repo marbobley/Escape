@@ -3,10 +3,13 @@
 {% block title %}Les jeux de la communauté!{% endblock %}
 
 {% block body %}
-    <div class="container-fluid text-center">
-        <h1>Encore une porte ! </h1>
-
-        <a type="button" class="btn btn-primary" href="{{ path('app_communaute_jeu_premier_niveau') }}">Remonter</a>
-    </div>
+        <div class="container-fluid text-center">
+            <div class="row">
+                {% include 'communaute-jeu/_remonter.html.twig' %}
+                <div class="col">
+                    <h1>Finalement, avec les points d'appuis suffisant, vous arrivez à retomber dans une petite alvéole avec une porte ! </h1>
+                </div>
+            </div>
+        </div>
 
 {% endblock %}

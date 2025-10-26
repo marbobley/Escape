@@ -15,7 +15,11 @@
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" data-bs-dismiss="offcanvas" aria-label="Close">Chercher une autre pierre</a></li>
                 <li><a class="dropdown-item" href="{{ path('app_communaute_jeu_premier_pierre_descendre') }}">Tenter de descendre</a></li>
-                <li><a class="dropdown-item" href="{{ path('app_communaute_jeu_premier_pierre_enlever') }}">Sortir la pierre</a></li>
+
+                {% set clef = app.session.get('clef-33') %}
+                {% if not clef %}
+                    <li><a class="dropdown-item" href="{{ path('app_communaute_jeu_premier_pierre_enlever') }}">Sortir la pierre</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>

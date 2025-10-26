@@ -18,21 +18,7 @@ final class CommunauteJeuController extends AbstractController
     #[Route('/premier_niveau', name: 'app_communaute_jeu_premier_niveau', methods: ['GET'])]
     public function premier_niveau(Request $request): Response
     {
-
-        $session = $request->getSession();
-        $clef4 = $session->get('clef-4');
-        $clef33 = $session->get('clef-33');
-
-        if(isset($clef4) && isset($clef33)){
-            return $this->render('communaute-jeu/premier_niveau.html.twig', []);
-        }else if(isset($clef4)){
-            return $this->render('communaute-jeu/premier_niveau_deuxieme_pierre_enlever.html.twig', []);
-        }else if(isset($clef33)){
-            return $this->render('communaute-jeu/premier_niveau_premier_pierre_enlever.html.twig', []);
-        }else{
-            return $this->render('communaute-jeu/premier_niveau.html.twig', []);
-        }
-
+        return $this->render('communaute-jeu/premier_niveau.html.twig', []);
     }
 
     #[Route('/premier_niveau/premier_pierre_descendre', name: 'app_communaute_jeu_premier_pierre_descendre', methods: ['GET'])]

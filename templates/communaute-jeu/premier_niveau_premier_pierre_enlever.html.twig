@@ -9,7 +9,18 @@
             <img class="img-fluid" src="{{ asset('images/clef-33.webp')}}" alt="clef avec marqué 33 dessus" width="200" >
             {% include 'communaute-jeu/_deuxieme-pierre.html.twig' %}
             <div>
-                <img class="img-fluid" src="{{ asset('images/premier_niveau_sans_premiere_pierre.webp') }}" alt="photo d'un trou, avec de vieilles pierres represantant le premier niveau" usemap="#workmap">
+                {% set clef4 = app.session.get('clef-4') %}
+                {% if clef4 %}
+                    <img class="img-fluid"
+                         src="{{ asset('images/premier_niveau_sans_premiere_deuxieme_pierre.webp') }}"
+                         alt="photo d'un trou, avec de vieilles pierres represantant le premier niveau"
+                         usemap="#workmap">
+                {% else %}
+                    <img class="img-fluid"
+                         src="{{ asset('images/premier_niveau_sans_premiere_pierre.webp') }}"
+                         alt="photo d'un trou, avec de vieilles pierres represantant le premier niveau"
+                         usemap="#workmap">
+                {% endif %}
                 <map name="workmap">
                     <area shape="rect" coords="665,428,730,513"
                           alt="Ouvrir la porte"

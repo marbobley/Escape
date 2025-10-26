@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Service\SessionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -58,9 +61,33 @@ final class CommunauteJeuController extends AbstractController
         return $this->render('communaute-jeu/premier_niveau_deuxieme_pierre_enlever.html.twig', []);
     }
 
-    #[Route('/premier_niveau/deuxieme_niveau', name: 'app_communaute_jeu_deux_ouvert', methods: ['GET'])]
+    #[Route('/premier_niveau/deuxieme_niveau', name: 'app_communaute_jeu_deux_ouvert', methods: ['GET','POST'])]
     public function jeu_deux(Request $request): Response{
-        return $this->render('communaute-jeu/deuxieme_niveau_ouverture.html.twig', []);
+
+        $defaultData = null;
+        $form = $this->createFormBuilder($defaultData)
+            ->add('pass', TextType::class)
+            ->add('save', SubmitType::class)
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $pass = $data['pass'];
+            if($pass === '33-4')
+            {
+                //return $this->render('communaute-jeu/deuxieme_niveau_bon_pass.html.twig', []);
+            }
+            else
+            {
+               // return $this->render('communaute-jeu/deuxieme_niveau_mauvais_pass.html.twig', []);
+            }
+        }
+
+        return $this->render('communaute-jeu/deuxieme_niveau_ouverture.html.twig', [
+            'form' => $form
+        ]);
     }
     #[Route('/premier_niveau/deuxieme_niveau_brute', name: 'app_communaute_jeu_deux_brute', methods: ['GET'])]
     public function jeu_deux_brute(Request $request, SessionService $sessionService): Response{

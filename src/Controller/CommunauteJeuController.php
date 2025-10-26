@@ -58,4 +58,14 @@ final class CommunauteJeuController extends AbstractController
         return $this->render('communaute-jeu/premier_niveau_deuxieme_pierre_enlever.html.twig', []);
     }
 
+    #[Route('/premier_niveau/deuxieme_niveau', name: 'app_communaute_jeu_deux_ouvert', methods: ['GET'])]
+    public function jeu_deux(Request $request): Response{
+        return $this->render('communaute-jeu/deuxieme_niveau_ouverture.html.twig', []);
+    }
+    #[Route('/premier_niveau/deuxieme_niveau_brute', name: 'app_communaute_jeu_deux_brute', methods: ['GET'])]
+    public function jeu_deux_brute(Request $request, SessionService $sessionService): Response{
+        $sessionService->increateDeath($request->getSession());
+        return $this->render('communaute-jeu/deuxieme_niveau_brute.html.twig', []);
+    }
+
 }

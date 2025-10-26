@@ -34,7 +34,7 @@ final class CommunauteJeuController extends AbstractController
             return $this->render('communaute-jeu/premier_niveau_deuxieme_pierre_descendre.html.twig', []);
         }
 
-        $sessionService->increateDeath($session);
+        $sessionService->increaseDeath($session);
 
         return $this->render('communaute-jeu/premier_niveau_premier_pierre_descendre.html.twig', []);
     }
@@ -77,11 +77,11 @@ final class CommunauteJeuController extends AbstractController
             $pass = $data['pass'];
             if($pass === '33-4')
             {
-                //return $this->render('communaute-jeu/deuxieme_niveau_bon_pass.html.twig', []);
+                return $this->redirectToRoute('app_communaute_jeu_deux_bon_pass');
             }
             else
             {
-               // return $this->render('communaute-jeu/deuxieme_niveau_mauvais_pass.html.twig', []);
+                return $this->redirectToRoute('app_communaute_jeu_deux_mauvais_pass');
             }
         }
 
@@ -91,8 +91,18 @@ final class CommunauteJeuController extends AbstractController
     }
     #[Route('/premier_niveau/deuxieme_niveau_brute', name: 'app_communaute_jeu_deux_brute', methods: ['GET'])]
     public function jeu_deux_brute(Request $request, SessionService $sessionService): Response{
-        $sessionService->increateDeath($request->getSession());
+        $sessionService->increaseDeath($request->getSession());
         return $this->render('communaute-jeu/deuxieme_niveau_brute.html.twig', []);
     }
 
+    #[Route('/premier_niveau/deuxieme_niveau/ouverture', name: 'app_communaute_jeu_deux_bon_pass')]
+    public function jeu_deux_bon_pass(){
+        return $this->render('communaute-jeu/deuxieme_niveau_bon_pass.html.twig', []);
+    }
+
+    #[Route('/premier_niveau/deuxieme_niveau/mauvais', name: 'app_communaute_jeu_deux_mauvais_pass')]
+    public function jeu_deux_mauvais_pass(Request $request, SessionService $sessionService){
+        $sessionService->increaseDeath($request->getSession());
+        return $this->render('communaute-jeu/deuxieme_niveau_mauvais_pass.html.twig', []);
+    }
 }

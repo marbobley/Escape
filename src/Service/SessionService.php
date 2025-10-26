@@ -5,7 +5,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class SessionService{
 
-    public function increateDeath(SessionInterface $session){
+    public function increaseDeath(SessionInterface $session){
         $currentNombreMort = $session->get('nombre-mort');
         if(!isset($currentNombreMort))
         {

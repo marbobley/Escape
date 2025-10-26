@@ -27,7 +27,7 @@ final class CommunauteJeuController extends AbstractController
         $session = $request->getSession();
         $clef4 = $session->get('clef-4');
         $clef33 = $session->get('clef-33');
-        if(isset($clef4) && isset($clef33)){
+        if(isset($clef4)){
             return $this->render('communaute-jeu/premier_niveau_deuxieme_pierre_descendre.html.twig', []);
         }
 

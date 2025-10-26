@@ -13,9 +13,9 @@
                 Que faire...
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Chercher une autre pierre</a></li>
-                <li><a class="dropdown-item" href="#">Tenter de descendre</a></li>
-                <li><a class="dropdown-item" href="#">Sortir la pierre</a></li>
+                <li><a class="dropdown-item" data-bs-dismiss="offcanvas" aria-label="Close">Chercher une autre pierre</a></li>
+                <li><a class="dropdown-item" href="{{ path('app_communaute_jeu_deuxieme_pierre_descendre') }}">Tenter de descendre</a></li>
+                <li><a class="dropdown-item" href="{{ path('app_communaute_jeu_deuxieme_pierre_enlever') }}">Sortir la pierre</a></li>
             </ul>
         </div>
     </div>

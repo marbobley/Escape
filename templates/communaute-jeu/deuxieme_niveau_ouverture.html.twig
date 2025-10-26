@@ -3,6 +3,15 @@
 {% block title %}Les jeux de la communauté!{% endblock %}
 
 {% block body %}
+    {% set clef4 = app.session.get('clef-4') %}
+    {% set clef33 = app.session.get('clef-33') %}
+    {% if not (clef4 and clef33) %}
+        <div class="alert alert-danger d-flex text-center" role="alert">
+            <div>
+                Il vous manque des objets.
+            </div>
+        </div>
+    {% endif %}
     <div class="container-fluid text-center">
         <article>
             <div>
@@ -12,6 +21,9 @@
                 </p>
                 <p>
                     Mais pas le plus futfut, on va dire !
+                </p>
+                <p class="commentaire-maitre-jeu">
+                    Bon, c'est pas nous qui allons le critiquer même pas capable d'utiliser des clefs !
                 </p>
 
                 <img class="img-fluid" src="{{ asset('images/gnome.webp') }}" alt="Gnome qui pose une question 'Mot de passe?'" usemap="#workmap" >

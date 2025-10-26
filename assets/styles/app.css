@@ -1,4 +1,11 @@
+:root{
+    --main-bg-color: lightgreen;
+}
+
 body {
     background-color: skyblue;
 }
 
+.main-color{
+    background-color: var(--main-bg-color);
+}

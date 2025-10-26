@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les jeux de la communauté!{% endblock %}
+
+{% block body %}
+    <div class="container-fluid text-center">
+        <h1>OULAH ! Heureusement qu'on démarre pas trop fort, on aurait pu tomber  !!</h1>
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">En appuyant sur la pierre, il se passe quelques choses ...</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div>
+                    Est-ce qu'on ne pourrait pas l'utiliser comme point de départ ?
+                </div>
+                <div class="dropdown mt-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        Que faire...
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Chercher une autre pierre</a></li>
+                        <li><a class="dropdown-item" href="#">Tenter de descendre</a></li>
+                        <li><a class="dropdown-item" href="#">Sortir la pierre</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+        <article>
+            <div>
+                <img class="img-fluid" src="{{ asset('images/premier_niveau.webp') }}" alt="photo d'un trou, avec de vieilles pierres represantant le premier niveau" usemap="#workmap">
+                <map name="workmap">
+                    <area shape="rect" coords="173,259,241,271"
+                          alt="Ouvrir la porte"
+                          data-bs-toggle="offcanvas"
+                          href="#offcanvasExample"
+                          role="button"
+                          aria-controls="offcanvasExample">
+                </map>
+            </div>
+            <!--Même ici !-->
+        </article>
+    </div>
+
+{% endblock %}

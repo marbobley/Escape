@@ -1,0 +1,21 @@
+<h3>
+    {% set nombreMort = app.session.get('nombre-mort') %}
+    {% if( nombreMort ) %}
+        Déja mort : {{ nombreMort }}
+        <div class="commentaire-maitre-jeu">
+            {% if( nombreMort == 1) %}
+                Ca commence fort
+            {% elseif( nombreMort == 2)  %}
+                Et ça continue pas mieux !
+            {% elseif( nombreMort == 3)  %}
+                Vraiment ?
+            {% elseif( nombreMort == 4)  %}
+                Allez, un petit effort !
+            {% elseif( nombreMort == 5)  %}
+                Franchement...
+            {% elseif( nombreMort > 5)  %}
+                J'arrête de compte
+            {% endif %}
+        </div>
+    {% endif %}
+</h3>

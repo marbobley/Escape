@@ -10,3 +10,6 @@ body {
     background-color: var(--main-bg-color);
 }
 
+.commentaire-maitre-jeu {
+    font-style: italic;
+}

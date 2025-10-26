@@ -6,29 +6,8 @@
     <div class="container-fluid text-center">
         <h1>OULAH ! Heureusement qu'on démarre pas trop fort, on aurait pu tomber  !!</h1>
 
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel">En appuyant sur la pierre, il se passe quelques choses ...</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <div>
-                    Est-ce qu'on ne pourrait pas l'utiliser comme point de départ ?
-                </div>
-                <div class="dropdown mt-3">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        Que faire...
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Chercher une autre pierre</a></li>
-                        <li><a class="dropdown-item" href="#">Tenter de descendre</a></li>
-                        <li><a class="dropdown-item" href="#">Sortir la pierre</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-
+        {% include 'communaute-jeu/_premiere-pierre.html.twig' %}
+        {% include 'communaute-jeu/_deuxieme-pierre.html.twig' %}
 
         <article>
             <div>
@@ -37,9 +16,15 @@
                     <area shape="rect" coords="173,259,241,271"
                           alt="Ouvrir la porte"
                           data-bs-toggle="offcanvas"
-                          href="#offcanvasExample"
+                          href="#premierePierreOffCanvas"
                           role="button"
-                          aria-controls="offcanvasExample">
+                          aria-controls="premierePierreOffCanvas">
+                    <area shape="rect" coords="665,428,730,513"
+                          alt="Ouvrir la porte"
+                          data-bs-toggle="offcanvas"
+                          href="#deuxiemePierreOffCanvas"
+                          role="button"
+                          aria-controls="deuxiemePierreOffCanvas">
                 </map>
             </div>
             <!--Même ici !-->

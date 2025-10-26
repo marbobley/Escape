@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les jeux de la communauté!{% endblock %}
+
+{% block body %}
+    <div class="container-fluid text-center">
+        <h1>Vous tombez !!</h1>
+        <a type="button" class="btn btn-primary" href="{{ path('app_communaute_jeu_premier_niveau') }}">Revenir en arrière</a>
+
+    </div>
+
+{% endblock %}

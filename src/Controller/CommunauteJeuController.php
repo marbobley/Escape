@@ -73,8 +73,8 @@ final class CommunauteJeuController extends AbstractController
 
         $defaultData = null;
         $form = $this->createFormBuilder($defaultData)
-            ->add('pass', TextType::class)
-            ->add('save', SubmitType::class)
+            ->add('pass', TextType::class, ['label' => 'Mot de passe : '])
+            ->add('save', SubmitType::class, ['label' => 'Repondre'])
             ->getForm();
 
         $form->handleRequest($request);

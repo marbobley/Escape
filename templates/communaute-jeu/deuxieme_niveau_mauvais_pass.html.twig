@@ -1,15 +1,24 @@
 {% extends 'base.html.twig' %}
-            <p>Qu'une flèche via se loger juste au dessus de votre tête...</p>
 
 {% block title %}Les jeux de la communauté!{% endblock %}
 
 {% block body %}
     <div class="container-fluid text-center">
         <div>
-            <a class="btn btn-info" href="{{ path('app_communaute_jeu_deux_ouvert') }}">Retenter</a>
+            Bon, le maitre du donjon vous a pas envoyé le plus futfut !
+            <p>
+                Mais vous semblez vouloir lui rendre honneur !
+            </p>
+            <p>
+                On va dire !
+            </p>
+            <p class="commentaire-maitre-jeu">
+                Alors, c'est quoi ce mot de passe ?
+            </p>
 
+            <img class="img-fluid" width="200" src="{{ asset('images/gnome_mauvais.webp') }}" alt="Gnome qui pose une question 'Mot de passe?'">
         </div>
-        <img class="img-fluid" src="{{ asset('images/gnome_mauvais.webp') }}" alt="Gnome qui pose une question 'Mot de passe?'">
+        <a class="btn btn-info" href="{{ path('app_communaute_jeu_deux_ouvert') }}">Retenter</a>
     </div>
 
 {% endblock %}

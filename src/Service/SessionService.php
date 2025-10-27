@@ -44,4 +44,24 @@ class SessionService{
         $session->set('nombre-mort', $currentNombreMort);
     }
 
+    public function initEscalier(SessionInterface $session)
+    {
+        $escalier = $session->get('escalier');
+        if(!isset($escalier))
+        {
+            $session->set('escalier', 1);
+        }
+
+        return $escalier;
+    }
+    public function getEscalier(SessionInterface $session){
+        $escalier = $session->get('escalier');
+        if(!isset($escalier))
+        {
+            return 1;
+        }
+
+        return $escalier;
+    }
+
 }

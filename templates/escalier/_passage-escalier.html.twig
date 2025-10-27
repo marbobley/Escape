@@ -1,0 +1,27 @@
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="passageEscalier" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        {% set escalier = app.session.get('escalier') %}
+
+        {% if escalier is same as(1) %}
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">A peine le pied posé sur la première marche...</h5>
+        {% elseif escalier >= 2 %}
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">A peine le pied posé sur la {{ escalier }}eme marche...</h5>
+        {% endif %}
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div>
+            <p>Qu'une flèche via se loger juste au dessus de votre tête...</p>
+        </div>
+        <div class="dropdown mt-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Que faire...
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ path('app_escalier')}}">Monter la marche suivante</a></li>
+                <li><a class="dropdown-item" href="{{ path('app_escalier_descendre')}}">Descendre la marche précedente</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

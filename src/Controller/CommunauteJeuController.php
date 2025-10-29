@@ -103,7 +103,8 @@ final class CommunauteJeuController extends AbstractController
     }
 
     #[Route('/premier_niveau/deuxieme_niveau/ouverture', name: 'app_communaute_jeu_deux_bon_pass')]
-    public function jeu_deux_bon_pass(){
+    public function jeu_deux_bon_pass(Request $request, SessionService $sessionService){
+        $sessionService->initEscalier($request->getSession());
         return $this->render('communaute-jeu/deuxieme_niveau_bon_pass.html.twig', []);
     }
 

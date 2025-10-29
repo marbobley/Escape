@@ -7,6 +7,8 @@
             <h5 class="offcanvas-title" id="offcanvasExampleLabel">A peine le pied posé sur la première marche...</h5>
         {% elseif escalier >= 2 %}
             <h5 class="offcanvas-title" id="offcanvasExampleLabel">A peine le pied posé sur la {{ escalier }}eme marche...</h5>
+        {% else %}
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Vous posez le pied sur la marche...</h5>
         {% endif %}
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>

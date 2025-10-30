@@ -4,8 +4,24 @@
 
 {% block body %}
     <div class="container-fluid text-center">
-        CAILLOUX
+        Fort d'une précision à couper la pomme à Guillaume Tel
+        <p>Vous touchez le mur en face</p>
+        <p>Une pierre s'illumine</p>
         {% include 'escalier/_revenir-escalier.html.twig' %}
+        {% include 'escalier/_passage-cailloux.html.twig' %}
+
+        <div>
+            <img class="img-fluid" src="{{ asset('images/mur_escalier_passage_catacombe.webp') }}" alt="porte d'entrée des catacombes" usemap="#workmap" >
+            <map name="workmap">
+                <area shape="rect"
+                      coords="159,200,211,232"
+                      alt="Sous l'escalier"
+                      data-bs-toggle="offcanvas"
+                      href="#passageCailloux"
+                      role="button"
+                      aria-controls="passageCailloux">
+            </map>
+        </div>
     </div>
 
 {% endblock %}

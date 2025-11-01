@@ -3,8 +3,8 @@
 {% block title %}Les jeux de la communauté!{% endblock %}
 
 {% block body %}
-    {% set clef4 = app.session.get('inventaire').contenu['clef-4'] %}
-    {% set clef33 = app.session.get('inventaire').contenu['clef-33'] %}
+    {% set clef33 = serviceInventaire.inventaireObject(app.session, 'clef-33') %}
+    {% set clef4 = serviceInventaire.inventaireObject(app.session, 'clef-4') %}
     {% if not (clef4 and clef33) %}
         <div class="alert alert-danger d-flex text-center" role="alert">
             <div>

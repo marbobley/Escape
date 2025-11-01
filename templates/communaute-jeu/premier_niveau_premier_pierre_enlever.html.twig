@@ -9,7 +9,7 @@
             <img class="img-fluid" src="{{ asset('images/clef-33.webp')}}" alt="clef avec marqué 33 dessus" width="200" >
             {% include 'communaute-jeu/_deuxieme-pierre.html.twig' %}
             <div>
-                {% set clef4 = app.session.get('inventaire').contenu['clef-4'] %}
+                {% set clef4 = serviceInventaire.inventaireObject(app.session, 'clef-4') %}
                 {% if clef4 %}
                     <img class="img-fluid"
                          src="{{ asset('images/premier_niveau_sans_premiere_deuxieme_pierre.webp') }}"

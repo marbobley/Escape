@@ -16,8 +16,8 @@
                 <li><a class="dropdown-item" data-bs-dismiss="offcanvas" aria-label="Close">Attendre, <p>on sait jamais après avoir toquer si poliment !</p></a></li>
                 <li><a class="dropdown-item" href="{{ path('app_communaute_jeu_deux_brute')}}">Forcer comme une brute</a></li>
 
-                {% set clef33 = app.session.get('inventaire').contenu['clef-33'] %}
-                {% set clef4 = app.session.get('inventaire').contenu['clef-4'] %}
+                {% set clef33 = serviceInventaire.inventaireObject(app.session, 'clef-33') %}
+                {% set clef4 = serviceInventaire.inventaireObject(app.session, 'clef-4') %}
                 {% if clef33 and clef4 %}
                     <li><a class="dropdown-item" href="{{ path('app_communaute_jeu_deux_ouvert') }}">Ouvrir avec les clefs</a></li>
                 {% endif %}

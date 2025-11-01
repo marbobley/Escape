@@ -1,5 +1,7 @@
 twig:
     file_name_pattern: '*.twig'
+    globals:
+        serviceInventaire: '@App\Service\InventaireService'
 
 when@test:
     twig:

@@ -27,21 +27,23 @@ final class CommunauteJeuController extends AbstractController
     {
         $session = $request->getSession();
         $startDay = $session->get('start');
-        if(!isset($startDay))
-        {
+        if(!isset($startDay)) {
             $session->set('start', new \DateTimeImmutable('now'));
         }
 
-        $session->set('inventaire', new Inventaire());
+        $inventaire = $session->get('inventaire');
+        if(!isset($inventaire)) {
+            $session->set('inventaire', new Inventaire());
+        }
 
         return $this->render('communaute-jeu/premier_niveau.html.twig', []);
     }
 
     #[Route('/premier_niveau/premier_pierre_descendre', name: 'app_communaute_jeu_premier_pierre_descendre', methods: ['GET'])]
-    public function premiere_pierre_descendre(Request $request, SessionService $sessionService) : Response
+    public function premiere_pierre_descendre(Request $request, InventaireService $inventaireService, SessionService $sessionService) : Response
     {
         $session = $request->getSession();
-        $clef4 = $session->get('clef-4');
+        $clef4 = $inventaireService->getInventaireObject($session, 'clef-4');
         if(isset($clef4)){
             return $this->render('communaute-jeu/premier_niveau_deuxieme_pierre_descendre.html.twig', []);
         }

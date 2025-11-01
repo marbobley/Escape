@@ -8,6 +8,15 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class InventaireService
 {
+    public function getInventaireObjects(SessionInterface $session) : Inventaire|null{
+        $inventaire = $session->get('inventaire');
+
+        if($inventaire instanceof Inventaire ){
+            return $inventaire;
+        }
+
+        return null;
+    }
     public function getInventaireObject(SessionInterface $session , string $key) : ObjetAventure|null {
         $inventaire = $session->get('inventaire');
 

@@ -1,6 +1,7 @@
 <?php
 namespace  App\Service;
 
+use App\Model\Inventaire;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class SessionService{
@@ -29,6 +30,9 @@ class SessionService{
         }
         // stores an attribute for reuse during a later user request
         $escalier++;
+        if($escalier > 12)
+            $escalier = 12;
+
         $session->set('escalier', $escalier);
 
         return $escalier;
@@ -62,6 +66,23 @@ class SessionService{
         }
 
         return $escalier;
+    }
+
+    public function getCurrentInventaire(SessionInterface $session) : Inventaire
+    {
+        $inventaire = $session->get('inventaire');
+        if(!isset($inventaire))
+        {
+            return new Inventaire();
+        }
+
+        return $inventaire;
+    }
+
+    public function setCurrentInventaire(SessionInterface $session, Inventaire $currentInventaire)
+    {
+
+        $session->set('inventaire', $currentInventaire);
     }
 
 }

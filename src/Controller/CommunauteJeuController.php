@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Model\Inventaire;
+use App\Model\ObjetAventure;
+use App\Service\InventaireService;
 use App\Service\SessionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -28,6 +31,9 @@ final class CommunauteJeuController extends AbstractController
         {
             $session->set('start', new \DateTimeImmutable('now'));
         }
+
+        $session->set('inventaire', new Inventaire());
+
         return $this->render('communaute-jeu/premier_niveau.html.twig', []);
     }
 
@@ -46,10 +52,16 @@ final class CommunauteJeuController extends AbstractController
     }
 
     #[Route('/premier_niveau/premier_pierre_enlever', name: 'app_communaute_jeu_premier_pierre_enlever', methods: ['GET'])]
-    public function premiere_pierre_enlever(Request $request) : Response
+    public function premiere_pierre_enlever(Request $request, InventaireService $inventaireService, SessionService $sessionService) : Response
     {
-        $session = $request->getSession();
-        $session->set('clef-33', true);
+        $keyFound = new ObjetAventure();
+        $keyFound->name = 'clef-33';
+        $keyFound->description = 'clef-33 a été trouvé';
+
+        $currentInventaire = $sessionService->getCurrentInventaire($request->getSession());
+        $inventaireService->addOrReplace('clef-33', $keyFound ,$currentInventaire);
+        $sessionService->setCurrentInventaire($request->getSession(), $currentInventaire);
+
         return $this->render('communaute-jeu/premier_niveau_premier_pierre_enlever.html.twig', []);
     }
 
@@ -60,10 +72,15 @@ final class CommunauteJeuController extends AbstractController
     }
 
     #[Route('/premier_niveau/deuxieme_pierre_enlever', name: 'app_communaute_jeu_deuxieme_pierre_enlever', methods: ['GET'])]
-    public function deuxieme_pierre_enlever(Request $request) : Response
+    public function deuxieme_pierre_enlever(Request $request, InventaireService $inventaireService, SessionService $sessionService) : Response
     {
-        $session = $request->getSession();
-        $session->set('clef-4', true);
+        $keyFound = new ObjetAventure();
+        $keyFound->name = 'clef-4';
+        $keyFound->description = 'clef-4 a été trouvé';
+
+        $currentInventaire = $sessionService->getCurrentInventaire($request->getSession());
+        $inventaireService->addOrReplace('clef-4', $keyFound ,$currentInventaire);
+        $sessionService->setCurrentInventaire($request->getSession(), $currentInventaire);
         return $this->render('communaute-jeu/premier_niveau_deuxieme_pierre_enlever.html.twig', []);
     }
 

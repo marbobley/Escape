@@ -21,8 +21,12 @@
                 Que faire...
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ path('app_escalier_monter')}}">Monter la marche suivante</a></li>
-                <li><a class="dropdown-item" href="{{ path('app_escalier_descendre')}}">Descendre la marche précedente</a></li>
+                {% if escalier < 12  %}
+                    <li><a class="dropdown-item" href="{{ path('app_escalier_monter')}}">Monter la marche suivante</a></li>
+                {% endif %}
+                {% if escalier > 1  %}
+                    <li><a class="dropdown-item" href="{{ path('app_escalier_descendre')}}">Descendre la marche précedente</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>

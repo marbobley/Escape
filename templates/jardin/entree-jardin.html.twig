@@ -7,9 +7,35 @@
         <p>Vous arrivez en courant dans un escalier,</p>
         <p>Au bout, un autre sbire du maitre vous attend</p>
         {% include 'escalier/_revenir-escalier.html.twig' %}
+        {% include 'jardin/_troll-tete.html.twig' %}
+        {% include 'jardin/_troll-main.html.twig' %}
+        {% include 'jardin/_entree-jardin-secret.html.twig' %}
 
         <div>
-            <img class="img-fluid" src="{{ asset('images/troll_jardin.webp') }}" alt="porte d'entrée du jardin">
+            <img class="img-fluid" src="{{ asset('images/troll_jardin.webp') }}" alt="porte d'entrée du jardin" usemap="#workmap" >
+            <map name="workmap">
+                <area shape="rect"
+                      coords="485,386,513,413"
+                      alt="Tete du troll"
+                      data-bs-toggle="offcanvas"
+                      href="#combattreTrollTete"
+                      role="button"
+                      aria-controls="combattreTrollTete">
+                <area shape="rect"
+                      coords="400,445,430,460"
+                      alt="Main du troll"
+                      data-bs-toggle="offcanvas"
+                      href="#combattreTrollMain"
+                      role="button"
+                      aria-controls="combattreTrollMain">
+                <area shape="rect"
+                      coords="900,242,1000,560"
+                      alt="Passage secret"
+                      data-bs-toggle="offcanvas"
+                      href="#jardinEntreeSecret"
+                      role="button"
+                      aria-controls="jardinEntreeSecret">
+            </map>
         </div>
     </div>
 

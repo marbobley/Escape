@@ -20,18 +20,18 @@ final class EscalierController extends AbstractController
     #[Route('/escalier/monter', name: 'app_escalier_monter')]
     public function monter(Request $request, SessionService $sessionService) : Response
     {
-        $escalier = $sessionService->increaseEscalier($request->getSession());
+        $sessionService->increaseEscalier($request->getSession());
 
-        return $this->render('escalier/monter.html.twig', [
+        return $this->render('escalier/index.html.twig', [
         ]);
     }
 
     #[Route('/escalier/descendre', name: 'app_escalier_descendre')]
     public function descendre(Request $request, SessionService $sessionService) : Response
     {
-        $escalier = $sessionService->decreaseEscalier($request->getSession());
+        $sessionService->decreaseEscalier($request->getSession());
 
-        return $this->render('escalier/descendre.html.twig', [
+        return $this->render('escalier/index.html.twig', [
         ]);
     }
 

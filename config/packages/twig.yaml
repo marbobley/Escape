@@ -2,6 +2,7 @@ twig:
     file_name_pattern: '*.twig'
     globals:
         serviceInventaire: '@App\Service\InventaireService'
+        Constantes: '@App\Model\Constantes'
 
 when@test:
     twig:

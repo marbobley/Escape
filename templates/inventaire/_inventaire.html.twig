@@ -9,7 +9,15 @@
     <div class="offcanvas-body">
         {% set inventaire = serviceInventaire.inventaireObjects(app.session) %}
         {% if  inventaire %}
-            {{ dump(inventaire) }}
+            {% for obj in inventaire.contenu %}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ obj.name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">{{ obj.description }}</h6>
+                        <p class="card-text">{{ obj.moreInformation }}</p>
+                    </div>
+                </div>
+            {% endfor %}
         {% endif %}
     </div>
 </div>

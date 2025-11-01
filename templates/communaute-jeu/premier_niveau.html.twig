@@ -12,8 +12,8 @@
 
         <article>
             <div>
-                {% set clef4 = serviceInventaire.inventaireObject(app.session, 'clef-4') %}
-                {% set clef33 = serviceInventaire.inventaireObject(app.session, 'clef-33') %}
+                {% set clef4 = serviceInventaire.inventaireObject(app.session, Constantes.clef4) %}
+                {% set clef33 = serviceInventaire.inventaireObject(app.session, Constantes.clef33) %}
                 {% if clef4 and clef33 %}
                     <img class="img-fluid"
                          src="{{ asset('images/premier_niveau_sans_premiere_deuxieme_pierre.webp') }}"

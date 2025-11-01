@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les jeux de la communauté!{% endblock %}
+
+{% block body %}
+    <div class="container-fluid text-center">
+        <p>Vous arrivez en courant dans un escalier,</p>
+        <p>Au bout, un autre sbire du maitre vous attend</p>
+        {% include 'escalier/_revenir-escalier.html.twig' %}
+
+        <div>
+            <img class="img-fluid" src="{{ asset('images/troll_jardin.webp') }}" alt="porte d'entrée du jardin">
+        </div>
+    </div>
+
+{% endblock %}

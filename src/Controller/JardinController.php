@@ -13,8 +13,12 @@ final class JardinController extends AbstractController
     #[Route('/jardin', name: 'app_entree_jardin')]
     public function index(Request $request, SessionService $sessionService) : Response
     {
-        return $this->render('jardin/entree-jardin.html.twig', [
-        ]);
+        return $this->render('jardin/entree-jardin.html.twig');
+    }
+
+    #[Route('/jardin/secret', name: 'app_jardin_secret')]
+    public function jardin_secret() : Response{
+        return $this->render('jardin/entree-jardin-passage-secret.html.twig');
     }
 
 }

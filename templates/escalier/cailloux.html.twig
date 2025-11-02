@@ -5,6 +5,7 @@
 {% block body %}
     <div class="container-fluid text-center">
         {% include 'escalier/_passage-cailloux.html.twig' %}
+        {% include 'escalier/_passage-cailloux-pierre-enlever.html.twig' %}
 
         <div class="container text-center">
             <div class="row">
@@ -22,6 +23,13 @@
                               href="#passageCailloux"
                               role="button"
                               aria-controls="passageCailloux">
+                        <area shape="rect"
+                              coords="300,250,350,400"
+                              alt="Sous l'escalier"
+                              data-bs-toggle="offcanvas"
+                              href="#passageCaillouxPierreEnlever"
+                              role="button"
+                              aria-controls="passageCaillouxPierreEnlever">
                     </map>
                     {% include 'escalier/_revenir-escalier.html.twig' %}
                 </div>

@@ -1,8 +1,8 @@
 
-<div class="offcanvas offcanvas-start" tabindex="-1" id="jardinEntreeSecret" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-start" tabindex="-1" id="passageCaillouxPierreEnlever" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
 
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Vous avez découvert un passage secret !!!</h5>
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Vous avez trouvé une nouvelle cachette !</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
@@ -12,7 +12,8 @@
             </button>
             <ul class="dropdown-menu">
                 <li>
-                    <a class="dropdown-item" href="{{ path('app_jardin_secret') }}">Rentrer</a>
+                    <a class="dropdown-item" href="{{ path('app_catacombe_index')}}">Pousser la pierre</a>
+                    <a class="dropdown-item" href="{{ path('app_catacombe_index')}}">Tirer la pierre</a>
                 </li>
             </ul>
         </div>

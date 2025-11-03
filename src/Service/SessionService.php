@@ -85,4 +85,10 @@ class SessionService{
         $session->set('inventaire', $currentInventaire);
     }
 
+    public function initMagie(SessionInterface $session, int $pow) : int
+    {
+        $session->set('magie', $pow);
+        return $pow;
+    }
+
 }

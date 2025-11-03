@@ -17,7 +17,9 @@ final class JardinController extends AbstractController
     }
 
     #[Route('/jardin/secret', name: 'app_jardin_secret')]
-    public function jardin_secret() : Response{
+    public function jardin_secret(Request $request, SessionService $sessionService) : Response{
+
+        $sessionService->initMagie($request->getSession(), 1);
         return $this->render('jardin/entree-jardin-passage-secret.html.twig');
     }
 

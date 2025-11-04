@@ -7,9 +7,16 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <p>Pour faire appel à la magie</p>
-        <p>Il faut équilibrer votre puissance</p>
-        <p>En fonction de l'objectif</p>
+        {% set magie = app.session.get('magie') %}
+        {{ dump(magie) }}
+        {% if magie == 1 %}
+            <p>Pour faire appel à la magie</p>
+            <p>Il faut équilibrer votre puissance</p>
+            <p>En fonction de l'objectif</p>
+            <a href="{{ path('app_magie_premier_sort') }}">
+                Apprendre le premier sort
+            </a>
+        {% endif %}
     </div>
 </div>
 

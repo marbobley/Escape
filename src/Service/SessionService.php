@@ -87,7 +87,11 @@ class SessionService{
 
     public function initMagie(SessionInterface $session, int $pow) : int
     {
-        $session->set('magie', $pow);
+        $magie = $session->get('magie');
+
+        if($magie < $pow)
+            $session->set('magie', $pow);
+
         return $pow;
     }
 

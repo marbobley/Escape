@@ -8,13 +8,34 @@
     </div>
     <div class="offcanvas-body">
         {% set magie = app.session.get('magie') %}
-        {{ dump(magie) }}
+        <p>Niveau de magie : {{ magie }}</p>
+        <ul>
+            {% if magie >= 1 %}
+                <li>Sort 1 : Confusion </li>
+            {% endif %}
+            {% if magie >= 2 %}
+                <li>Sort 2 : Attraction</li>
+            {% endif %}
+            {% if magie >= 3 %}
+                <li>Sort 3 : Repulsion</li>
+            {% endif %}
+            {% if magie >= 3 %}
+                <li>Sort 4 : ...</li>
+            {% endif %}
+        </ul>
         {% if magie == 1 %}
             <p>Pour faire appel à la magie</p>
             <p>Il faut équilibrer votre puissance</p>
             <p>En fonction de l'objectif</p>
-            <a href="{{ path('app_magie_premier_sort') }}">
-                Apprendre le premier sort
+            <a href="{{ path('app_magie_deuxieme_sort') }}">
+                Apprendre le sort de niveau 2
+            </a>
+        {% elseif magie == 2 %}
+            <p>Pour passer au niveau 3</p>
+            <p>Il faut comprendre quelques choses</p>
+            <p>Et fonction de ce quelques choses</p>
+            <a href="{{ path('app_magie_troisieme_sort') }}">
+                Apprendre le sort de niveau 3
             </a>
         {% endif %}
     </div>

@@ -95,4 +95,7 @@ class SessionService{
         return $pow;
     }
 
+    public function setTrollJardinDead(SessionInterface $session) : void {
+        $session->set('trollJardinDead', true);
+    }
 }

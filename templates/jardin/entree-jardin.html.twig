@@ -6,14 +6,24 @@
         <div class="container text-center">
             <div class="row">
                 <div class="col">
-                    <p>Vous arrivez en courant dans un escalier,</p>
-                    <p>Au bout, un autre sbire du maitre vous attend</p>
                     {% include 'jardin/_troll-tete.html.twig' %}
                     {% include 'jardin/_troll-main.html.twig' %}
                     {% include 'jardin/_entree-jardin-secret.html.twig' %}
 
                     <div>
-                        <img src="{{ asset('images/troll_jardin.webp') }}" alt="porte d'entrée du jardin" usemap="#workmap" >
+                        {% set trollDead = app.session.get('trollJardinDead') %}
+                        {% if trollDead %}
+                            <img src="{{ asset('images/entree_jardin_sans_troll.webp') }}" alt="porte d'entrée du jardin sans troll" usemap="#workmap" >
+                            <map name="workmap">
+                                <area shape="rect"
+                                      coords="426,232,622,534"
+                                      alt="Entrée jardin"
+                                      href="{{ path('app_jardin') }}">
+                            </map>
+                        {% else %}
+                        <p>Vous arrivez en courant dans un escalier,</p>
+                        <p>Au bout, un autre <strong>troll</strong> du maitre vous attend</p>
+                        <img src="{{ asset('images/troll_jardin.webp') }}" alt="porte d'entrée du jardin avec troll" usemap="#workmap" >
                         <map name="workmap">
                             <area shape="rect"
                                   coords="485,386,513,413"
@@ -38,12 +48,37 @@
                                   aria-controls="jardinEntreeSecret">
                         </map>
                     </div>
+                        {% endif %}
+
                     {% include 'escalier/_revenir-escalier.html.twig' %}
                 </div>
                 <div class="col">
                     {% include 'menu/_menu.html.twig' %}
                 </div>
             </div>
+
+            {% if sortTete == "teteConfusion" %}
+                <div class="alert alert-secondary" role="alert">
+                    Vous préparez le sort de confusion sur la tête...
+                </div>
+            {% elseif sortTete == "teteAttraction" %}
+                <div class="alert alert-secondary" role="alert">
+                    Vous préparez le sort d'attraction sur la tête...
+                </div>
+            {% endif %}
+
+            {% if sortMain == "mainConfusion" %}
+                <div class="alert alert-secondary" role="alert">
+                    Vous préparez le sort de confusion sur la main...
+                </div>
+            {% elseif sortMain == "mainAttraction" %}
+                <div class="alert alert-secondary" role="alert">
+                    Vous préparez le sort d'attraction sur la main...
+                </div>
+            {% endif %}
+            {% if sortMain and sortTete %}
+                <a href="{{ path('app_lancer_sort_troll_jardin', {sortMain: sortMain , sortTete: sortTete}) }}" class="btn btn-secondary">Lancer les sorts</a>
+            {% endif %}
         </div>
 
 

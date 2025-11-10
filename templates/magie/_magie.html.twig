@@ -17,7 +17,7 @@
                 <li>Sort 2 : Attraction</li>
             {% endif %}
             {% if magie >= 3 %}
-                <li>Sort 3 : Repulsion</li>
+                <li>Sort 3 : La magie des couleurs</li>
             {% endif %}
             {% if magie >= 3 %}
                 <li>Sort 4 : ...</li>
@@ -32,9 +32,9 @@
             </a>
         {% elseif magie == 2 %}
             <p>Pour passer au niveau 3</p>
-            <p>Il faut comprendre quelques choses</p>
-            <p>Et fonction de ce quelques choses</p>
-            <a href="{{ path('app_magie_troisieme_sort') }}">
+            <p>Il faut comprendre les couleurs</p>
+            <p>ça sera évident quand vous y serez </p>
+            <a target="_blank" rel="noopener noreferrer"  href="{{ path('app_magie_troisieme_sort') }}">
                 Apprendre le sort de niveau 3
             </a>
         {% endif %}

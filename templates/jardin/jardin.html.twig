@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les jeux de la communauté!{% endblock %}
+
+{% block body %}
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <p>En rentrant dans le jardin, vous fouillez le coffret caché laissé par le troll et vous trouvez une pipette ?! </p>
+                <p>C'est odeur de fleur, et ces <strong>couleurs</strong> magnifique vous inspirent</p>
+                <img class="img-fluid" src="{{ asset('images/jardin.webp') }}" alt="un magnifique jardin">
+                {% include 'jardin/_revenir-entree-jardin.html.twig' %}
+            </div>
+            <div class="col">
+                {% include 'menu/_menu.html.twig' %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

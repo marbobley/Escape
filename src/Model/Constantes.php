@@ -10,4 +10,8 @@ class Constantes
     public static function clef33 () : string {
         return 'clef-33';
     }
+
+    public static function pipette () : string {
+        return 'pipette';
+    }
 }

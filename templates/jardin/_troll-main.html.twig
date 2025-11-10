@@ -15,16 +15,10 @@
                     {% set magie = app.session.get('magie') %}
                     {% if magie %}
                         {% if magie >= 1 %}
-                            <a class="dropdown-item" href="{{ path('app_entree_jardin', [])}}">Lancer un sort : Confusion</a>
+                            <a class="dropdown-item" href="{{ path('app_entree_jardin', {sortMain: "mainConfusion" , sortTete: sortTete}) }}">Lancer un sort : Confusion</a>
                         {% endif %}
                         {% if magie >= 2 %}
-                            <a class="dropdown-item" href="#">Lancer un sort : Attraction</a>
-                        {% endif %}
-                        {% if magie >= 3 %}
-                            <a class="dropdown-item" href="#">Lancer un sort : Repulsion</a>
-                        {% endif %}
-                        {% if magie >= 4 %}
-                            <a class="dropdown-item" href="#">Lancer un sort : ...</a>
+                            <a class="dropdown-item" href="{{ path('app_entree_jardin', {sortMain: "mainAttraction", sortTete: sortTete}) }}">Lancer un sort : Attraction</a>
                         {% endif %}
                     {% else %}
                         <a class="dropdown-item" href="#">Lancer un sort (ce n'est pas encore appris!)</a>

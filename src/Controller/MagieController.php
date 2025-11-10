@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Service\SessionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -70,22 +71,9 @@ final class MagieController extends AbstractController
     {
         $defaultData = null;
         $form = $this->createFormBuilder($defaultData)
-            ->add('pass0', RangeType::class, ['label' => '1 : ', 'attr' => [
-                'min' => 0,
-                'max' => 4
-            ]])
-            ->add('pass1', RangeType::class, ['label' => '2 : ', 'attr' => [
-                'min' => 0,
-                'max' => 4
-            ]])
-            ->add('pass2', RangeType::class, ['label' => '3 : ', 'attr' => [
-                'min' => 0,
-                'max' => 4
-            ]])
-            ->add('pass3', RangeType::class, ['label' => '4 : ', 'attr' => [
-                'min' => 0,
-                'max' => 4
-            ]])
+            ->add('color0', ColorType::class, ['label' => ' '])
+            ->add('color1', ColorType::class, ['label' => ' '])
+            ->add('color2', ColorType::class, ['label' => ' '])
             ->add('save', SubmitType::class, ['label' => 'Repondre'])
             ->getForm();
 
@@ -93,15 +81,16 @@ final class MagieController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $pass0 = $data['pass0'];
-            $pass1 = $data['pass1'];
-            $pass2 = $data['pass2'];
-            $pass3 = $data['pass3'];
+            $vert = $data['color0'];
+            $bleu = $data['color1'];
+            $rouge = $data['color2'];
 
-            if($pass0 === '0' && $pass1 === '4' && $pass2 === '2' && $pass3 === '1' )
+            if(($vert === '#00ff00' || $vert === '#00fe00') &&
+                ($bleu === '#0000ff' || $bleu === '#0000fe') &&
+                ($rouge === '#ff0000' || $rouge === '#fe0000') )
             {
-                $sessionService->initMagie($request->getSession(), 2);
-                return $this->redirectToRoute('app_jardin_secret');
+                $sessionService->initMagie($request->getSession(), 3);
+                return $this->redirectToRoute('app_jardin');
             }
             else
             {

@@ -4,8 +4,12 @@ namespace App\Controller;
 
 use App\Service\SessionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class EscalierController extends AbstractController
@@ -49,8 +53,40 @@ final class EscalierController extends AbstractController
     #[Route('/escalier/cailloux', name: 'app_escalier_cailloux')]
     public function cailloux(Request $request, SessionService $sessionService) : Response
     {
+        return $this->render('escalier/cailloux.html.twig');
+    }
 
-        return $this->render('escalier/cailloux.html.twig', [
+    #[Route('escalier/coffre_romain', name: 'app_escalier_coffre')]
+    public function coffre(Request $request,
+                           #[MapQueryParameter] int $tentativeCoffreOpen = 0,
+                           #[MapQueryParameter] bool $coffreOpen = false) : Response
+    {
+        $defaultData = null;
+        $form = $this->createFormBuilder($defaultData)
+            ->add('pass', NumberType::class, ['label' => 'egal = '])
+            ->add('save', SubmitType::class, ['label' => 'Calculer'])
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $pass = $data['pass'];
+            if($pass === 20.0)
+            {
+                return $this->redirectToRoute('app_escalier_coffre', ['coffreOpen' => true]);
+            }
+            else
+            {
+                $tentativeCoffreOpen++;
+                return $this->redirectToRoute('app_escalier_coffre',['tentativeCoffreOpen' => $tentativeCoffreOpen] );
+            }
+        }
+
+        return $this->render('escalier/coffre.html.twig', [
+            'form' => $form,
+            'tentativeCoffreOpen' => $tentativeCoffreOpen,
+            'coffreOpen' => $coffreOpen
         ]);
     }
 }

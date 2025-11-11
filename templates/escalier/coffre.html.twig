@@ -7,22 +7,29 @@
     <div class="container text-center">
         <div class="row">
             <div class="col">
-                <h1>BIENVENU DANS LES CATACOMBES</h1>
-                <p>En rentrant, vous entendez un bruit de chute venant loin au dessus de vous, dans l'escalier</p>
-                <p>Et ici, autour de vous, des cranes...</p>
-
+                {% if coffreOpen %}
+                    <div class="alert alert-success" role="alert">
+                        Le coffre est ouvert!
+                    </div>
+                {% endif %}
+                <p>tentative d'ouverture :
+                    {% if tentativeCoffreOpen != 10 %}
+                        {{ tentativeCoffreOpen }}
+                    {% else %}
+                        X
+                    {% endif %}
+                </p>
                 <div>
-                    <img src="{{ asset('images/catacombe_entree_1.webp') }}" alt="catacombes" usemap="#workmap" >
+                    <img src="{{ asset('images/coffre_big.webp') }}" alt="catacombes" usemap="#workmap" >
                     <map name="workmap">
                         <area shape="rect" coords="409,132,476,550" alt="Partir à gauche" href="{{ path('app_catacombe_gauche') }}">
                         <area shape="rect" coords="960,0,1000,550" alt="Partir à droite" href="{{ path('app_catacombe_droite') }}">
                     </map>
                 </div>
-                <div class="col">
-                    <a href="{{ path('app_escalier_cailloux') }}">
-                       Sortir des catacombes
-                    </a>
-                </div>
+                {{ form_start(form) }}
+                {{ form_end(form) }}
+
+                {% include 'escalier/_revenir-escalier.html.twig' %}
             </div>
             <div class="col">
                 {% include 'menu/_menu.html.twig' %}

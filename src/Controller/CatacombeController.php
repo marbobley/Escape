@@ -13,9 +13,19 @@ final class CatacombeController extends AbstractController
     #[Route('/chemin/victoire', name: 'app_catacombe_index')]
     public function index(Request $request, SessionService $sessionService) : Response
     {
-        $sessionService->initEscalier($request->getSession());
-        return $this->render('catacombe/index.html.twig', [
-        ]);
+        $sessionService->setCatacombeOpen($request->getSession());
+        return $this->render('catacombe/index.html.twig');
+    }
+
+    #[Route('/catacombe/droite', name: 'app_catacombe_droite')]
+    public function droite(Request $request, SessionService $sessionService) : Response
+    {
+        return $this->render('catacombe/droite.html.twig');
+    }
+    #[Route('/catacombe/gauche', name: 'app_catacombe_gauche')]
+    public function gauche(Request $request, SessionService $sessionService) : Response
+    {
+        return $this->render('catacombe/gauche.html.twig');
     }
 
 }

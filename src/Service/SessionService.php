@@ -98,4 +98,9 @@ class SessionService{
     public function setTrollJardinDead(SessionInterface $session) : void {
         $session->set('trollJardinDead', true);
     }
+
+    public function setCatacombeOpen(SessionInterface $session)
+    {
+        $session->set('catacombeOpen', true);
+    }
 }

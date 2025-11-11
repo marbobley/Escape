@@ -31,6 +31,15 @@
                     </div>
                     <div class="col">
                         {% include 'menu/_menu.html.twig' %}
+                        {% set escalier = app.session.get('escalier') %}
+                        {% set catacombeOpen = app.session.get('catacombeOpen') %}
+                        {% if escalier == 10 and catacombeOpen %}
+                            <a href="{{ path('app_escalier_coffre') }}">
+                                <img class="img-fluid"
+                                     src="{{ asset('images/coffre.webp') }}"
+                                     alt="photo d'un coffre">
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

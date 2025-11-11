@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Model\Constantes;
+use App\Model\ObjetAventure;
+use App\Service\InventaireService;
 use App\Service\SessionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -58,6 +61,8 @@ final class EscalierController extends AbstractController
 
     #[Route('escalier/coffre_romain', name: 'app_escalier_coffre')]
     public function coffre(Request $request,
+                           SessionService $sessionService,
+                           InventaireService $inventaireService,
                            #[MapQueryParameter] int $tentativeCoffreOpen = 0,
                            #[MapQueryParameter] bool $coffreOpen = false) : Response
     {
@@ -74,6 +79,10 @@ final class EscalierController extends AbstractController
             $pass = $data['pass'];
             if($pass === 20.0)
             {
+                $lunette = new ObjetAventure(Constantes::lunette(), "Permet de voir plus", "Quel charisme avec!");
+                $inventaire = $sessionService->getCurrentInventaire($request->getSession());
+                $inventaireService->addOrReplace(Constantes::lunette(), $lunette, $inventaire);
+                $sessionService->setCurrentInventaire($request->getSession(), $inventaire);
                 return $this->redirectToRoute('app_escalier_coffre', ['coffreOpen' => true]);
             }
             else

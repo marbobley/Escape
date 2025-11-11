@@ -14,4 +14,7 @@ class Constantes
     public static function pipette () : string {
         return 'pipette';
     }
+    public static function lunette() : string {
+        return 'lunette rose';
+    }
 }

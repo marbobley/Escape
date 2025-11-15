@@ -2,7 +2,11 @@
 
 namespace App\Controller;
 
+use App\Model\Constantes;
+use App\Model\ObjetAventure;
+use App\Service\InventaireService;
 use App\Service\SessionService;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
@@ -99,6 +103,41 @@ final class MagieController extends AbstractController
         }
 
         return $this->render('magie/troisieme_sort.html.twig', [
+            'form' => $form,
+            'alert' => $alert,
+        ]);
+    }
+
+    #[Route('/catacombe/magie/pilier', name: 'app_magie_catacombe_stele') ]
+    public function magie_pilier(Request $request, SessionService $sessionService, InventaireService $inventaireService, #[MapQueryParameter] int $alert = 0) : Response
+    {
+        $defaultData = null;
+        $form = $this->createFormBuilder($defaultData)
+            ->add('pass0', TextType::class, ['label' => ' '])
+            ->add('save', SubmitType::class, ['label' => 'Repondre'])
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $pass0 = $data['pass0'];
+
+            if($pass0 === '212324'  )
+            {
+                $crane = new ObjetAventure(Constantes::crane(), "C'est dorée, ça brille oooh", "Hooo! T'es une pie ?");
+                $inventaire = $sessionService->getCurrentInventaire($request->getSession());
+                $inventaireService->addOrReplace(Constantes::crane(), $crane, $inventaire);
+                $sessionService->setCurrentInventaire($request->getSession(), $inventaire);
+                return $this->redirectToRoute('app_magie_catacombe_stele', [ 'alert' => 2 ]);
+            }
+            else
+            {
+                return $this->redirectToRoute('app_magie_catacombe_stele', [ 'alert' => 1 ]);
+            }
+        }
+
+        return $this->render('magie/catacombe_pilier_magie.twig', [
             'form' => $form,
             'alert' => $alert,
         ]);

@@ -8,23 +8,23 @@
         <div class="row">
             <div class="col">
                 <div>
-                    {%  include 'catacombe/_rebus_1.html.twig' %}
-                    {%  include 'catacombe/_rebus_2.html.twig' %}
-                    <img src="{{ asset('images/catacombe_gauche.webp') }}" alt="catacombes" usemap="#workmap">
+                    {%  include 'catacombe/_rebus_3.html.twig' %}
+                    {%  include 'catacombe/_rebus_4.html.twig' %}
+                    <img src="{{ asset('images/catacombe_gauche_2.webp') }}" alt="catacombes" usemap="#workmap">
                     <map name="workmap">
                         <area shape="rect" coords="10,171,141,325"
                               alt="Regarder de plus près"
                               data-bs-toggle="offcanvas"
-                              href="#rebus1"
+                              href="#rebus3"
                               role="button"
-                              aria-controls="rebus1">
+                              aria-controls="rebus3">
                         <area shape="rect" coords="391,240,420,290"
                               alt="Regarder de plus près"
                               data-bs-toggle="offcanvas"
-                              href="#rebus2"
+                              href="#rebus4"
                               role="button"
-                              aria-controls="rebus2">
-                        <area shape="rect" coords="220,240,255,434" alt="Partir à gauche" href="{{ path('app_catacombe_gauche_2') }}">
+                              aria-controls="rebus4">
+                        <area shape="rect" coords="220,240,255,434" alt="Partir à gauche" href="{{ path('app_catacombe_gauche_3') }}">
                     </map>
                 </div>
                 {%  include 'catacombe/_revenir_entree_catacombe.html.twig' %}

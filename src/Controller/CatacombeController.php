@@ -22,6 +22,18 @@ final class CatacombeController extends AbstractController
     {
         return $this->render('catacombe/droite.html.twig');
     }
+
+    #[Route('/catacombe/droite/droite', name: 'app_catacombe_droite_2')]
+    public function droite2(Request $request, SessionService $sessionService) : Response
+    {
+        return $this->render('catacombe/droite_2.html.twig');
+    }
+
+    #[Route('/catacombe/droite/droite/droite', name: 'app_catacombe_droite_3')]
+    public function droite3(Request $request, SessionService $sessionService) : Response
+    {
+        return $this->render('catacombe/droite_3.html.twig');
+    }
     #[Route('/catacombe/gauche', name: 'app_catacombe_gauche')]
     public function gauche(Request $request, SessionService $sessionService) : Response
     {

@@ -23,7 +23,7 @@ final class JardinController extends AbstractController
     {
         $sessionService->setTrollJardinDead($request->getSession());
 
-        $keyFound = new ObjetAventure(Constantes::pipette(), 'Retrouve les couleurs', 'Ou est-ce que je peu retrouver ça ?');
+        $keyFound = new ObjetAventure(Constantes::pipette(), 'Retrouve les couleurs', 'Ou est-ce que je peux retrouver ça ?');
 
         $currentInventaire = $sessionService->getCurrentInventaire($request->getSession());
         $inventaireService->addOrReplace(Constantes::pipette(), $keyFound ,$currentInventaire);

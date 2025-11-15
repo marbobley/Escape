@@ -5,13 +5,15 @@
 {% block body %}
     <div class="container text-center">
         <div class="row">
+            {% set magie = app.session.get('magie') %}
+            {% if magie == 3 %}
+                <div class="alert alert-success" role="alert">
+                    <p>Vous avez résolu la magie des couleurs, il n'y plus rien à faire ici</p>
+                </div>
+            {% endif %}
             <div class="col">
                 <p>En rentrant dans le jardin, vous fouillez le coffret caché laissé par le troll et vous trouvez une pipette ?! </p>
                 <p>Ces odeurs de fleur, et ces <strong>couleurs</strong> magnifiques vous inspirent</p>
-                {% set magie = app.session.get('magie') %}
-                {% if magie == 3 %}
-                    <p>Vous avez résolu la magie des couleurs, il n'y plus rien à faire ici</p>
-                {% endif %}
                 <img class="img-fluid" src="{{ asset('images/jardin.webp') }}" alt="un magnifique jardin">
                 {% include 'jardin/_revenir-entree-jardin.html.twig' %}
             </div>

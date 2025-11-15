@@ -9,7 +9,8 @@
                 Ratééééé !
             </div>
         {% endif %}
-        {% if alert == 2 %}
+        {% set crane = serviceInventaire.inventaireObject(app.session, Constantes.crane ) %}
+        {% if alert == 2 or crane %}
             <div class="alert alert-success" role="alert">
                 Vous avez résolu l'énigme... vous trouvez
                 <img src="{{ asset('images/cranedoree.webp') }}" alt="crane dorée"  >

@@ -10,19 +10,9 @@
                 <h1>BIENVENU DANS LES CATACOMBES</h1>
 
                 <div>
-                    {% set inventaire = app.session.get('inventaire') %}
-                    {% if inventaire %}
-                        {% set contenu = inventaire.contenu %}
-                        {% if contenu %}
-                            {% set lunette = contenu['lunette rose'] %}
-                            {% if lunette %}
-                                <img src="{{ asset('images/catacombe_entree_2_lunette.webp') }}" alt="catacombes" usemap="#workmap" >
-                            {% else %}
-                                <p>En rentrant, vous entendez un bruit de chute venant loin au dessus de vous, dans l'escalier</p>
-                                <p>Et ici, autour de vous, des cranes...</p>
-                                <img src="{{ asset('images/catacombe_entree_1.webp') }}" alt="catacombes" usemap="#workmap" >
-                            {% endif %}
-                        {% endif %}
+                    {% set lunette = serviceInventaire.inventaireObject(app.session, Constantes.lunette) %}
+                    {% if lunette %}
+                        <img src="{{ asset('images/catacombe_entree_2_lunette.webp') }}" alt="catacombes" usemap="#workmap" >
                     {% else %}
                         <p>En rentrant, vous entendez un bruit de chute venant loin au dessus de vous, dans l'escalier</p>
                         <p>Et ici, autour de vous, des cranes...</p>

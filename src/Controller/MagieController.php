@@ -147,27 +147,48 @@ final class MagieController extends AbstractController
     {
         $defaultData = null;
         $form = $this->createFormBuilder($defaultData)
-            ->add('pass0', TextType::class, ['label' => ' '])
+            ->add('color0', ColorType::class, ['label' => ' '])
+            ->add('color1', ColorType::class, ['label' => ' '])
+            ->add('color2', ColorType::class, ['label' => ' '])
             ->add('save', SubmitType::class, ['label' => 'Repondre'])
             ->getForm();
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-            $pass0 = $data['pass0'];
 
-            if($pass0 === '212324'  )
+            $data = $form->getData();
+            $jaune = $data['color1'];
+            $bleu = $data['color2'];
+            $violet = $data['color0'];
+
+            $endYellow = hexdec('#FCE61D') ;
+            $startYellow = hexdec('#DEFC1D');
+            $currentYellow = hexdec($jaune);
+
+            $endBlue = hexdec('#6700F6') ;
+            $startBlue = hexdec('#0092F6');
+            $currentBlue = hexdec($bleu);
+
+            $endViolet = hexdec('#FE00ED') ;
+            $startViolet = hexdec('#8E00FE');
+            $currentViolet = hexdec($violet);
+
+
+
+            if(($currentYellow >= $startYellow && $currentYellow <= $endYellow) &&
+                ($currentBlue >= $startBlue && $currentBlue <= $endBlue) &&
+                ($currentViolet >= $startViolet && $currentViolet <= $endViolet))
             {
-                $crane = new ObjetAventure(Constantes::crane(), "C'est dorée, ça brille oooh", "Hooo! T'es une pie ?");
+                $coffre = new ObjetAventure(Constantes::coffre(), "Un jolie coffre", "Il n'y a pas de serrure dans ce coffre !");;
                 $inventaire = $sessionService->getCurrentInventaire($request->getSession());
-                $inventaireService->addOrReplace(Constantes::crane(), $crane, $inventaire);
+                $inventaireService->addOrReplace(Constantes::coffre(), $coffre, $inventaire);
                 $sessionService->setCurrentInventaire($request->getSession(), $inventaire);
-                return $this->redirectToRoute('app_magie_catacombe_stele', [ 'alert' => 2 ]);
+                return $this->redirectToRoute('app_magie_catacombe_pilier', [ 'alert' => 2 ]);
             }
             else
             {
-                return $this->redirectToRoute('app_magie_catacombe_stele', [ 'alert' => 1 ]);
+                return $this->redirectToRoute('app_magie_catacombe_pilier', [ 'alert' => 1 ]);
             }
         }
 

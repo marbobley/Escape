@@ -21,4 +21,8 @@ class Constantes
     public static function crane() : string{
         return 'crane';
     }
+
+    public static function coffre() : string{
+        return 'coffre';
+    }
 }

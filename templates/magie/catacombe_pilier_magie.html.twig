@@ -9,10 +9,10 @@
                 Ratééééé !
             </div>
         {% endif %}
-        {% if alert == 2 %}
+        {% set coffre = serviceInventaire.inventaireObject(app.session, Constantes.coffre ) %}
+        {% if alert == 2 or coffre %}
             <div class="alert alert-success" role="alert">
-                Vous avez résolu l'énigme... vous trouvez
-                <img src="{{ asset('images/cranedoree.webp') }}" alt="crane dorée"  >
+                Vous avez résolu l'énigme... vous trouvez un étrange coffre
             </div>
         {% endif %}
         {% set magie = app.session.get('magie') %}

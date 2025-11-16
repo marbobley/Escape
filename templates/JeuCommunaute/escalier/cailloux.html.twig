@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %}Les jeux de la communauté!{% endblock %}
+
+{% block body %}
+    <div class="container-fluid text-center">
+        {% include 'JeuCommunaute/escalier/_passage-cailloux.html.twig' %}
+        {% include 'JeuCommunaute/escalier/_passage-cailloux-pierre-enlever.html.twig' %}
+
+        <div class="container text-center">
+            <div class="row">
+                <div class="col">
+                    Fort d'une précision à couper la pomme à Guillaume Tel
+                    <p>Vous touchez le mur en face</p>
+                    <p>Une pierre s'illumine</p>
+
+                    <img class="img-fluid" src="{{ asset('images/mur_escalier_passage_catacombe.webp') }}" alt="porte d'entrée des catacombes" usemap="#workmap" >
+                    <map name="workmap">
+                        <area shape="rect"
+                              coords="159,200,211,232"
+                              alt="Sous l'escalier"
+                              data-bs-toggle="offcanvas"
+                              href="#passageCailloux"
+                              role="button"
+                              aria-controls="passageCailloux">
+                    </map>
+                    {% include 'JeuCommunaute/escalier/_revenir-escalier.html.twig' %}
+                </div>
+                <div class="col">
+                    {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

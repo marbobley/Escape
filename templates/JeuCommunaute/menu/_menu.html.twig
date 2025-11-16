@@ -1,0 +1,17 @@
+
+{% include 'JeuCommunaute/inventaire/_inventaire.html.twig' %}
+<button class="btn btn-primary"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#inventaire"
+        aria-controls="inventaire">Inventaire</button>
+
+{% set magie = app.session.get('magie') %}
+{% if magie %}
+    {% include 'JeuCommunaute/magie/_magie.html.twig' %}
+    <button class="btn btn-primary"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#magieMenu"
+            aria-controls="magieMenu">Sorts</button>
+{% endif %}

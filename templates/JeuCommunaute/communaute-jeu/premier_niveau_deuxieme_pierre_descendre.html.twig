@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}Les jeux de la communauté!{% endblock %}
+
+{% block body %}
+        <div class="container-fluid text-center">
+            <div class="row">
+                {% include 'JeuCommunaute/communaute-jeu/_remonter.html.twig' %}
+                {% include 'JeuCommunaute/communaute-jeu/_porte_jeu_2.twig' %}
+                <div class="col">
+                    <h1>Finalement, avec les points d'appuis suffisant, vous arrivez à retomber dans une petite alvéole avec une porte ! </h1>
+                    <img class="img-fluid" src="{{ asset('images/porte_jeu_2.webp') }}" alt="porte d'entrée d'un donjon" usemap="#workmap" >
+                    <map name="workmap">
+                        <area shape="rect" coords="231,32,423,327"
+                              alt="Ouvrir la porte"
+                              data-bs-toggle="offcanvas"
+                              href="#porteJeu2"
+                              role="button"
+                              aria-controls="porteJeuDeux">
+                    </map>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

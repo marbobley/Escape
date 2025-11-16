@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les jeux de la communauté!{% endblock %}
+
+{% block body %}
+    <div class="container-fluid text-center">
+        <h1>OULAH ! Heureusement qu'on démarre pas trop fort, on aurait pu tomber  !!</h1>
+        <h2>Je peux peut-être m'aider de ces pierres pour descendre... regardons de plus près !!</h2>
+
+        {% include 'JeuCommunaute/communaute-jeu/_premiere-pierre.html.twig' %}
+        {% include 'JeuCommunaute/communaute-jeu/_deuxieme-pierre.html.twig' %}
+
+        <article>
+            <div>
+                {% set clef4 = serviceInventaire.inventaireObject(app.session, Constantes.clef4) %}
+                {% set clef33 = serviceInventaire.inventaireObject(app.session, Constantes.clef33) %}
+                {% if clef4 and clef33 %}
+                    <img class="img-fluid"
+                         src="{{ asset('images/premier_niveau_sans_premiere_deuxieme_pierre.webp') }}"
+                         alt="photo d'un trou, avec de vieilles pierres represantant le premier niveau"
+                         usemap="#workmap">
+                {% elseif clef4 %}
+                    <img class="img-fluid"
+                         src="{{ asset('images/premier_niveau_sans_deuxieme_pierre.webp') }}"
+                         alt="photo d'un trou, avec de vieilles pierres represantant le premier niveau"
+                         usemap="#workmap">
+                {% elseif clef33 %}
+                    <img class="img-fluid"
+                         src="{{ asset('images/premier_niveau_sans_premiere_pierre.webp') }}"
+                         alt="photo d'un trou, avec de vieilles pierres represantant le premier niveau"
+                         usemap="#workmap">
+                {% else %}
+                    <img class="img-fluid"
+                         src="{{ asset('images/premier_niveau.webp') }}"
+                         alt="photo d'un trou, avec de vieilles pierres represantant le premier niveau"
+                         usemap="#workmap">
+                {% endif %}
+                <map name="workmap">
+                    <area shape="rect" coords="173,259,241,271"
+                          alt="Ouvrir la porte"
+                          data-bs-toggle="offcanvas"
+                          href="#premierePierreOffCanvas"
+                          role="button"
+                          aria-controls="premierePierreOffCanvas">
+                    <area shape="rect" coords="665,428,730,513"
+                          alt="Ouvrir la porte"
+                          data-bs-toggle="offcanvas"
+                          href="#deuxiemePierreOffCanvas"
+                          role="button"
+                          aria-controls="deuxiemePierreOffCanvas">
+                </map>
+            </div>
+            <!--Même ici !-->
+        </article>
+    </div>
+
+{% endblock %}

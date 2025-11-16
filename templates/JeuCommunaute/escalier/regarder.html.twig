@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block title %}Les jeux de la communauté!{% endblock %}
+
+{% block body %}
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+
+                <div class="container-fluid text-center">
+                    {% set escalier = app.session.get('escalier') %}
+                    {% if escalier is same as(1) %}
+                        <img class="img-fluid" src="{{ asset('images/jeu_escalier_1.webp') }}" alt="Mur en pierre avec un tableau" >
+                    {% elseif escalier is same as(2)  %}
+                        <img class="img-fluid" src="{{ asset('images/jeu_escalier_2.webp') }}" alt="Mur en pierre avec un tableau" >
+                    {% elseif escalier is same as(3)  %}
+                        <img class="img-fluid" src="{{ asset('images/jeu_escalier_3.webp') }}" alt="Mur en pierre avec un tableau" >
+                    {% elseif escalier is same as(4)  %}
+                        <img class="img-fluid" src="{{ asset('images/jeu_escalier_4.webp') }}" alt="Mur en pierre avec un tableau" >
+                    {% elseif escalier is same as(5)  %}
+                        <img class="img-fluid" src="{{ asset('images/jeu_escalier_5.webp') }}" alt="Mur en pierre avec un tableau" >
+                    {% elseif escalier is same as(6)  %}
+                        <img class="img-fluid" src="{{ asset('images/jeu_escalier_6.webp') }}" alt="Mur en pierre avec un tableau" >
+                    {% elseif escalier is same as(7)  %}
+                        <img class="img-fluid" src="{{ asset('images/jeu_escalier_7.webp') }}" alt="Mur en pierre avec un tableau" >
+                    {% elseif escalier is same as(8)  %}
+                        <img class="img-fluid" src="{{ asset('images/jeu_escalier_8.webp') }}" alt="Mur en pierre avec un tableau" >
+                    {% elseif escalier is same as(9)  %}
+                        <img class="img-fluid" src="{{ asset('images/jeu_escalier_9.webp') }}" alt="Mur en pierre avec un tableau" >
+                    {% elseif escalier is same as(10)  %}
+                        <img class="img-fluid" src="{{ asset('images/jeu_escalier_10.webp') }}" alt="Mur en pierre avec un tableau" >
+                    {% elseif escalier is same as(11)  %}
+                        <img class="img-fluid" src="{{ asset('images/jeu_escalier_11.webp') }}" alt="Mur en pierre avec un tableau" >
+                    {% elseif escalier is same as(12)  %}
+                        <img class="img-fluid" src="{{ asset('images/jeu_escalier_12.webp') }}" alt="Mur en pierre avec un tableau" >
+                    {% endif %}
+
+                    {% include 'JeuCommunaute/escalier/_revenir-escalier.html.twig' %}
+                </div>
+            </div>
+            <div class="col">
+                {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -20,15 +20,11 @@
             <div class="col">
                 {% if crane and coffre %}
                     <p>En appuyant sur l'étoile, vous activez un passage secret qui mène à une porte ...</p>
-                    <p>Boucle : 8 - infini</p>
-                    <p>Pilier : coffre  </p>
-                    <p>Stele : crane dorée</p>
                     <img src="{{ asset('images/portetoile.webp') }}" alt="La porte des étoiles" >
 
                 {% else %}
                     <p>Il vous manque des objets</p>
                 {% endif %}
-                {{ dump(alert) }}
                 {%  include 'JeuCommunaute/catacombe/_revenir_entree_catacombe.html.twig' %}
 
             </div>

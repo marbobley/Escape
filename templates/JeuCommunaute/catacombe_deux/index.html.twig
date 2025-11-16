@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block title %}Les jeux de la communauté!{% endblock %}
+
+{% block body %}<div class="container-fluid text-center">
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                {% set coffre = serviceInventaire.inventaireObject(app.session, Constantes.coffre) %}
+                {% set crane = serviceInventaire.inventaireObject(app.session, Constantes.crane) %}
+                {% if crane and coffre %}
+                    <p>En appuyant sur l'étoile, vous activez un passage secret qui mène à une porte ...</p>
+                    <p>Boucle : 8 - infini</p>
+                    <p>Pilier : coffre  </p>
+                    <p>Stele : crane dorée</p>
+                    <img src="{{ asset('images/portetoile.webp') }}" alt="La porte des étoiles" >
+                {% else %}
+                    <p>Il vous manque des objets</p>
+                {% endif %}
+                {%  include 'JeuCommunaute/catacombe/_revenir_entree_catacombe.html.twig' %}
+
+            </div>
+            <div class="col">
+                {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

@@ -14,6 +14,6 @@ final class CatacombeNiveauDeuxController extends AbstractController
     public function index(Request $request, SessionService $sessionService) : Response
     {
         $sessionService->setCatacombeOpen($request->getSession());
-        return $this->render('JeuCommunaute/catacombe/index.html.twig');
+        return $this->render('JeuCommunaute/catacombe_deux/index.html.twig');
     }
 }

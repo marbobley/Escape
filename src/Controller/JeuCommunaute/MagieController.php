@@ -162,15 +162,15 @@ final class MagieController extends AbstractController
             $bleu = $data['color2'];
             $violet = $data['color0'];
 
-            $endYellow = hexdec('#FCE61D') ;
-            $startYellow = hexdec('#DEFC1D');
+            $endYellow = hexdec('#FFF61D') ;
+            $startYellow = hexdec('#DEAC1D');
             $currentYellow = hexdec($jaune);
 
-            $endBlue = hexdec('#6700F6') ;
-            $startBlue = hexdec('#0092F6');
+            $endBlue = hexdec('#67F0F6') ;
+            $startBlue = hexdec('#0002F6');
             $currentBlue = hexdec($bleu);
 
-            $endViolet = hexdec('#FE00ED') ;
+            $endViolet = hexdec('#FEF0ED') ;
             $startViolet = hexdec('#8E00FE');
             $currentViolet = hexdec($violet);
 

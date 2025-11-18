@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block title %}Les jeux de la communauté!{% endblock %}
+
+{% block body %}<div class="container-fluid text-center">
+    {% set coffre = serviceInventaire.inventaireObject(app.session, Constantes.coffre) %}
+    {% set crane = serviceInventaire.inventaireObject(app.session, Constantes.crane) %}
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                {% if alert != 33259492 %}
+                    <p>Vous traversez la porte et vous arrivez dans une immense salle, sans commune mesure</p>
+                    <p>100000 soldats sont là, au garde à vous devant le Maitre</p>
+                    <p>Mais ou sommes nous ?</p>
+                    {{ form_start(form) }}
+                    {{ form_end(form) }}
+                 <img src="{{ asset('images/catacombe2_precipice.webp') }}" alt="catacombes" >
+                {% else %}
+                    <p>En reflechissant au lieu, vous vous déplacez pour changer de point de vu</p>
+                    <p>Et le Maitre est dévoilé !</p>
+                    <p>IL EST IMMENSE, UN BON METRE AU GAROT !</p>
+                    <p>Le maitre vous entend vous <a href="{{ path('app_catacombe_deux_exclamer') }}">exclamez</a> !</p>
+                    <img src="{{ asset('images/catacombe2_sans_rocher.webp') }}" alt="catacombes" >
+                {% endif %}
+                {%  include 'JeuCommunaute/catacombe/_revenir_entree_catacombe.html.twig' %}
+            </div>
+            <div class="col">
+                {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %}Les jeux de la communauté!{% endblock %}
+
+{% block body %}<div class="container-fluid text-center">
+    {% set coffre = serviceInventaire.inventaireObject(app.session, Constantes.coffre) %}
+    {% set crane = serviceInventaire.inventaireObject(app.session, Constantes.crane) %}
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <p>Le maitre se retourne</p>
+                <p>Et commence à incanter une formule mathématique</p>
+                <img src="{{ asset('images/catacombe2_exclamer.webp') }}" alt="La porte des étoiles" >
+                {%  include 'JeuCommunaute/catacombe/_revenir_entree_catacombe.html.twig' %}
+            </div>
+            <div class="col">
+                {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

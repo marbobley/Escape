@@ -8,12 +8,16 @@
     <div class="container text-center">
         {% if alert == 1 %}
             <div class="alert alert-danger" role="alert">
-                ECHEC !
+                ECHEC, essayez encore !
             </div>
         {% endif %}
-        {% if alert == 2 %}
+        {% if alert == 22546569 %}
             <div class="alert alert-success" role="alert">
-                SUCCESS !
+                Bien joué, tu as compris l'énigme !
+
+                <a href="{{ path('app_catacombe_deux_traverser') }}">
+                    Traverser la porte
+                </a>
             </div>
         {% endif %}
         <div class="row">

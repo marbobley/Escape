@@ -6,6 +6,7 @@ use App\Model\Constantes;
 use App\Model\ObjetAventure;
 use App\Service\SessionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,9 +19,35 @@ final class CatacombeNiveauDeuxController extends AbstractController
 {
 
     #[Route('/catacombe/deux/exclamer', name: 'app_catacombe_deux_exclamer')]
-    public function exclamer() : Response{
+    public function exclamer(SessionService $sessionService, Request $request, #[MapQueryParameter]  int $alert = 0) : Response{
 
-        return $this->render('JeuCommunaute/catacombe_deux/exclamer.html.twig');
+        $defaultData = null;
+        $form = $this->createFormBuilder($defaultData)
+            ->add('pass0', TextType::class, ['label' => 'Viiiiite : '])
+            ->add('save', SubmitType::class, ['label' => 'Repondre'])
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $pass0 = $data['pass0'];
+
+            if( $pass0 === '5')
+            {
+                return $this->redirectToRoute('app_catacombe_deux_exclamer', [ 'alert' => 58789639 ]);
+            }
+            else
+            {
+                return $this->redirectToRoute('app_catacombe_deux_exclamer', [ 'alert' => 1 ]);
+            }
+        }
+
+        $sessionService->initMaitreExclamer($request->getSession());
+        return $this->render('JeuCommunaute/catacombe_deux/exclamer.html.twig', [
+            'form' => $form,
+            'alert' => $alert,
+        ]);
     }
     #[Route('/catacombe/deux/traverser', name: 'app_catacombe_deux_traverser')]
     public function traverser(Request $request, #[MapQueryParameter]  int $alert = 0){

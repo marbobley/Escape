@@ -6,11 +6,24 @@
     {% set crane = serviceInventaire.inventaireObject(app.session, Constantes.crane) %}
 
     <div class="container text-center">
+        {% if alert == 1 %}
+            <div class="alert alert-danger" role="alert">
+                Naoooon !
+            </div>
+        {% endif %}
         <div class="row">
             <div class="col">
-                <p>Le maitre se retourne</p>
-                <p>Et commence à incanter une formule mathématique</p>
-                <img src="{{ asset('images/catacombe2_exclamer.webp') }}" alt="La porte des étoiles" >
+                {% if alert != 58789639 %}
+                    <p>Le maitre se retourne</p>
+                    <p>Et commence à incanter une formule mathématique</p>
+                    {{ form_start(form) }}
+                    {{ form_end(form) }}
+                    <img src="{{ asset('images/catacombe2_exclamer.webp') }}" alt="La porte des étoiles" >
+                {% else %}
+                    <p>Vous n'avez pas répondu assez vite</p>
+                    <p>Un monstre commence à sortir</p>
+                    <img src="{{ asset('images/catacombe2_monstre.webp') }}" alt="La porte des étoiles" >
+                {% endif %}
                 {%  include 'JeuCommunaute/catacombe/_revenir_entree_catacombe.html.twig' %}
             </div>
             <div class="col">

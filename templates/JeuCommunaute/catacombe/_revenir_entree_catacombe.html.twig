@@ -4,3 +4,11 @@
         Revenir à l'entrée des catacombes
     </a>
 </div>
+{% set maitre = app.session.get('maitre-exclamer') %}
+    {% if maitre %}
+        <div class="col">
+            <a href="{{ path('app_catacombe_deux_exclamer') }}">
+                Revenir au près du maitre
+            </a>
+        </div>
+    {% endif %}

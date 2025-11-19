@@ -48,6 +48,15 @@ class SessionService{
         $session->set('nombre-mort', $currentNombreMort);
     }
 
+    public function initMaitreExclamer(SessionInterface $session)
+    {
+        $maitreExclamer = $session->get('maitre-exclamer');
+        if(!isset($maitreExclamer))
+        {
+            $session->set('maitre-exclamer', 1);
+        }
+    }
+
     public function initEscalier(SessionInterface $session)
     {
         $escalier = $session->get('escalier');

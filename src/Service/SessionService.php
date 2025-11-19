@@ -56,6 +56,14 @@ class SessionService{
             $session->set('maitre-exclamer', 1);
         }
     }
+    public function initMonstreCompa(SessionInterface $session)
+    {
+        $monstre = $session->get('monstre-compa');
+        if(!isset($monstre))
+        {
+            $session->set('monstre-compa', 1);
+        }
+    }
 
     public function initEscalier(SessionInterface $session)
     {

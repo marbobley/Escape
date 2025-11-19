@@ -12,6 +12,10 @@
                         <h5 class="card-title">{{ obj.name }}</h5>
                         <h6 class="card-subtitle mb-2 text-body-secondary">{{ obj.description }}</h6>
                         <p class="card-text">{{ obj.moreInformation }}</p>
+                        {% set monstreCompa = app.session.get('monstre-compa') %}
+                        {% if monstreCompa and obj.name == 'crane' %}
+                            <a href="#"><p class="casse-tete">L'occasion de se casser la tête</p></a>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}

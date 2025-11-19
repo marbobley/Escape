@@ -35,6 +35,8 @@ final class CatacombeNiveauDeuxController extends AbstractController
 
             if( $pass0 === '5')
             {
+                $sessionService->initMonstreCompa($request->getSession());
+                $sessionService->initMagie($request->getSession(), 4);
                 return $this->redirectToRoute('app_catacombe_deux_exclamer', [ 'alert' => 58789639 ]);
             }
             else

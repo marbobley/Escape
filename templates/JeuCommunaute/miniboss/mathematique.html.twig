@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}Les jeux de la communauté!{% endblock %}
+
+{% block body %}<div class="container-fluid text-center">
+    <div class="container text-center">
+        {% include 'JeuCommunaute/miniboss/_topbar.html.twig' %}
+        <div class="row">
+            <div class="col">
+                <p> Combien ?</p>
+                {{ form_start(form) }}
+                {{ form_end(form) }}
+                <img class="img-fluid" src="{{ asset('images/monstre-mathematique.webp') }}" alt="un magnifique pilier avec des cercles de couleurs">
+            </div>
+            <div class="col">
+                {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

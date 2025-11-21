@@ -1,0 +1,15 @@
+
+{% if alert == 1 %}
+    <div class="alert alert-danger" role="alert">
+        Vous n'avez peut être pas compris ?
+    </div>
+{% endif %}
+{% if alert == 784599871 %}
+    <div class="alert alert-success" role="alert">
+        Vous savez faire la différence !
+
+        <a href="{{ path('app_boss_combat') }}">
+            Poursuivre le maitre
+        </a>
+    </div>
+{% endif %}

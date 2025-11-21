@@ -24,10 +24,11 @@
             <div class="col">
                 {% if crane and coffre %}
                     <p>En appuyant sur l'étoile, vous activez un passage secret qui mène à une porte ...</p>
-                    <img src="{{ asset('images/portetoile.webp') }}" alt="La porte des étoiles" >
+                    <img src="{{ asset('images/portetoile_ouverte.webp') }}" alt="La porte des étoiles" >
 
                 {% else %}
                     <p>Il vous manque des objets</p>
+                    <img src="{{ asset('images/portetoile_ferme.webp') }}" alt="La porte des étoiles" >
                 {% endif %}
                 {%  include 'JeuCommunaute/catacombe/_revenir_entree_catacombe.html.twig' %}
 

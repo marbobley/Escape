@@ -120,4 +120,9 @@ class SessionService{
     {
         $session->set('catacombeOpen', true);
     }
+
+    public function initCombatFinal(SessionInterface $session)
+    {
+        $session->set('combatFinal', true);
+    }
 }

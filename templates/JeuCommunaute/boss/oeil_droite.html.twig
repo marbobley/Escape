@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %}Les jeux de la communauté!{% endblock %}
+
+{% block body %}<div class="container-fluid text-center">
+
+    <div class="container text-center">
+        {% if alert == 1 %}
+            <div class="alert alert-danger" role="alert">
+                Ratééééé !
+            </div>
+        {% endif %}
+        {% if alert == 2 or crane %}
+            <div class="alert alert-success" role="alert">
+                Vous avez résolu l'énigme... vous trouvez
+                <img src="{{ asset('images/cranedoree.webp') }}" alt="crane dorée"  >
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col">
+                <p>Vous ciblez quel oeil avec la clef ?</p>
+                {{ form_start(form) }}
+                {{ form_end(form) }}
+                <img class="img-fluid" src="{{ asset('images/maitre-enerve.webp') }}" alt="un magnifique pilier avec des cercles de couleurs">
+            </div>
+            <div class="col">
+                {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

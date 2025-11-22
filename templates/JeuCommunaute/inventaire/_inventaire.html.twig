@@ -9,16 +9,29 @@
             {% for obj in inventaire.contenu %}
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title">{{ obj.name }}</h5>
+                        <h5 class="card-title">{{ obj.name }}
+                            {% if obj.name == 'clef-33' %}
+                                <img class="img-fluid" src="{{ asset('images/clef33miniature.webp') }}" alt="un magnifique pilier avec des cercles de couleurs"></h5>
+                            {% endif %}
+                        {% if obj.name == 'clef-4' %}
+                            <img class="img-fluid" src="{{ asset('images/clef44miniature.webp') }}" alt="un magnifique pilier avec des cercles de couleurs"></h5>
+                        {% endif %}
                         <h6 class="card-subtitle mb-2 text-body-secondary">{{ obj.description }}</h6>
                         <p class="card-text">{{ obj.moreInformation }}</p>
                         {% set monstreCompa = app.session.get('monstre-compa') %}
                         {% set combatFinal = app.session.get('combatFinal') %}
                         {% if monstreCompa and obj.name == 'crane' and not combatFinal %}
-                            <a  target="_blank" rel="noopener noreferrer"  href="{{ path('app_miniboss_cassetete') }}"><p class="casse-tete">L'occasion de se casser la tête</p></a>
+                            <a target="_blank" rel="noopener noreferrer"  href="{{ path('app_miniboss_cassetete') }}"><p class="casse-tete">L'occasion de se casser la tête</p></a>
                         {% elseif monstreCompa and obj.name == 'crane' %}
                             <p class="casse-tete">L'occasion de se casser la tête</p>
                         {% endif %}
+                        {% if combatFinal and obj.name == 'clef-33' %}
+                            <a href="{{ path('app_boss_oeil_gauche') }}"><p class="casse-tete">Utiliser</p></a>
+                        {% endif %}
+                        {% if combatFinal and obj.name == 'clef-4' %}
+                            <a href="{{ path('app_boss_oeil_droite') }}"><p class="casse-tete">Utiliser</p></a>
+                        {% endif %}
+
                     </div>
                 </div>
             {% endfor %}

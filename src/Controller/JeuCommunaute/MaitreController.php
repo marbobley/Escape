@@ -44,4 +44,66 @@ final class MaitreController extends AbstractController
             'alert' => $alert,
         ]);
     }
+    #[Route('/metre/combat/oeil_dun_cote', name: 'app_boss_oeil_droite')]
+    public function oeil_droite(Request $request, SessionService $sessionService, #[MapQueryParameter]  int $alert = 0) : Response
+    {
+
+        $defaultData = null;
+        $form = $this->createFormBuilder($defaultData)
+            ->add('pass0', TextType::class, ['label' => ' '])
+            ->add('save', SubmitType::class, ['label' => 'Repondre'])
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $pass0 = $data['pass0'];
+
+            if( $pass0 === '7')
+            {
+                return $this->redirectToRoute('app_boss_oeil_droite', [ 'alert' => 45727828 ]);
+            }
+            else
+            {
+                return $this->redirectToRoute('app_boss_oeil_droite', [ 'alert' => 1 ]);
+            }
+        }
+
+        return $this->render('JeuCommunaute/boss/oeil_droite.html.twig', [
+            'form' => $form,
+            'alert' => $alert,
+        ]);
+    }
+    #[Route('/metre/combat/oeil_de_lautre', name: 'app_boss_oeil_gauche')]
+    public function oeil_gauche(Request $request, SessionService $sessionService, #[MapQueryParameter]  int $alert = 0) : Response
+    {
+
+        $defaultData = null;
+        $form = $this->createFormBuilder($defaultData)
+            ->add('pass0', TextType::class, ['label' => ' '])
+            ->add('save', SubmitType::class, ['label' => 'Repondre'])
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $pass0 = $data['pass0'];
+
+            if( $pass0 === '1')
+            {
+                return $this->redirectToRoute('app_boss_oeil_gauche', [ 'alert' => 124879796 ]);
+            }
+            else
+            {
+                return $this->redirectToRoute('app_boss_oeil_gauche', [ 'alert' => 1 ]);
+            }
+        }
+
+        return $this->render('JeuCommunaute/boss/oeil_gauche.html.twig', [
+            'form' => $form,
+            'alert' => $alert,
+        ]);
+    }
 }

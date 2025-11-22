@@ -125,4 +125,13 @@ class SessionService{
     {
         $session->set('combatFinal', true);
     }
+
+    public function initOeilGauche(SessionInterface $session)
+    {
+        $session->set('oeilGauche', true);
+    }
+    public function initOeilDroit(SessionInterface $session)
+    {
+        $session->set('oeilDroit', true);
+    }
 }

@@ -14,35 +14,45 @@ use Symfony\Component\Routing\Attribute\Route;
 final class MaitreController extends AbstractController
 {
     #[Route('/metre/combat', name: 'app_boss_combat')]
-    public function cassetete(Request $request, SessionService $sessionService, #[MapQueryParameter]  int $alert = 0) : Response
+    public function index() : Response
     {
+        return $this->render('JeuCommunaute/boss/combat.html.twig');
+    }
 
-        $defaultData = null;
-        $form = $this->createFormBuilder($defaultData)
-            ->add('pass0', TextType::class, ['label' => ' '])
-            ->add('save', SubmitType::class, ['label' => 'Repondre'])
-            ->getForm();
+    #[Route('/metre/combat/enerver', name: 'app_boss_combat_enerve')]
+    public function combat() : Response
+    {
+        return $this->render('JeuCommunaute/boss/combat-transform.html.twig');
+    }
 
-        $form->handleRequest($request);
+    #[Route('/metre/combat/transforme', name: 'app_boss_combat_transformer')]
+    public function transformer() : Response
+    {
+        return $this->render('JeuCommunaute/boss/combat-transformer.html.twig');
+    }
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-            $pass0 = $data['pass0'];
+    #[Route('/metre/combat/transforme/fuite', name: 'app_boss_combat_transformer_fuite')]
+    public function fuite() : Response
+    {
+        return $this->render('JeuCommunaute/boss/combat-transformer-fuite.html.twig');
+    }
+    #[Route('/metre/combat/transforme/fuite/suivre', name: 'app_boss_combat_transformer_fuite_suivre')]
+    public function suivre() : Response
+    {
+        return $this->render('JeuCommunaute/boss/combat-transformer-fuite-suivre.html.twig');
+    }
 
-            if( $pass0 === '5')
-            {
-                return $this->redirectToRoute('app_boss_combat', [ 'alert' => 8568918469 ]);
-            }
-            else
-            {
-                return $this->redirectToRoute('app_boss_combat', [ 'alert' => 1 ]);
-            }
-        }
+    #[Route('/il/faut/mettre/le/bon/mot/de/passe/ici', name: 'app_boss_combat_transformer_fuite_suivre_parchemin')]
+    public function parchemin() : Response
+    {
+        return $this->render('JeuCommunaute/boss/combat-transformer-fuite-suivre-parchemin.html.twig');
+    }
 
-        return $this->render('JeuCommunaute/boss/combat.html.twig', [
-            'form' => $form,
-            'alert' => $alert,
-        ]);
+    #[Route('/ifmlbmdpi', name: 'app_boss_combat_transformer_fuite_suivre_parchemin_compris_1')]
+    #[Route('/il/faut/mettre/le/bon/mot/de/passe/ifmlbmdpi', name: 'app_boss_combat_transformer_fuite_suivre_parchemin_compris_2')]
+    public function parchemin_decoder() : Response
+    {
+        return $this->render('JeuCommunaute/boss/combat-transformer-fuite-suivre-parchemin.html.twig');
     }
     #[Route('/metre/combat/oeil_dun_cote', name: 'app_boss_oeil_droite')]
     public function oeil_droite(Request $request, SessionService $sessionService, #[MapQueryParameter]  int $alert = 0) : Response
@@ -62,6 +72,7 @@ final class MaitreController extends AbstractController
 
             if( $pass0 === '7')
             {
+                $sessionService->initOeilDroit($request->getSession());
                 return $this->redirectToRoute('app_boss_oeil_droite', [ 'alert' => 45727828 ]);
             }
             else
@@ -93,6 +104,7 @@ final class MaitreController extends AbstractController
 
             if( $pass0 === '1')
             {
+                $sessionService->initOeilGauche($request->getSession());
                 return $this->redirectToRoute('app_boss_oeil_gauche', [ 'alert' => 124879796 ]);
             }
             else

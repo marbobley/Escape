@@ -6,13 +6,17 @@
     <div class="container text-center">
         {% if alert == 1 %}
             <div class="alert alert-danger" role="alert">
-                Ratééééé !
+                Vous ratez l'oeil du Maitre !
             </div>
         {% endif %}
-        {% if alert == 2 or crane %}
+        {% if alert == 45727828 %}
             <div class="alert alert-success" role="alert">
-                Vous avez résolu l'énigme... vous trouvez
-                <img src="{{ asset('images/cranedoree.webp') }}" alt="crane dorée"  >
+                Vous touchez l'oeil du Maitre !
+                <p>Ce n'est pas très efficace</p>
+                {% set oeilGauche = app.session.get('oeilGauche') %}
+                {% if oeilGauche %}
+                    <p>Vous l'avez encore plus <a href="{{ path('app_boss_combat_enerve') }}">énervé</a></p>
+                {% endif %}
             </div>
         {% endif %}
         <div class="row">
@@ -20,7 +24,7 @@
                 <p>Vous ciblez quel oeil avec la clef ?</p>
                 {{ form_start(form) }}
                 {{ form_end(form) }}
-                <img class="img-fluid" src="{{ asset('images/maitre-enerve.webp') }}" alt="un magnifique pilier avec des cercles de couleurs">
+                <img class="img-fluid" src="{{ asset('images/maitre-enerve-gauche.webp') }}" alt="un magnifique pilier avec des cercles de couleurs">
             </div>
             <div class="col">
                 {% include 'JeuCommunaute/menu/_menu.html.twig' %}

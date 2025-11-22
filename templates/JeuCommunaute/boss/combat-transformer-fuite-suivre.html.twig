@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %}Les jeux de la communauté!{% endblock %}
+
+{% block body %}<div class="container-fluid text-center">
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <p>Vous partez en courant tentant de vous faufiler </p>
+                <p>Vous trébuchez, le coffre dans votre inventaire tombe </p>
+                <p>Et par je ne sais quel hasard s'ouvre ! </p>
+                <img src="{{ asset('images/maitre-transformer-fuite-suivre.webp') }}" alt="un magnifique pilier avec des cercles de couleurs" usemap="#workmap">
+                <map name="workmap">
+                    <area shape="rect" coords="450,450,560,560" alt="Partir à droite" href="{{ path('app_boss_combat_transformer_fuite_suivre_parchemin') }}">
+                </map>
+            </div>
+            <div class="col">
+                {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

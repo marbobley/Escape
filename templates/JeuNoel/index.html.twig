@@ -1,14 +1,88 @@
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Les jeux de Willy!{% endblock %}
+{% block title %}🎄 Jeu de Noël 🎄{% endblock %}
 
 {% block body %}
+    <audio id="backgroundMusic" autoplay>
+        <source src="{{ asset('sound/noel/fun-christmas-loop.mp3') }}" type="audio/mpeg">
+        Votre navigateur ne supporte pas la balise audio.
+    </audio>
     <div class="container-fluid text-center">
-        <h1>Jeu de Noël</h1>
-        <h2>Les aventures de Poupette et Leon</h2>
-        <p>Pour acceder à l'aventure</p>
-        <p>Rentrer le code fournis</p>
-        {{ form_start(form) }}
-        {{ form_end(form) }}
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <article class="jeu-noel-wrapper">
+                        <header class="mb-4">
+                            <h1 class="display-4 mb-3">🎄 Jeu de Noël 🎄</h1>
+                            <h2 class="h3 text-muted mb-4">Les aventures de Poupette et Leon</h2>
+                        </header>
+
+                        {# Messages d'alerte #}
+                        {% if alert == 1 %}
+                            <div class="alert alert-danger" role="alert">
+                                ❌ Code incorrect ! Essayez encore...
+                            </div>
+                        {% endif %}
+
+                        {% if alert == 58789639 %}
+                            <div class="alert alert-success" role="alert">
+                                ✨ Bravo ! Vous avez trouvé le bon code !
+                                <div class="mt-3">
+                                    <p>L'aventure <a href="{{ path('app_noel_jeu_un') }}">commence</a>...</p>
+                                </div>
+                            </div>
+
+                        {% else %}{# Section principale #}
+                            <div class="card shadow-sm">
+                                <div class="card-body p-4">
+                                    <div class="mb-4">
+                                        <p class="lead">Pour accéder à l'aventure,</p>
+                                        <p class="text-muted">veuillez entrer le code fourni :</p>
+                                    </div>
+
+                                    {# Formulaire #}
+                                    <div class="form-wrapper">
+                                        {{ form_start(form, {'attr': {'class': 'needs-validation'}}) }}
+
+                                        <div class="mb-3">
+                                            {{ form_row(form.pass, {
+                                                'label': 'Code secret',
+                                                'attr': {
+                                                    'class': 'form-control form-control-lg text-center',
+                                                    'placeholder': 'Entrez le code secret'
+                                                }
+                                            })}}
+                                        </div>
+
+                                        <div class="d-grid gap-2">
+                                            {{
+                                            form_row(form.save, {
+                                                'label': 'Valider le code secret',
+                                                'attr': {
+                                                    'class': 'btn btn-primary btn-lg'
+                                                }
+                                            }) }}
+                                        </div>
+
+                                        {{ form_end(form) }}
+                                    </div>
+                                </div>
+                            </div>
+                            {# Section d'aide optionnelle #}
+                            <div class="mt-4 text-muted">
+                                <small>
+                                    💡 Astuce : Le code vous a été communiqué...
+                                </small>
+                            </div>
+                        {% endif %}
+
+
+
+
+                    </article>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

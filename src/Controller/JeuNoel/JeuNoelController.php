@@ -23,7 +23,7 @@ final class JeuNoelController extends AbstractController
             $data = $form->getData();
             $pass = $data['pass'];
 
-            if( $pass === '5')
+            if( $pass === '031225')
             {
                 return $this->redirectToRoute('app_noel_index', [ 'alert' => 58789639 ]);
             }
@@ -37,5 +37,17 @@ final class JeuNoelController extends AbstractController
             'form' => $form,
             'alert' => $alert,
         ]);
+    }
+
+    #[Route('/premier_jeu', name: 'app_noel_jeu_un', methods: ['GET','POST'])]
+    public function premierJeu( Request $request, #[MapQueryParameter]  int $alert = 0): Response
+    {
+        return $this->render('JeuNoel/premier-jeu.html.twig');
+    }
+
+    #[Route('/premier_jeu/elf-trouve', name: 'app_noel_jeu_deux', methods: ['GET','POST'])]
+    public function deuxiemeJeu( Request $request, #[MapQueryParameter]  int $alert = 0): Response
+    {
+        return $this->render('JeuNoel/deuxieme-jeu.html.twig');
     }
 }

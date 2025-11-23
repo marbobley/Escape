@@ -1,0 +1,61 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}🎄 Jeu de Noël 🎄{% endblock %}
+
+{% block body %}
+    <audio id="backgroundMusic" autoplay>
+    <source src="{{ asset('sound/noel/elf-chant.mp3') }}" type="audio/mpeg">
+    Votre navigateur ne supporte pas la balise audio.
+    </audio>
+    <div class="container-fluid text-center">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <article class="jeu-noel-wrapper">
+                        <header class="mb-4">
+                            <h1 class="display-4 mb-3">🎄 Jeu de Noël 🎄</h1>
+                            <h2 class="h3 text-muted mb-4">Les aventures de Poupette et Leon</h2>
+                        </header>
+
+                        {# Section principale #}
+                        <div class="card shadow-sm">
+                            <div class="card-body p-4">
+                                <div class="mb-4">
+                                    Cette année noël s'annonce magique !
+                                   <p>Le sapin brille, les cadeaux sont emballés et le repas mijote</p>
+                                    <p>Mais c'était sans compter sur un invité mystère !</p>
+                                    <p>La veille de Noël alors que tout le monde dort,</p>
+                                    <p>Poupette, la chatte la plus curieuse de la planète</p>
+                                    <p>Et Léon le chien le plus enthousiaste de l'univers !</p>
+                                    <p>entendent un bruit étrange dans le salon...</p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {# Section image #}
+
+                    </article>
+                </div>
+            </div>
+        </div>
+        <p></p>
+        <div>
+            <img src="{{ asset('images/noel/noel-sapin-elfe.jpg') }}"
+                 alt="Poupette et Leon devant le sapin de Noël" usemap="#workmap" >
+            <map name="workmap">
+                <area shape="rect"
+                      coords="438,488,472,554"
+                      alt="Elfe trouvé"
+                      href="{{ path('app_noel_jeu_deux') }}">
+            </map>
+        </div>
+        {# Section d'aide optionnelle #}
+        <div class="mt-4 text-muted">
+            <small>
+                💡 Astuce : Sortez vos lunettes, les viocs...
+            </small>
+        </div>
+    </div>
+{% endblock %}

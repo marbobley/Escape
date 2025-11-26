@@ -8,6 +8,11 @@
     <div class="container text-center">
         <div class="row">
             <div class="col">
+                {% if alert == 1 %}
+                    <div class="alert alert-danger" role="alert">
+                        Tu n'es pas là !
+                    </div>
+                {% endif %}
                 {% if alert != 33259492 %}
                     <p>Vous traversez la porte et vous arrivez dans une immense salle, sans commune mesure</p>
                     <p>100000 soldats sont là, au garde à vous devant le Maitre</p>

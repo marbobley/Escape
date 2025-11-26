@@ -15,7 +15,7 @@ class InventaireService
     {
         $this->requestStack = $requestStack;
     }
-    public function getInventaireObjects(SessionInterface $session) : Inventaire|null{
+    public function getInventaireObjects() : Inventaire|null{
         $inventaire = $this->requestStack->getSession()->get('inventaire');
 
         if($inventaire instanceof Inventaire ){

@@ -8,7 +8,7 @@
             <img class="img-fluid" src="{{ asset('images/clef-4.webp')}}" alt="clef avec marqué 4 dessus" width="200" >
             {% include 'JeuCommunaute/communaute-jeu/_premiere-pierre.html.twig' %}
             <div>
-                {% set clef33 = serviceInventaire.inventaireObject(app.session, 'clef-33') %}
+                {% set clef33 = serviceInventaire.inventaireObject( Constantes.clef33) %}
                 {% if clef33 %}
                     <img class="img-fluid"
                          src="{{ asset('images/premier_niveau_sans_premiere_deuxieme_pierre.webp') }}"

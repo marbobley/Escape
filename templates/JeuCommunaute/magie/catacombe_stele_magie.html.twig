@@ -8,7 +8,7 @@
                 Ratééééé !
             </div>
         {% endif %}
-        {% set crane = serviceInventaire.inventaireObject(app.session, Constantes.crane ) %}
+        {% set crane = serviceInventaire.inventaireObject(Constantes.crane ) %}
         {% if alert == 2 or crane %}
             <div class="alert alert-success" role="alert">
                 Vous avez résolu l'énigme... vous trouvez

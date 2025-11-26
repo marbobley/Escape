@@ -2,8 +2,8 @@
 {% block title %}Les jeux de la communauté!{% endblock %}
 
 {% block body %}<div class="container-fluid text-center">
-    {% set coffre = serviceInventaire.inventaireObject(app.session, Constantes.coffre) %}
-    {% set crane = serviceInventaire.inventaireObject(app.session, Constantes.crane) %}
+    {% set coffre = serviceInventaire.inventaireObject( Constantes.coffre) %}
+    {% set crane = serviceInventaire.inventaireObject( Constantes.crane) %}
 
     <div class="container text-center">
         <div class="row">

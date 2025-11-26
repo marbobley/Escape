@@ -8,7 +8,7 @@
                 Ratééééé !
             </div>
         {% endif %}
-        {% set coffre = serviceInventaire.inventaireObject(app.session, Constantes.coffre ) %}
+        {% set coffre = serviceInventaire.inventaireObject(Constantes.coffre ) %}
         {% if alert == 2 or coffre %}
             <div class="alert alert-success" role="alert">
                 Vous avez résolu l'énigme... vous trouvez un étrange coffre

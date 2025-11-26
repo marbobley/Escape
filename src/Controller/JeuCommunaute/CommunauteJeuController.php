@@ -44,7 +44,7 @@ final class CommunauteJeuController extends AbstractController
     public function premiere_pierre_descendre(Request $request, InventaireService $inventaireService, SessionService $sessionService) : Response
     {
         $session = $request->getSession();
-        $clef4 = $inventaireService->getInventaireObject($session, Constantes::clef4());
+        $clef4 = $inventaireService->getInventaireObject(Constantes::clef4());
         if(isset($clef4)){
             return $this->render('JeuCommunaute/communaute-jeu/premier_niveau_deuxieme_pierre_descendre.html.twig', []);
         }

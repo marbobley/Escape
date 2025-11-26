@@ -9,7 +9,7 @@
                 <h1>BIENVENU DANS LES CATACOMBES</h1>
 
                 <div>
-                    {% set lunette = serviceInventaire.inventaireObject(app.session, Constantes.lunette) %}
+                    {% set lunette = serviceInventaire.inventaireObject(Constantes.lunette) %}
                     {% if lunette %}
                         <img src="{{ asset('images/catacombe_entree_2_lunette.webp') }}" alt="catacombes" usemap="#workmap" >
                     {% else %}

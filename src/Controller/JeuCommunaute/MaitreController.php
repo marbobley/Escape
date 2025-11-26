@@ -52,7 +52,7 @@ final class MaitreController extends AbstractController
     #[Route('/il/faut/mettre/le/bon/mot/de/passe/ifmlbmdpi', name: 'app_boss_combat_transformer_fuite_suivre_parchemin_compris_2')]
     public function parchemin_decoder() : Response
     {
-        return $this->render('JeuCommunaute/boss/combat-transformer-fuite-suivre-parchemin.html.twig');
+        return $this->render('JeuCommunaute/boss/parchemin-decode.html.twig');
     }
     #[Route('/metre/combat/oeil_dun_cote', name: 'app_boss_oeil_droite')]
     public function oeil_droite(Request $request, SessionService $sessionService, #[MapQueryParameter]  int $alert = 0) : Response

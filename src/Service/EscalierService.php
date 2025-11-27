@@ -1,6 +1,8 @@
 <?php
+declare(strict_types = 1);
 
 namespace App\Service;
+
 
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -17,13 +19,17 @@ class EscalierService
         $this->requestStack = $requestStack;
     }
 
+    private function getSession(): SessionInterface{
+        return $this->requestStack->getSession();
+    }
+
 
     public function resetEscalier()
     {
-        $this->requestStack->getSession()->set(self::ESCALIER_KEY, self::ETAGE_MIN);
+        $this->getSession()->set(self::ESCALIER_KEY, self::ETAGE_MIN);
     }
     public function getEscalier(){
-        $escalier = $this->requestStack->getSession()->get(self::ESCALIER_KEY);
+        $escalier = $this->getSession()->get(self::ESCALIER_KEY);
         if(!isset($escalier))
         {
             return self::ETAGE_MIN;
@@ -34,41 +40,43 @@ class EscalierService
 
     public function initEscalier()
     {
-        $escalier = $this->requestStack->getSession()->get(self::ESCALIER_KEY);
+        $escalier = $this->getSession()->get(self::ESCALIER_KEY);
         if(!isset($escalier))
         {
-            $this->requestStack->getSession()->set(self::ESCALIER_KEY, self::ETAGE_MIN);
+            $this->getSession()->set(self::ESCALIER_KEY, self::ETAGE_MIN);
         }
 
         return $escalier;
     }
 
     public function decreaseEscalier() : int{
-        $escalier = $this->requestStack->getSession()->get(self::ESCALIER_KEY);
+        $escalier = $this->getSession()->get(self::ESCALIER_KEY);
         if(!isset($escalier))
         {
             $escalier = 0;
         }
         // stores an attribute for reuse during a later user request
         $escalier--;
-        if($escalier < self::ETAGE_MIN)
+        if($escalier < self::ETAGE_MIN){
             $escalier = self::ETAGE_MIN;
-        $this->requestStack->getSession()->set(self::ESCALIER_KEY, $escalier);
+        }
+        $this->getSession()->set(self::ESCALIER_KEY, $escalier);
 
         return $escalier;
     }
 
     public function increaseEscalier() : int{
-        $escalier = $this->requestStack->getSession()->get(self::ESCALIER_KEY);
+        $escalier = $this->getSession()->get(self::ESCALIER_KEY);
         if(!isset($escalier))
         {
             $escalier = self::ETAGE_MIN;
         }
         $escalier++;
-        if($escalier > self::ETAGE_MAX)
+        if($escalier > self::ETAGE_MAX){
             $escalier = self::ETAGE_MAX;
+        }
 
-        $this->requestStack->getSession()->set(self::ESCALIER_KEY, $escalier);
+        $this->getSession()->set(self::ESCALIER_KEY, $escalier);
 
         return $escalier;
     }

@@ -74,7 +74,7 @@ final class JardinController extends AbstractController
             if($sortMain === 'mainConfusion' && $sortTete ==='teteConfusion' )
             {
                 $expectedResult = 'llort';
-            }else if(
+            }elseif(
                 ($sortMain === 'mainConfusion' && $sortTete ==='teteAttraction') ||
                 ($sortMain === 'mainAttraction' && $sortTete ==='teteConfusion') )
             {

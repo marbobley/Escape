@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class CatacombeController extends AbstractController
 {
     #[Route('/chemin/victoire', name: 'app_catacombe_index')]
-    public function index() : Response
+    public function index(Request $request, SessionService $sessionService) : Response
     {
         $sessionService->setCatacombeOpen($request->getSession());
         return $this->render('JeuCommunaute/catacombe/index.html.twig');

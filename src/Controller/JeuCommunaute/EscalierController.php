@@ -17,11 +17,13 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class EscalierController extends AbstractController
 {
+    const JEU_COMMUNAUTE_ESCALIER_INDEX_HTML_TWIG = 'JeuCommunaute/escalier/index.html.twig';
+
     #[Route('/escalier', name: 'app_escalier')]
     public function index( EscalierService $escalierService) : Response
     {
         $escalierService->initEscalier();
-        return $this->render('JeuCommunaute/escalier/index.html.twig', [
+        return $this->render(self::JEU_COMMUNAUTE_ESCALIER_INDEX_HTML_TWIG, [
         ]);
     }
     #[Route('/escalier/monter', name: 'app_escalier_monter')]
@@ -29,7 +31,7 @@ final class EscalierController extends AbstractController
     {
         $escalierService->increaseEscalier();
 
-        return $this->render('JeuCommunaute/escalier/index.html.twig', [
+        return $this->render(self::JEU_COMMUNAUTE_ESCALIER_INDEX_HTML_TWIG, [
         ]);
     }
 
@@ -37,7 +39,7 @@ final class EscalierController extends AbstractController
     public function descendre( EscalierService $escalierService) : Response
     {
         $escalierService->decreaseEscalier();
-        return $this->render('JeuCommunaute/escalier/index.html.twig');
+        return $this->render(self::JEU_COMMUNAUTE_ESCALIER_INDEX_HTML_TWIG);
     }
 
     #[Route('/escalier/regarder', name: 'app_escalier_regarder')]

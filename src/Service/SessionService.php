@@ -56,8 +56,9 @@ class SessionService{
     {
         $magie = $session->get('magie');
 
-        if($magie < $pow)
+        if($magie < $pow) {
             $session->set('magie', $pow);
+        }
 
         return $pow;
     }

@@ -5,6 +5,7 @@ namespace App\Controller\JeuCommunaute;
 use App\Model\Constantes;
 use App\Model\Inventaire;
 use App\Model\ObjetAventure;
+use App\Service\EscalierService;
 use App\Service\InventaireService;
 use App\Service\SessionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -119,9 +120,9 @@ final class CommunauteJeuController extends AbstractController
     }
 
     #[Route('/premier_niveau/deuxieme_niveau/ouverture', name: 'app_communaute_jeu_deux_bon_pass')]
-    public function jeu_deux_bon_pass(Request $request, SessionService $sessionService): Response
+    public function jeu_deux_bon_pass(EscalierService $escalierService): Response
     {
-        $sessionService->initEscalier($request->getSession());
+        $escalierService->initEscalier();
         return $this->render('JeuCommunaute/communaute-jeu/deuxieme_niveau_bon_pass.html.twig', []);
     }
 

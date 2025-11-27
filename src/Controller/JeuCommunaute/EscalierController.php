@@ -4,6 +4,7 @@ namespace App\Controller\JeuCommunaute;
 
 use App\Model\Constantes;
 use App\Model\ObjetAventure;
+use App\Service\EscalierService;
 use App\Service\InventaireService;
 use App\Service\SessionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,34 +18,32 @@ use Symfony\Component\Routing\Attribute\Route;
 final class EscalierController extends AbstractController
 {
     #[Route('/escalier', name: 'app_escalier')]
-    public function index(Request $request, SessionService $sessionService) : Response
+    public function index( EscalierService $escalierService) : Response
     {
-        $sessionService->initEscalier($request->getSession());
+        $escalierService->initEscalier();
         return $this->render('JeuCommunaute/escalier/index.html.twig', [
         ]);
     }
     #[Route('/escalier/monter', name: 'app_escalier_monter')]
-    public function monter(Request $request, SessionService $sessionService) : Response
+    public function monter( EscalierService $escalierService) : Response
     {
-        $sessionService->increaseEscalier($request->getSession());
+        $escalierService->increaseEscalier();
 
         return $this->render('JeuCommunaute/escalier/index.html.twig', [
         ]);
     }
 
     #[Route('/escalier/descendre', name: 'app_escalier_descendre')]
-    public function descendre(Request $request, SessionService $sessionService) : Response
+    public function descendre( EscalierService $escalierService) : Response
     {
-        $sessionService->decreaseEscalier($request->getSession());
-
-        return $this->render('JeuCommunaute/escalier/index.html.twig', [
-        ]);
+        $escalierService->decreaseEscalier();
+        return $this->render('JeuCommunaute/escalier/index.html.twig');
     }
 
     #[Route('/escalier/regarder', name: 'app_escalier_regarder')]
-    public function regarder(Request $request, SessionService $sessionService) : Response
+    public function regarder(EscalierService $escalierService) : Response
     {
-        $escalier = $sessionService->getEscalier($request->getSession());
+        $escalier = $escalierService->getEscalier();
 
         $filename = 'images/jeu_escalier_' .  $escalier . '.wepb';
 

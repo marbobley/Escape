@@ -2,41 +2,11 @@
 namespace  App\Service;
 
 use App\Model\Inventaire;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class SessionService{
 
-
-    public function decreaseEscalier(SessionInterface $session) : int{
-        $escalier = $session->get('escalier');
-        if(!isset($escalier))
-        {
-            $escalier = 0;
-        }
-        // stores an attribute for reuse during a later user request
-        $escalier--;
-        if($escalier < 1)
-            $escalier = 1;
-        $session->set('escalier', $escalier);
-
-        return $escalier;
-    }
-
-    public function increaseEscalier(SessionInterface $session) : int{
-        $escalier = $session->get('escalier');
-        if(!isset($escalier))
-        {
-            $escalier = 0;
-        }
-        // stores an attribute for reuse during a later user request
-        $escalier++;
-        if($escalier > 12)
-            $escalier = 12;
-
-        $session->set('escalier', $escalier);
-
-        return $escalier;
-    }
     public function increaseDeath(SessionInterface $session){
         $currentNombreMort = $session->get('nombre-mort');
         if(!isset($currentNombreMort))
@@ -63,26 +33,6 @@ class SessionService{
         {
             $session->set('monstre-compa', 1);
         }
-    }
-
-    public function initEscalier(SessionInterface $session)
-    {
-        $escalier = $session->get('escalier');
-        if(!isset($escalier))
-        {
-            $session->set('escalier', 1);
-        }
-
-        return $escalier;
-    }
-    public function getEscalier(SessionInterface $session){
-        $escalier = $session->get('escalier');
-        if(!isset($escalier))
-        {
-            return 1;
-        }
-
-        return $escalier;
     }
 
     public function getCurrentInventaire(SessionInterface $session) : Inventaire

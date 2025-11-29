@@ -6,6 +6,14 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class SessionService{
+    public function __construct(RequestStack $requestStack)
+    {
+        $this->requestStack = $requestStack;
+    }
+
+    private function getSession(): SessionInterface{
+        return $this->requestStack->getSession();
+    }
 
     public function increaseDeath(SessionInterface $session){
         $currentNombreMort = $session->get('nombre-mort');
@@ -84,5 +92,8 @@ class SessionService{
     public function initOeilDroit(SessionInterface $session)
     {
         $session->set('oeilDroit', true);
+    }
+    public function initFinalEscalier() : void{
+        $this->getSession()->set('finalEscalier', true);
     }
 }

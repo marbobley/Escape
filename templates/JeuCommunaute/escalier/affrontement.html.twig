@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block title %}Les jeux de la communauté!{% endblock %}
+
+{% block body %}
+    <div class="container-fluid text-center">
+            <div class="container text-center">
+                {% if alert == 1 %}
+                    <div class="alert alert-danger" role="alert">
+                        Vous n'êtes pas au bon étage !!
+                    </div>
+                {% endif %}
+                {% if alert == 85214589 %}
+                    <div class="alert alert-success" role="alert">
+                        Vous rejoignez le Maitre au douxième étage, juste avant qu'il ne <a href="{{ path('app_escalier_sortie') }}">sorte</a> du donjon !
+                    </div>
+                {% endif %}
+                <div class="row">
+                    <div class="col">
+                        <p>A peine le pied poser dans l'escalier</p>
+                        <p>A la poursuite du Maitre qui fuit vers la sortie</p>
+                        <p>Que vous le perdez de vue</p>
+                        {{ form_start(form) }}
+                        {{ form_end(form) }}
+                    </div>
+
+                    <div class="col">
+                            {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+                    </div>
+            </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -2,6 +2,7 @@
 
 namespace App\Controller\JeuCommunaute;
 
+use App\Form\WordPasswordType;
 use App\Model\Constantes;
 use App\Model\ObjetAventure;
 use App\Service\EscalierService;
@@ -10,6 +11,7 @@ use App\Service\SessionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
@@ -23,7 +25,52 @@ final class EscalierController extends AbstractController
     public function index( EscalierService $escalierService) : Response
     {
         $escalierService->initEscalier();
+        return $this->render(self::JEU_COMMUNAUTE_ESCALIER_INDEX_HTML_TWIG);
+    }
+
+    #[Route('/escalier/retour', name: 'app_escalier_retour')]
+    public function escalier_retour() : Response
+    {
         return $this->render(self::JEU_COMMUNAUTE_ESCALIER_INDEX_HTML_TWIG, [
+        ]);
+    }
+
+    #[Route('/escalier/metre/sortie', name: 'app_escalier_sortie')]
+    public function escalier_sortie() : Response
+    {
+        return $this->render('JeuCommunaute/escalier/sortie.html.twig');
+    }
+
+    #[Route('/escalier/metre', name: 'app_escalier_metre')]
+    public function escalier_metre(Request $request, #[MapQueryParameter]  int $alert = 0) : Response
+    {
+
+
+        $defaultData = null;
+        $form = $this->createFormBuilder($defaultData)
+            ->add('pass0', TextType::class, ['label' => 'Etage'])
+            ->add('save', SubmitType::class, ['label' => 'Suivre'])
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $pass0 = $data['pass0'];
+
+            if( $pass0 === '12')
+            {
+                return $this->redirectToRoute('app_escalier_metre', [ 'alert' => 85214589 ]);
+            }
+            else
+            {
+                return $this->redirectToRoute('app_escalier_metre', [ 'alert' => 1 ]);
+            }
+        }
+
+        return $this->render('JeuCommunaute/escalier/affrontement.html.twig', [
+            'form' => $form,
+            'alert' => $alert,
         ]);
     }
     #[Route('/escalier/monter', name: 'app_escalier_monter')]
@@ -31,8 +78,7 @@ final class EscalierController extends AbstractController
     {
         $escalierService->increaseEscalier();
 
-        return $this->render(self::JEU_COMMUNAUTE_ESCALIER_INDEX_HTML_TWIG, [
-        ]);
+        return $this->render(self::JEU_COMMUNAUTE_ESCALIER_INDEX_HTML_TWIG);
     }
 
     #[Route('/escalier/descendre', name: 'app_escalier_descendre')]

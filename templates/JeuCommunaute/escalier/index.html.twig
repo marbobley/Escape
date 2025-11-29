@@ -10,7 +10,7 @@
                     <div class="col">
                         <img class="img-fluid"
                                           src="{{ asset('images/l-escalier-a-vis-du-donjon.webp') }}"
-                                          alt="photo d'un escalier, avec de vieilles pierres represantant le passage vers le niveau suivante"
+                                          alt="Escalier, avec de vieilles pierres represantant le passage vers le niveau suivante"
                                           usemap="#workmap">
 
                         <map name="workmap">
@@ -29,16 +29,23 @@
                         </map>
                     </div>
                     <div class="col">
-                        {% include 'JeuCommunaute/menu/_menu.html.twig' %}
-                        {% set escalier = app.session.get('escalier') %}
-                        {% set catacombeOpen = app.session.get('catacombeOpen') %}
-                        {% if escalier == 10 and catacombeOpen %}
-                            <a href="{{ path('app_escalier_coffre') }}">
-                                <img class="img-fluid"
-                                     src="{{ asset('images/coffre.webp') }}"
-                                     alt="photo d'un coffre">
-                            </a>
-                        {% endif %}
+                            {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+                            {% set escalier = app.session.get('escalier') %}
+                            {% set catacombeOpen = app.session.get('catacombeOpen') %}
+                            {% if escalier == 10 and catacombeOpen %}
+                                <a href="{{ path('app_escalier_coffre') }}">
+                                    <img class="img-fluid"
+                                         src="{{ asset('images/coffre.webp') }}"
+                                         alt="Coffre décoré de lumière, et d'un casque romain séparé par un +">
+                                </a>
+                            {% endif %}
+                        <div class="row">
+                            {% set escalierFinal = app.session.get('finalEscalier') %}
+                            {% if escalierFinal %}
+                                <p>VOUS ETES SUR LES TRACES DU METRE</p>
+                            {% endif %}
+                        </div>
+
                     </div>
                 </div>
             </div>

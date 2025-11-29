@@ -54,9 +54,11 @@ final class CatacombeController extends AbstractController
     }
 
     #[Route('/catacombe/retour', name: 'app_catacombe_retour')]
-    public function retour_catacombe(EscalierService $escalierService) : Response
+    public function retour_catacombe(EscalierService $escalierService, SessionService $sessionService) : Response
     {
+        $sessionService->initFinalEscalier();
         $escalierService->resetEscalier();
+
         return $this->render('JeuCommunaute/catacombe/retour.html.twig');
     }
 

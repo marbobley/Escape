@@ -2,7 +2,7 @@
 <div class="offcanvas offcanvas-start" tabindex="-1" id="passageEscalier" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
         {% set escalier = app.session.get('escalier') %}
-
+        {% set escalierFinal = app.session.get('finalEscalier') %}
         {% if escalier is same as(1) %}
             <h5 class="offcanvas-title" id="offcanvasExampleLabel">A peine le pied posé sur la première marche...</h5>
         {% elseif escalier >= 2 %}
@@ -22,7 +22,11 @@
             </button>
             <ul class="dropdown-menu">
                 {% if escalier < 12  %}
-                    <li><a class="dropdown-item" href="{{ path('app_escalier_monter')}}">Monter la marche suivante</a></li>
+                    {% if escalierFinal %}
+                        <li><a class="dropdown-item" href="{{ path('app_escalier_metre')}}">Poursuivre le maitre</a></li>
+                    {% else %}
+                        <li><a class="dropdown-item" href="{{ path('app_escalier_monter')}}">Monter la marche suivante</a></li>
+                    {% endif %}
                 {% endif %}
                 {% if escalier > 1  %}
                     <li><a class="dropdown-item" href="{{ path('app_escalier_descendre')}}">Descendre la marche précedente</a></li>

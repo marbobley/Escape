@@ -2,7 +2,6 @@
 
 namespace App\Controller\JeuCommunaute;
 
-use App\Form\WordPasswordType;
 use App\Model\Constantes;
 use App\Model\ObjetAventure;
 use App\Service\EscalierService;
@@ -31,21 +30,49 @@ final class EscalierController extends AbstractController
     #[Route('/escalier/retour', name: 'app_escalier_retour')]
     public function escalier_retour() : Response
     {
-        return $this->render(self::JEU_COMMUNAUTE_ESCALIER_INDEX_HTML_TWIG, [
-        ]);
+        return $this->render(self::JEU_COMMUNAUTE_ESCALIER_INDEX_HTML_TWIG);
+    }
+
+    #[Route('/escalier/metre/sortie/fin', name: 'app_escalier_sortie_fin')]
+    public function escalier_sortie_fin() : Response
+    {
+        return $this->render('JeuCommunaute/endgame/fin.html.twig');
     }
 
     #[Route('/escalier/metre/sortie', name: 'app_escalier_sortie')]
-    public function escalier_sortie() : Response
+    public function escalier_sortie(Request $request, #[MapQueryParameter]  int $alert = 0) : Response
     {
-        return $this->render('JeuCommunaute/escalier/sortie.html.twig');
+        $defaultData = null;
+        $form = $this->createFormBuilder($defaultData)
+            ->add('pass0', TextType::class, ['label' => 'Nombre de marche'])
+            ->add('save', SubmitType::class, ['label' => 'Monter'])
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $pass0 = $data['pass0'];
+
+            if( $pass0 === '666')
+            {
+                return $this->redirectToRoute('app_escalier_sortie', [ 'alert' => 32546824 ]);
+            }
+            else
+            {
+                return $this->redirectToRoute('app_escalier_sortie', [ 'alert' => 1 ]);
+            }
+        }
+
+        return $this->render('JeuCommunaute/escalier/sortie.html.twig', [
+            'form' => $form,
+            'alert' => $alert,
+        ]);
     }
 
     #[Route('/escalier/metre', name: 'app_escalier_metre')]
     public function escalier_metre(Request $request, #[MapQueryParameter]  int $alert = 0) : Response
     {
-
-
         $defaultData = null;
         $form = $this->createFormBuilder($defaultData)
             ->add('pass0', TextType::class, ['label' => 'Etage'])
@@ -100,7 +127,7 @@ final class EscalierController extends AbstractController
         ]);
     }
     #[Route('/escalier/cailloux', name: 'app_escalier_cailloux')]
-    public function cailloux(Request $request, SessionService $sessionService) : Response
+    public function cailloux() : Response
     {
         return $this->render('JeuCommunaute/escalier/cailloux.html.twig');
     }

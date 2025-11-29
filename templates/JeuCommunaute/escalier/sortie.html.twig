@@ -4,6 +4,16 @@
 {% block body %}<div class="container-fluid text-center">
 
     <div class="container text-center">
+        {% if alert == 1 %}
+            <div class="alert alert-danger" role="alert">
+                Vous n'êtes pas sur la bonne marche !!
+            </div>
+        {% endif %}
+        {% if alert == 32546824 %}
+            <div class="alert alert-success" role="alert">
+                Vous rejoignez le Maitre à la dernière marche, juste avant qu'il ne <a href="{{ path('app_escalier_sortie_fin') }}">passe la porte</a> du donjon !
+            </div>
+        {% endif %}
         <div class="row">
             <div class="col">
                 <p>Vous rejoignez le maitre dans l'escalier</p>
@@ -15,7 +25,9 @@
                 <p>Si le maitre les monte 18 par 18,</p>
                 <p>Si le maitre les monte 37 par 37,</p>
                 <p>Si le maitre les monte 74 par 74</p>
-                <p>Il arrive excatement sur la dernière marche!</p>
+                <p>Il arrive exactement sur la dernière marche!</p>
+                {{ form_start(form) }}
+                {{ form_end(form) }}
                 <img class="img-fluid" src="{{ asset('images/metre-fuite-escalier.webp') }}" alt="un magnifique pilier avec des cercles de couleurs">
             </div>
             <div class="col">

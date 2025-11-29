@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %}Les jeux de la communauté!{% endblock %}
+
+{% block body %}<div class="container-fluid text-center">
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <p>Vous passez devant le maitre </p>
+                <p>Dans la précipitation, vous le poussez</p>
+                <p>Il dévale l'escalier et finit...</p>
+                <p>Vous sortez du donjon et retourner à l'air libre!</p>
+                <p>Tableau de <a href="{{ path('app_communaute_score') }}">score</a></p>
+                <img class="img-fluid" src="{{ asset('images/maitre_mort.webp') }}" alt="un ruban mètre cassé au sol">
+            </div>
+            <div class="col">
+                {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

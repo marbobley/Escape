@@ -231,33 +231,60 @@
             </div>
             <div class="card">
                 <h3>Durée</h3>
-                <p>2 h 17 min</p>
+                {% set start = app.session.get('start') %}
+                {% if start %}
+                    <p>{{ (date("now") )|date("H:i:s") }}</p>
+                {% else %}
+                    <p>Le cache a été purgé</p>
+                {% endif %}
             </div>
         </section>
 
         <section class="grid" aria-label="Résumé et détails">
             <div class="panel">
                 <h2>Résumé de l'aventure</h2>
-                <p>Bien joué ! Tu as su triompher des épreuves et sortir libre de ce donjon. Guidé par un esprit affuté, vous avez percé les énigmes des catacombes et vaincu un adversaire aussi ancien que la pierre elle‑même.</p>
+                <p>Bien joué ! Tu as su triompher des épreuves et sortir libre de ce donjon. Guidé par un esprit affuté, vous avez percé les énigmes des catacombes et vaincu un adversaire aussi ancien que Drucker lui‑même.</p>
                 <ul class="badges" aria-label="Faits marquants">
-                    <li class="badge">Énigmes résolues: 7</li>
-                    <li class="badge">Combats victorieux: 3</li>
-                    <li class="badge">Fuite héroïque</li>
-                    <li class="badge">Zéro K.O.</li>
+                    <li class="badge">Quêtes résolues : 6</li>
+                    <li class="badge">Combats victorieux : 3</li>
+                    <li class="badge">Lecture de parchemin</li>
+                    <li class="badge">Découverte de passage secret : 6</li>
+                    <li class="badge">Mage</li>
                 </ul>
                 <div class="hr"></div>
+                <h2>Quête principale</h2>
                 <div class="timeline" aria-label="Chronologie des événements">
                     <div class="event">
-                        <h4>Entrée dans le vestibule voûté</h4>
-                        <p>Découverte d'un parchemin crypté menant aux salles inférieures.</p>
+                        <h4>La Clef des secrets</h4>
+                        <p>Découvertes de deux clefs permettant de fournir le mot de passe au gnome.</p>
                     </div>
                     <div class="event">
-                        <h4>La salle des dalles piégées</h4>
-                        <p>Passage sécurisé grâce au motif runique « Sylvae ». Aucun blessé.</p>
+                        <h4>Dans un jardin qu'on dirait éternel</h4>
+                        <p>De la magie, des jauges, de la couleur, et UN MASSACRE/RETOURNEMENT/FUITE de troll</p>
                     </div>
                     <div class="event">
-                        <h4>Confrontation — Gardien de Pierre</h4>
-                        <p>Brisé par l'onde de choc arcanique après l'épuisement de sa carapace.</p>
+                        <h4>La môme</h4>
+                        <p>Des lunettes, un crâne, un coffre, des catacombes, ça occupe !</p>
+                    </div>
+                    <div class="event">
+                        <h4>The descent</h4>
+                        <p>Trois, quatre, cinq ! </p>
+                    </div>
+                    <div class="event">
+                        <h4>Evolution</h4>
+                        <p>Le maitre évolue et fuit</p>
+                    </div>
+                    <div class="event">
+                        <h4>Anatomie d'une chute</h4>
+                        <p>Le diable se cache dans les marches d'escalier</p>
+                    </div>
+                </div>
+                <div class="hr"></div>
+                <h2>Quêtes secondaires</h2>
+                <div class="timeline" aria-label="Chronologie des événements">
+                    <div class="event">
+                        <h4>Pas encore mis en place</h4>
+                        <p>Ou peut-être que si...</p>
                     </div>
                 </div>
             </div>
@@ -265,15 +292,17 @@
             <aside class="panel" aria-label="Butin et statistiques">
                 <h2>Butin récupéré</h2>
                 <ul>
-                    <li>Anneau de l’Éclat — +1 INT, lueur dans l'obscurité</li>
-                    <li>Éclat d'obsidienne runique — composant rare</li>
-                    <li>12 pièces d'or ternies</li>
+                    <li>Clefs — Crève-œil </li>
+                    <li>Pipette — qui voit les couleurs</li>
+                    <li>Crane — pour nos amis les pies</li>
+                    <li>Coffre — perdu, à jamais</li>
+                    <li>Parchemin — perdu, à jamais</li>
                 </ul>
                 <div class="hr"></div>
                 <h2>Statistiques</h2>
                 <div class="stats">
-                    <div class="stat"><span>Points d'expérience</span> <b>+450</b></div>
-                    <div class="stat"><span>Trésor</span> <b>+32 or</b></div>
+                    <div class="stat"><span>Points d'expérience</span> <b>+666</b></div>
+                    <div class="stat"><span>Trésor</span> <b>+2 or</b></div>
                     <div class="stat"><span>État du groupe</span> <b class="ok">Stable</b></div>
                     <div class="stat"><span>Réputation locale</span> <b>+2</b></div>
                 </div>

@@ -10,11 +10,6 @@
     --shadow: 0 10px 30px rgba(0,0,0,.25);
 }
 
-body {
-    background: radial-gradient(ellipse at center, #1d1a16 0%, #0f0e0c 80%);
-    color: var(--ink);
-}
-
 .dnd-wrap {
     min-height: calc(100vh - 72px);
     display: grid;

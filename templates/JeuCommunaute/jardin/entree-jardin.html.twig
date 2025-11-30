@@ -53,31 +53,31 @@
                 </div>
                 <div class="col">
                     {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+                    {% if sortTete == "teteConfusion" %}
+                        <div class="alert alert-secondary" role="alert">
+                            Vous préparez le sort de confusion sur la tête...
+                        </div>
+                    {% elseif sortTete == "teteAttraction" %}
+                        <div class="alert alert-secondary" role="alert">
+                            Vous préparez le sort d'attraction sur la tête...
+                        </div>
+                    {% endif %}
+
+                    {% if sortMain == "mainConfusion" %}
+                        <div class="alert alert-secondary" role="alert">
+                            Vous préparez le sort de confusion sur la main...
+                        </div>
+                    {% elseif sortMain == "mainAttraction" %}
+                        <div class="alert alert-secondary" role="alert">
+                            Vous préparez le sort d'attraction sur la main...
+                        </div>
+                    {% endif %}
+                    {% if sortMain and sortTete %}
+                        <a href="{{ path('app_lancer_sort_troll_jardin', {sortMain: sortMain , sortTete: sortTete}) }}" class="btn btn-secondary">Lancer les sorts</a>
+                    {% endif %}
                 </div>
             </div>
 
-            {% if sortTete == "teteConfusion" %}
-                <div class="alert alert-secondary" role="alert">
-                    Vous préparez le sort de confusion sur la tête...
-                </div>
-            {% elseif sortTete == "teteAttraction" %}
-                <div class="alert alert-secondary" role="alert">
-                    Vous préparez le sort d'attraction sur la tête...
-                </div>
-            {% endif %}
-
-            {% if sortMain == "mainConfusion" %}
-                <div class="alert alert-secondary" role="alert">
-                    Vous préparez le sort de confusion sur la main...
-                </div>
-            {% elseif sortMain == "mainAttraction" %}
-                <div class="alert alert-secondary" role="alert">
-                    Vous préparez le sort d'attraction sur la main...
-                </div>
-            {% endif %}
-            {% if sortMain and sortTete %}
-                <a href="{{ path('app_lancer_sort_troll_jardin', {sortMain: sortMain , sortTete: sortTete}) }}" class="btn btn-secondary">Lancer les sorts</a>
-            {% endif %}
         </div>
 
 

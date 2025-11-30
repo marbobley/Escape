@@ -5,205 +5,6 @@
     {{ parent() }}
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=MedievalSharp&family=Cinzel:wght@400;700&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --parchment:#f2e8c9;
-            --parchment-dark:#e6d9ae;
-            --ink:#3a2e16;
-            --accent:#8b0000; /* bordeaux */
-            --gold:#b08d57;
-            --success:#2e7d32;
-            --danger:#8b1e1e;
-            --shadow: 0 10px 30px rgba(0,0,0,.25);
-        }
-
-        body {
-            background: radial-gradient(ellipse at center, #1d1a16 0%, #0f0e0c 80%);
-            color: var(--ink);
-        }
-
-        .dnd-wrap {
-            min-height: calc(100vh - 72px);
-            display: grid;
-            place-items: center;
-            padding: 2rem 1rem 4rem;
-        }
-
-        .parchment {
-            position: relative;
-            width: min(1100px, 94vw);
-            background: var(--parchment);
-            color: var(--ink);
-            box-shadow: var(--shadow);
-            padding: clamp(1.2rem, 2vw + 1rem, 2.2rem);
-            border-radius: 8px;
-            isolation: isolate;
-        }
-
-        /* Bords déchirés façon parchemin */
-        .parchment:before,
-        .parchment:after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 10px;
-            background: radial-gradient(1400px 200px at 50% -120px, rgba(0,0,0,.18), transparent 60%),
-                        radial-gradient(1400px 200px at 50% calc(100% + 120px), rgba(0,0,0,.18), transparent 60%),
-                        linear-gradient(transparent 0 0);
-            z-index: -1;
-        }
-        .parchment:after {
-            filter: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="w"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feDisplacementMap in="SourceGraphic" scale="2"/></filter></svg>#w');
-            opacity: .4;
-        }
-
-        .header {
-            display: grid;
-            grid-template-columns: 80px 1fr 80px;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.2rem;
-        }
-        .seal {
-            width: 70px; height: 70px; border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #b41e2a, #7a0f16 70%);
-            border: 3px solid #5b0b11;
-            box-shadow: inset 0 6px 10px rgba(0,0,0,.4), 0 3px 8px rgba(0,0,0,.35);
-            display: grid; place-items: center;
-            color: #ffd6d9; font-family: "IM Fell English SC", "Cinzel", serif; font-size: 26px;
-            transform: rotate(-8deg);
-        }
-        .title {
-            text-align: center;
-        }
-        .title h1 {
-            font-family: "Cinzel", "MedievalSharp", serif;
-            font-weight: 700;
-            letter-spacing: .06em;
-            font-size: clamp(1.6rem, 2.2vw + 1rem, 2.6rem);
-            margin: 0;
-            color: var(--accent);
-            text-shadow: 0 1px 0 #fff6, 0 2px 0 #0002;
-        }
-        .subtitle {
-            font-family: "Spectral", Georgia, serif;
-            font-style: italic;
-            color: #5b4a1f;
-            margin-top: .2rem;
-        }
-
-        .hr {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            margin: 1rem 0 1.2rem;
-            opacity: .7;
-        }
-
-        .meta {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0,1fr));
-            gap: .8rem;
-            margin-bottom: 1rem;
-        }
-        .meta .card {
-            background: linear-gradient(#f5edcf, #efe1b4);
-            border: 1px solid #d2bf86;
-            border-radius: 6px;
-            padding: .8rem .9rem;
-            font-family: "Spectral", Georgia, serif;
-        }
-        .card h3 { font-size: .85rem; text-transform: uppercase; letter-spacing: .08em; color: #6d5b29; margin: 0 0 .35rem; }
-        .card p { margin: 0; color: #2d2410; }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1.3fr .9fr;
-            gap: 1rem;
-        }
-        .panel {
-            background: linear-gradient(#f7efd3, #efe2bb);
-            border: 1px solid #cfbc85;
-            border-radius: 8px;
-            padding: 1rem;
-        }
-        .panel h2 {
-            font-family: "IM Fell English SC", "Cinzel", serif;
-            font-size: 1.3rem;
-            letter-spacing: .04em;
-            margin: 0 0 .6rem;
-            color: var(--ink);
-        }
-        .panel ul { margin: 0; padding-left: 1.1rem; }
-        .panel li { margin: .25rem 0; }
-
-        .timeline {
-            position: relative;
-            padding-left: 1rem;
-        }
-        .timeline:before {
-            content: "";
-            position: absolute; left: .4rem; top: .2rem; bottom: .2rem;
-            width: 2px; background: linear-gradient(var(--gold), #6b5630);
-        }
-        .event { position: relative; margin: .6rem 0 .6rem 0; padding-left: 1rem; }
-        .event:before { content:""; position:absolute; left: -.05rem; top: .25rem; width: .6rem; height: .6rem; border-radius:50%; background: var(--accent); box-shadow: 0 0 0 2px #e7d9b4; }
-        .event h4 { margin: 0; font-size: 1rem; font-family: "Spectral", Georgia, serif; }
-        .event p { margin: .15rem 0 0; font-size: .95rem; color: #3b311a; }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: .6rem;
-        }
-        .stat {
-            background: #f5eccb;
-            border: 1px dashed #b9a36f;
-            border-radius: 6px;
-            padding: .6rem .7rem;
-            display: flex; justify-content: space-between; align-items: center;
-            font-family: "Spectral", Georgia, serif;
-        }
-        .stat b { font-family: "Cinzel", serif; letter-spacing: .04em; }
-
-        .badges { display:flex; gap:.5rem; flex-wrap:wrap; }
-        .badge {
-            background: #ead99e;
-            color: #2d2410;
-            border: 1px solid #bea265;
-            border-radius: 999px;
-            padding: .2rem .6rem;
-            font-size: .85rem;
-            font-family: "Spectral", Georgia, serif;
-        }
-
-        .footer {
-            display:flex; gap: 1rem; align-items:center; justify-content: space-between;
-            margin-top: 1rem;
-        }
-        .sign {
-            font-family: "IM Fell English SC", serif;
-            color: #5b4a1f;
-            font-size: 1.1rem;
-        }
-        .wax {
-            width: 64px; height:64px; border-radius:50%;
-            background: radial-gradient(circle at 35% 35%, #c22e3e, #7a0f16 70%);
-            border: 2px solid #5b0b11;
-            box-shadow: inset 0 8px 12px rgba(0,0,0,.45), 0 6px 14px rgba(0,0,0,.35);
-            display:grid; place-items:center;
-            color:#ffd6d9; font-family:"IM Fell English SC", serif; font-size:22px; transform: rotate(8deg);
-        }
-
-        /* Responsif */
-        @media (max-width: 900px) {
-            .grid { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 640px) {
-            .meta { grid-template-columns: 1fr; }
-            .header { grid-template-columns: 60px 1fr 60px; }
-            .seal { width: 56px; height: 56px; font-size: 20px; }
-        }
-    </style>
 {% endblock %}
 
 {% block body %}
@@ -304,6 +105,21 @@
                         <h4>Pas encore mis en place</h4>
                         <p>Ou peut-être que si...</p>
                     </div>
+                    {% set annexeFilm = app.session.get('annexe-film') %}
+                    {% if annexeFilm %}
+                        <div class="event">
+                            <h4>Vous êtes cinéphiles ?</h4>
+                            <p>Pas mal...</p>
+                        </div>
+                    {% endif %}
+
+                    {% set annexeF12 = app.session.get('annexe-f12') %}
+                    {% if annexeF12 %}
+                        <div class="event">
+                            <h4>La touche F12</h4>
+                            <p>Il y en a peut-être ailleurs</p>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
 

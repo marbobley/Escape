@@ -124,4 +124,9 @@ class SessionService{
     {
         $this->getSession()->set('stateTroll', $stateTroll);
     }
+
+    public function initAnnexe(string $string) : void
+    {
+        $this->getSession()->set('annexe-' .$string, true);
+    }
 }

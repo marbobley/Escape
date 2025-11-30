@@ -19,7 +19,20 @@ use Symfony\Component\Routing\Attribute\Route;
 final class ScoreController extends AbstractController
 {
     #[Route('/communaute/score', name: 'app_communaute_score')]
-    public function score() : Response
+    public function score(SessionService $sessionService) : Response
+    {
+        $dateStart = $sessionService->getDateStart();
+        $dateStop = $sessionService->getDateStop();
+        $interval = $dateStart->diff($dateStop);
+
+        return $this->render('JeuCommunaute/endgame/score.html.twig',
+        [
+            'duration' => $interval->format('%H:%I:%S')
+        ]);
+    }
+
+    #[Route('/communaute/score/films', name: 'app_communaute_score_film')]
+    public function score_film(SessionService $sessionService) : Response
     {
         return $this->render('JeuCommunaute/endgame/score.html.twig');
     }

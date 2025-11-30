@@ -16,6 +16,12 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class JardinController extends AbstractController
 {
+
+
+    const TROLL_LLORT = 'llort';
+    const TROLL_L = 'l';
+    const TROLL_A = 'A';
+
     #[Route('/jardin/dedans', name: 'app_jardin')]
     public function jardin(Request $request,
                            SessionService $sessionService,
@@ -73,15 +79,18 @@ final class JardinController extends AbstractController
             $expectedResult = '';
             if($sortMain === 'mainConfusion' && $sortTete ==='teteConfusion' )
             {
-                $expectedResult = 'llort';
+                $sessionService->setTrollDead(self::TROLL_LLORT);
+                $expectedResult = self::TROLL_LLORT;
             }elseif(
                 ($sortMain === 'mainConfusion' && $sortTete ==='teteAttraction') ||
                 ($sortMain === 'mainAttraction' && $sortTete ==='teteConfusion') )
             {
-                $expectedResult = 'l';
+                $sessionService->setTrollDead(self::TROLL_L);
+                $expectedResult = self::TROLL_L;
             }
             else{
-                $expectedResult = 'A';
+                $sessionService->setTrollDead('' . self::TROLL_A . '');
+                $expectedResult = self::TROLL_A;
             }
             if($pass === $expectedResult)
             {

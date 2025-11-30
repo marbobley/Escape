@@ -215,7 +215,7 @@
                 <h1 id="mission-title">Rapport de mission</h1>
                 <p class="subtitle">Chronique des exploits au cœur des catacombes</p>
             </div>
-            <div class="seal" aria-hidden="true">X P</div>
+            <div class="seal" aria-hidden="true">Wf12</div>
         </header>
 
         <div class="hr" ></div>
@@ -233,7 +233,7 @@
                 <h3>Durée</h3>
                 {% set start = app.session.get('start') %}
                 {% if start %}
-                    <p>{{ (date("now") )|date("H:i:s") }}</p>
+                    <p>{{ duration }}</p>
                 {% else %}
                     <p>Le cache a été purgé</p>
                 {% endif %}
@@ -259,8 +259,19 @@
                         <p>Découvertes de deux clefs permettant de fournir le mot de passe au gnome.</p>
                     </div>
                     <div class="event">
+                        {% set troll = app.session.get('stateTroll') %}
                         <h4>Dans un jardin qu'on dirait éternel</h4>
-                        <p>De la magie, des jauges, de la couleur, et UN MASSACRE/RETOURNEMENT/FUITE de troll</p>
+                        {% if troll %}
+                            {% if troll == 'A' %}
+                                <p>De la magie, des jauges, de la couleur, et un troll de massacré</p>
+                            {% elseif troll == 'llort' %}
+                                <p>De la magie, des jauges, de la couleur, et un troll de retourné</p>
+                            {% else %}
+                                <p>De la magie, des jauges, de la couleur, et un troll de déplacé</p>
+                            {% endif %}
+                        {% else %}
+                            <p>De la magie, des jauges, de la couleur, et un troll de moins</p>
+                        {% endif %}
                     </div>
                     <div class="event">
                         <h4>La môme</h4>
@@ -299,7 +310,7 @@
                     <li>Parchemin — perdu, à jamais</li>
                 </ul>
                 <div class="hr"></div>
-                <h2>Statistiques</h2>
+                <h2>Trophées</h2>
                 <div class="stats">
                     <div class="stat"><span>Points d'expérience</span> <b>+666</b></div>
                     <div class="stat"><span>Trésor</span> <b>+2 or</b></div>
@@ -311,8 +322,9 @@
 
         <footer class="footer">
             <div class="sign">Consigné par: <em>Maitre Developpeur Willy</em></div>
-            <div class="wax" aria-label="Sceau royal">R</div>
+            <div class="wax" aria-label="Sceau royal">Wf12</div>
         </footer>
     </article>
 </main>
+    <!--Si tu penses avoir trouvé une autre quête secondaire ajoute communaute/score/<nom_de_la_quete>-->
 {% endblock %}

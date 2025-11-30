@@ -96,4 +96,32 @@ class SessionService{
     public function initFinalEscalier() : void{
         $this->getSession()->set('finalEscalier', true);
     }
+
+    public function getDateStart() : \DateTimeImmutable
+    {
+        $currentStart = $this->getSession()->get('start');
+        if($currentStart) {
+            return $currentStart;
+        }
+        return new \DateTimeImmutable('now');
+    }
+
+    public function initStop(): void
+    {
+        $this->getSession()->set('stop', new \DateTimeImmutable('now'));
+    }
+
+    public function getDateStop() : \DateTimeImmutable
+    {
+        $currentStop = $this->getSession()->get('stop');
+        if($currentStop) {
+            return $currentStop;
+        }
+        return new \DateTimeImmutable('now');
+    }
+
+    public function setTrollDead(string $stateTroll): void
+    {
+        $this->getSession()->set('stateTroll', $stateTroll);
+    }
 }

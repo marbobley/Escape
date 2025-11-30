@@ -34,8 +34,9 @@ final class EscalierController extends AbstractController
     }
 
     #[Route('/escalier/metre/sortie/fin', name: 'app_escalier_sortie_fin')]
-    public function escalier_sortie_fin() : Response
+    public function escalier_sortie_fin(SessionService $sessionService) : Response
     {
+        $sessionService->initStop();
         return $this->render('JeuCommunaute/endgame/fin.html.twig');
     }
 

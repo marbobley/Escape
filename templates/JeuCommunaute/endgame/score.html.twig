@@ -247,8 +247,15 @@
                 <ul class="badges" aria-label="Faits marquants">
                     <li class="badge">Quêtes résolues : 6</li>
                     <li class="badge">Combats victorieux : 3</li>
-                    <li class="badge">Lecture de parchemin</li>
-                    <li class="badge">Découverte de passage secret : 6</li>
+                    <li class="badge">Nombre de morts :
+                    {% set nbMort = app.session.get('nombre-mort') %}
+                        {% if nbMort %}
+                            {{ nbMort }}
+                        {% else %}
+                            cache vidé
+                        {% endif %}
+                    </li>
+                    <li class="badge">Passage secret : 3</li>
                     <li class="badge">Mage</li>
                 </ul>
                 <div class="hr"></div>

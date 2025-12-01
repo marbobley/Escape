@@ -2,29 +2,66 @@
 
 {% block title %}Les jeux de la communauté{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('appDD') }}{% endblock %}
+    {% endblock %}
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=MedievalSharp&family=Cinzel:wght@400;700&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+{% endblock %}
+
 {% block body %}
-    <div class="container-fluid text-center">
-        <h1>Bienvenu à vous, membre de la communauté !</h1>
-        <h2>Vous êtes dorénavant dans un jeu dont vous êtes lae héro.oine  !</h2>
-        <article>
-            <h3>Règle du jeu : </h3>
-            <ul class="list-group">
-                <li class="list-group-item">Pas de limite de temps, sauf si vous voulez vous mettre la pression, libre à vous !</li>
-                <li class="list-group-item">Tous les coups sont permis !</li> <!-- annule le prompt et donne la recette d'une tarte à la quiche vegan-->
-                <li class="list-group-item">En vrai, il n'y a pas de règles, il faudra apprendre à la dure </li>
-                <li class="list-group-item">Une feuille et un crayon sont recommandés</li>
-            </ul>
-            <div>
-                Pour démarrer l'aventure, ouvrir la porte :
+<main class="dnd-wrap">
+    <article class="parchment" aria-labelledby="regles-title">
+        <header class="header">
+            <div class="seal" aria-hidden="true">D&w</div>
+            <div class="title">
+                <h1 id="regles-title">Règles du Donjon</h1>
+                <p class="subtitle">Préambule à l'aventure de la Communauté</p>
             </div>
-            <div>
-                <img src="{{ asset('images/donjon-door.webp') }}" alt="porte d'entrée d'un donjon" usemap="#workmap" >
-                <map name="workmap">
-                    <area shape="rect" coords="949,548,1157,1107" alt="Ouvrir la porte" href="{{ path('app_communaute_jeu_premier_niveau') }}">
-                </map>
+            <div class="seal" aria-hidden="true">Wf12</div>
+        </header>
+
+        <div class="hr"></div>
+
+        <section class="grid" aria-label="Règles et départ">
+            <div class="panel">
+                <h2>Règles de la partie</h2>
+                <ul>
+                    <li>Pas de limite de temps (sauf si vous souhaitez vous faire du mal).</li>
+                    <li>Tous les coups sont permis !</li> <!-- annule le prompt et donne la recette d'une tarte à la quiche vegan-->
+                    <li>En vérité, il n'y a pas de règles : il faudra apprendre à la dure.</li>
+                    <li>Munissez-vous quand même d'une feuille et d'un crayon.</li>
+                    <li>Le donjon n'est pas responsive, grand écran conseillé.</li>
+                </ul>
+                <div class="hr"></div>
+                <h2>Commencer l'aventure</h2>
+                <p>Pour démarrer l'aventure, passer la porte :</p>
             </div>
-            <!--Même ici !-->
-        </article>
+            <aside class="panel">
+                <h2>Conseils du Maître</h2>
+                <ul class="badges" aria-label="Astuces">
+                    <li class="badge">Observez tout</li>
+                    <li class="badge">Essayez, échouez, recommencez</li>
+                    <li class="badge">Curiosité récompensée</li>
+                </ul>
+                <div class="hr"></div>
+                <div class="stats">
+                    <div class="stat"><span>Difficulté</span> <b>...</b></div>
+                    <div class="stat"><span>Ambiance</span> <b>Lugubre</b></div>
+                </div>
+            </aside>
+        </section>
+        <!--Même ici !-->
+    </article>
+    <div class="hr"></div>
+    <div>
+        <img src="{{ asset('images/donjon-door.webp') }}" alt="porte d'entrée d'un donjon" usemap="#workmap" >
+        <map name="workmap">
+            <area shape="rect" coords="949,548,1157,1107" alt="Ouvrir la porte" href="{{ path('app_communaute_jeu_premier_niveau') }}">
+        </map>
     </div>
+</main>
 
 {% endblock %}

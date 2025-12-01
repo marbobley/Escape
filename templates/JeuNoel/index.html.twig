@@ -43,25 +43,25 @@
 
                                     {# Formulaire #}
                                     <div class="form-wrapper">
-                                        {{ form_start(form, {'attr': {'class': 'needs-validation'}}) }}
+                                        {{ form_start(form, {attr: {class: 'needs-validation'}}) }}
 
                                         <div class="mb-3">
                                             {{ form_row(form.pass, {
-                                                'label': 'Code secret',
-                                                'attr': {
-                                                    'class': 'form-control form-control-lg text-center',
-                                                    'placeholder': 'Entrez le code secret'
-                                                }
-                                            })}}
+                                                label: 'Code secret',
+                                                attr: {
+                                                    class: 'form-control form-control-lg text-center',
+                                                    placeholder: 'Entrez le code secret',
+                                                },
+                                            }) }}
                                         </div>
 
                                         <div class="d-grid gap-2">
                                             {{
                                             form_row(form.save, {
-                                                'label': 'Valider le code secret',
-                                                'attr': {
-                                                    'class': 'btn btn-primary btn-lg'
-                                                }
+                                                label: 'Valider le code secret',
+                                                attr: {
+                                                    class: 'btn btn-primary btn-lg',
+                                                },
                                             }) }}
                                         </div>
 
@@ -76,9 +76,6 @@
                                 </small>
                             </div>
                         {% endif %}
-
-
-
 
                     </article>
                 </div>

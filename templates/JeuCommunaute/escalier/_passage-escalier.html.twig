@@ -21,15 +21,15 @@
                 Que faire...
             </button>
             <ul class="dropdown-menu">
-                {% if escalier < 12  %}
+                {% if escalier < 12 %}
                     {% if escalierFinal %}
-                        <li><a class="dropdown-item" href="{{ path('app_escalier_metre')}}">Poursuivre le maitre</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_escalier_metre') }}">Poursuivre le maitre</a></li>
                     {% else %}
-                        <li><a class="dropdown-item" href="{{ path('app_escalier_monter')}}">Monter la marche suivante</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_escalier_monter') }}">Monter la marche suivante</a></li>
                     {% endif %}
                 {% endif %}
-                {% if escalier > 1  %}
-                    <li><a class="dropdown-item" href="{{ path('app_escalier_descendre')}}">Descendre la marche précedente</a></li>
+                {% if escalier > 1 %}
+                    <li><a class="dropdown-item" href="{{ path('app_escalier_descendre') }}">Descendre la marche précedente</a></li>
                 {% endif %}
             </ul>
         </div>

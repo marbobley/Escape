@@ -5,7 +5,7 @@
     </div>
     <div class="offcanvas-body">
         {% set inventaire = serviceInventaire.inventaireObjects() %}
-        {% if  inventaire %}
+        {% if inventaire %}
             {% for obj in inventaire.contenu %}
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
@@ -38,4 +38,3 @@
         {% endif %}
     </div>
 </div>
-

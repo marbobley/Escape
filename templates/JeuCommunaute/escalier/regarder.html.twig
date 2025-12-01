@@ -10,35 +10,35 @@
                     {% set escalier = app.session.get('escalier') %}
                     {% if escalier is same as(1) %}
                         <img   src="{{ asset('images/jeu_escalier_1.webp') }}" alt="Mur en pierre avec un tableau" >
-                    {% elseif escalier is same as(2)  %}
+                    {% elseif escalier is same as(2) %}
                         <img   src="{{ asset('images/jeu_escalier_2.webp') }}" alt="Mur en pierre avec un tableau" >
-                    {% elseif escalier is same as(3)  %}
+                    {% elseif escalier is same as(3) %}
                         <img   src="{{ asset('images/jeu_escalier_3.webp') }}" alt="Mur en pierre avec un tableau" >
-                    {% elseif escalier is same as(4)  %}
+                    {% elseif escalier is same as(4) %}
                         <img   src="{{ asset('images/jeu_escalier_4.webp') }}" alt="Mur en pierre avec un tableau" >
-                    {% elseif escalier is same as(5)  %}
+                    {% elseif escalier is same as(5) %}
                         <img   src="{{ asset('images/jeu_escalier_5.webp') }}" alt="Mur en pierre avec un tableau" >
-                    {% elseif escalier is same as(6)  %}
+                    {% elseif escalier is same as(6) %}
                         <img   src="{{ asset('images/jeu_escalier_6.webp') }}" alt="Mur en pierre avec un tableau" >
-                    {% elseif escalier is same as(7)  %}
+                    {% elseif escalier is same as(7) %}
                         <img   src="{{ asset('images/jeu_escalier_7.webp') }}" alt="Mur en pierre avec un tableau" >
-                    {% elseif escalier is same as(8)  %}
+                    {% elseif escalier is same as(8) %}
                         <img   src="{{ asset('images/jeu_escalier_8.webp') }}" alt="Mur en pierre avec un tableau" >
-                    {% elseif escalier is same as(9)  %}
+                    {% elseif escalier is same as(9) %}
                         <img   src="{{ asset('images/jeu_escalier_9.webp') }}" alt="Mur en pierre avec un tableau" >
-                    {% elseif escalier is same as(10)  %}
+                    {% elseif escalier is same as(10) %}
                         <img   src="{{ asset('images/jeu_escalier_10.webp') }}" alt="Mur en pierre avec un tableau" >
-                    {% elseif escalier is same as(11)  %}
+                    {% elseif escalier is same as(11) %}
                         <img   src="{{ asset('images/jeu_escalier_11.webp') }}" alt="Mur en pierre avec un tableau" >
-                    {% elseif escalier is same as(12)  %}
+                    {% elseif escalier is same as(12) %}
                         <img   src="{{ asset('images/jeu_escalier_12.webp') }}" alt="Mur en pierre avec un tableau" >
                     {% endif %}
 
-                    {% include 'JeuCommunaute/escalier/_revenir-escalier.html.twig' %}
+                    {{ include('JeuCommunaute/escalier/_revenir-escalier.html.twig') }}
                 </div>
             </div>
             <div class="col">
-                {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+                {{ include('JeuCommunaute/menu/_menu.html.twig') }}
             </div>
         </div>
     </div>

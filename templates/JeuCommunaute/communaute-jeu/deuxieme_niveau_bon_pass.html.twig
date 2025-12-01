@@ -7,8 +7,8 @@
         <p>Vous déboulez devant un immense escalier</p>
         <p>Alors, en haut , ou tout droit ?</p>
 
-        {% include 'JeuCommunaute/escalier/_passage-sous-escalier.html.twig' %}
-        {% include 'JeuCommunaute/escalier/_passage-escalier.html.twig' %}
+        {{ include('JeuCommunaute/escalier/_passage-sous-escalier.html.twig') }}
+        {{ include('JeuCommunaute/escalier/_passage-escalier.html.twig') }}
         <div>
             <img
                  src="{{ asset('images/l-escalier-a-vis-du-donjon.webp') }}"

@@ -8,7 +8,7 @@
                 Ratééééé !
             </div>
         {% endif %}
-        {% set crane = serviceInventaire.inventaireObject(Constantes.crane ) %}
+        {% set crane = serviceInventaire.inventaireObject(Constantes.crane) %}
         {% if alert == 2 or crane %}
             <div class="alert alert-success" role="alert">
                 Vous avez résolu l'énigme... vous trouvez
@@ -34,9 +34,9 @@
                 <img   src="{{ asset('images/catacombe_stele.webp') }}" alt="une magnifique stele avec des inscriptions">
             </div>
             <div class="col">
-                {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+                {{ include('JeuCommunaute/menu/_menu.html.twig') }}
             </div>
         </div>
-        {%  include 'JeuCommunaute/catacombe/_revenir_entree_catacombe.html.twig' %}
+        {{ include('JeuCommunaute/catacombe/_revenir_entree_catacombe.html.twig') }}
     </div>
 {% endblock %}

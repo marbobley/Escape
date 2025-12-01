@@ -12,10 +12,10 @@
                         <area shape="rect" coords="400,190,430,465" alt="Partir à gauche" href="{{ path('app_catacombe_index') }}">
                     </map>
                 </div>
-                {%  include 'JeuCommunaute/catacombe/_revenir_entree_catacombe.html.twig' %}
+                {{ include('JeuCommunaute/catacombe/_revenir_entree_catacombe.html.twig') }}
             </div>
             <div class="col">
-                {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+                {{ include('JeuCommunaute/menu/_menu.html.twig') }}
             </div>
         </div>
     </div>

@@ -14,10 +14,10 @@
             </button>
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" data-bs-dismiss="offcanvas" aria-label="Close">Attendre, <p>on sait jamais après avoir toquer si poliment !</p></a></li>
-                <li><a class="dropdown-item" href="{{ path('app_communaute_jeu_deux_brute')}}">Forcer comme une brute</a></li>
+                <li><a class="dropdown-item" href="{{ path('app_communaute_jeu_deux_brute') }}">Forcer comme une brute</a></li>
 
                 {% set clef33 = serviceInventaire.inventaireObject(Constantes.clef33) %}
-                {% set clef4 = serviceInventaire.inventaireObject( Constantes.clef4) %}
+                {% set clef4 = serviceInventaire.inventaireObject(Constantes.clef4) %}
                 {% if clef33 and clef4 %}
                     <li><a class="dropdown-item" href="{{ path('app_communaute_jeu_deux_ouvert') }}">Ouvrir avec les clefs</a></li>
                 {% endif %}
@@ -25,4 +25,3 @@
         </div>
     </div>
 </div>
-

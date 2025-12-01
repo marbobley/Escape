@@ -2,8 +2,8 @@
 {% block title %}Les jeux de la communauté!{% endblock %}
 
 {% block body %}<div class="container-fluid text-center">
-    {% set coffre = serviceInventaire.inventaireObject( Constantes.coffre) %}
-    {% set crane = serviceInventaire.inventaireObject( Constantes.crane) %}
+    {% set coffre = serviceInventaire.inventaireObject(Constantes.coffre) %}
+    {% set crane = serviceInventaire.inventaireObject(Constantes.crane) %}
 
     <div class="container text-center">
         {% if alert == 1 %}
@@ -24,10 +24,10 @@
                     <p>Un monstre commence à sortir</p>
                     <img src="{{ asset('images/catacombe2_monstre.webp') }}" alt="La porte des étoiles" >
                 {% endif %}
-                {%  include 'JeuCommunaute/catacombe/_revenir_entree_catacombe.html.twig' %}
+                {{ include('JeuCommunaute/catacombe/_revenir_entree_catacombe.html.twig') }}
             </div>
             <div class="col">
-                {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+                {{ include('JeuCommunaute/menu/_menu.html.twig') }}
             </div>
         </div>
     </div>

@@ -16,10 +16,10 @@
                 <p>La dernière est la premiere et la troiseme</p>
                 {{ form_start(form) }}
                 {{ form_end(form) }}
-                {% include 'JeuCommunaute/jardin/_revenir-entree-jardin.html.twig' %}
+                {{ include('JeuCommunaute/jardin/_revenir-entree-jardin.html.twig') }}
             </div>
             <div class="col">
-                {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+                {{ include('JeuCommunaute/menu/_menu.html.twig') }}
             </div>
         </div>
     </div>

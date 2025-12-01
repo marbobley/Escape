@@ -5,9 +5,9 @@
         <div class="container text-center">
             <div class="row">
                 <div class="col">
-                    {% include 'JeuCommunaute/jardin/_troll-tete.html.twig' %}
-                    {% include 'JeuCommunaute/jardin/_troll-main.html.twig' %}
-                    {% include 'JeuCommunaute/jardin/_entree-jardin-secret.html.twig' %}
+                    {{ include('JeuCommunaute/jardin/_troll-tete.html.twig') }}
+                    {{ include('JeuCommunaute/jardin/_troll-main.html.twig') }}
+                    {{ include('JeuCommunaute/jardin/_entree-jardin-secret.html.twig') }}
 
                     <div>
                         {% set trollDead = app.session.get('trollJardinDead') %}
@@ -49,36 +49,35 @@
                     </div>
                         {% endif %}
 
-                    {% include 'JeuCommunaute/escalier/_revenir-escalier.html.twig' %}
+                    {{ include('JeuCommunaute/escalier/_revenir-escalier.html.twig') }}
                 </div>
                 <div class="col">
-                    {% include 'JeuCommunaute/menu/_menu.html.twig' %}
-                    {% if sortTete == "teteConfusion" %}
+                    {{ include('JeuCommunaute/menu/_menu.html.twig') }}
+                    {% if sortTete == 'teteConfusion' %}
                         <div class="alert alert-secondary" role="alert">
                             Vous préparez le sort de confusion sur la tête...
                         </div>
-                    {% elseif sortTete == "teteAttraction" %}
+                    {% elseif sortTete == 'teteAttraction' %}
                         <div class="alert alert-secondary" role="alert">
                             Vous préparez le sort d'attraction sur la tête...
                         </div>
                     {% endif %}
 
-                    {% if sortMain == "mainConfusion" %}
+                    {% if sortMain == 'mainConfusion' %}
                         <div class="alert alert-secondary" role="alert">
                             Vous préparez le sort de confusion sur la main...
                         </div>
-                    {% elseif sortMain == "mainAttraction" %}
+                    {% elseif sortMain == 'mainAttraction' %}
                         <div class="alert alert-secondary" role="alert">
                             Vous préparez le sort d'attraction sur la main...
                         </div>
                     {% endif %}
                     {% if sortMain and sortTete %}
-                        <a href="{{ path('app_lancer_sort_troll_jardin', {sortMain: sortMain , sortTete: sortTete}) }}" class="btn btn-secondary">Lancer les sorts</a>
+                        <a href="{{ path('app_lancer_sort_troll_jardin', {sortMain: sortMain, sortTete: sortTete}) }}" class="btn btn-secondary">Lancer les sorts</a>
                     {% endif %}
                 </div>
             </div>
 
         </div>
-
 
 {% endblock %}

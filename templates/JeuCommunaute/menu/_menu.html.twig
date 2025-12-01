@@ -1,5 +1,5 @@
 
-{% include 'JeuCommunaute/inventaire/_inventaire.html.twig' %}
+{{ include('JeuCommunaute/inventaire/_inventaire.html.twig') }}
 <button class="btn btn-primary"
         type="button"
         data-bs-toggle="offcanvas"
@@ -8,7 +8,7 @@
 
 {% set magie = app.session.get('magie') %}
 {% if magie %}
-    {% include 'JeuCommunaute/magie/_magie.html.twig' %}
+    {{ include('JeuCommunaute/magie/_magie.html.twig') }}
     <button class="btn btn-primary"
             type="button"
             data-bs-toggle="offcanvas"

@@ -14,13 +14,12 @@
                 <p>En rentrant dans le jardin, vous fouillez le coffret caché laissé par le troll et vous trouvez une pipette ?! </p>
                 <p>Ces odeurs de fleur, et ces <strong>couleurs</strong> magnifiques vous inspirent</p>
                 <img   src="{{ asset('images/jardin.webp') }}" alt="un magnifique jardin">
-                {% include 'JeuCommunaute/jardin/_revenir-entree-jardin.html.twig' %}
+                {{ include('JeuCommunaute/jardin/_revenir-entree-jardin.html.twig') }}
             </div>
             <div class="col">
-                {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+                {{ include('JeuCommunaute/menu/_menu.html.twig') }}
             </div>
         </div>
     </div>
-
 
 {% endblock %}

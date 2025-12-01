@@ -7,8 +7,8 @@
         <div class="row">
             <div class="col">
                 <div>
-                    {%  include 'JeuCommunaute/catacombe/_rebus_3.html.twig' %}
-                    {%  include 'JeuCommunaute/catacombe/_rebus_4.html.twig' %}
+                    {{ include('JeuCommunaute/catacombe/_rebus_3.html.twig') }}
+                    {{ include('JeuCommunaute/catacombe/_rebus_4.html.twig') }}
                     <img src="{{ asset('images/catacombe_gauche_2.webp') }}" alt="catacombes" usemap="#workmap">
                     <map name="workmap">
                         <area shape="rect" coords="10,171,141,325"
@@ -26,10 +26,10 @@
                         <area shape="rect" coords="220,240,255,434" alt="Partir à gauche" href="{{ path('app_catacombe_gauche_3') }}">
                     </map>
                 </div>
-                {%  include 'JeuCommunaute/catacombe/_revenir_entree_catacombe.html.twig' %}
+                {{ include('JeuCommunaute/catacombe/_revenir_entree_catacombe.html.twig') }}
             </div>
             <div class="col">
-                {% include 'JeuCommunaute/menu/_menu.html.twig' %}
+                {{ include('JeuCommunaute/menu/_menu.html.twig') }}
             </div>
         </div>
     </div>

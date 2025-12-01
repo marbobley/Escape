@@ -26,19 +26,19 @@ final class MagieController extends AbstractController
         $form = $this->createFormBuilder($defaultData)
             ->add('pass0', RangeType::class, ['label' => '1 : ', 'attr' => [
                 'min' => 0,
-                'max' => 4
+                'max' => 4,
             ]])
             ->add('pass1', RangeType::class, ['label' => '2 : ', 'attr' => [
                 'min' => 0,
-                'max' => 4
+                'max' => 4,
             ]])
             ->add('pass2', RangeType::class, ['label' => '3 : ', 'attr' => [
                 'min' => 0,
-                'max' => 4
+                'max' => 4,
             ]])
             ->add('pass3', RangeType::class, ['label' => '4 : ', 'attr' => [
                 'min' => 0,
-                'max' => 4
+                'max' => 4,
             ]])
             ->add('save', SubmitType::class, ['label' => 'Repondre'])
             ->getForm();
@@ -52,14 +52,12 @@ final class MagieController extends AbstractController
             $pass2 = $data['pass2'];
             $pass3 = $data['pass3'];
 
-            if($pass0 === '0' && $pass1 === '4' && $pass2 === '2' && $pass3 === '1' )
-            {
+            if ('0' === $pass0 && '4' === $pass1 && '2' === $pass2 && '1' === $pass3) {
                 $sessionService->initMagie($request->getSession(), 2);
+
                 return $this->redirectToRoute('app_jardin_secret');
-            }
-            else
-            {
-                return $this->redirectToRoute('app_magie_deuxieme_sort', [ 'alert' => 1 ]);
+            } else {
+                return $this->redirectToRoute('app_magie_deuxieme_sort', ['alert' => 1]);
             }
         }
 
@@ -89,16 +87,14 @@ final class MagieController extends AbstractController
             $bleu = $data['color1'];
             $rouge = $data['color2'];
 
-            if(($vert === '#00ff00' || $vert === '#00fe00') &&
-                ($bleu === '#0000ff' || $bleu === '#0000fe') &&
-                ($rouge === '#ff0000' || $rouge === '#fe0000') )
-            {
+            if (('#00ff00' === $vert || '#00fe00' === $vert)
+                && ('#0000ff' === $bleu || '#0000fe' === $bleu)
+                && ('#ff0000' === $rouge || '#fe0000' === $rouge)) {
                 $sessionService->initMagie($request->getSession(), 3);
+
                 return $this->redirectToRoute('app_jardin');
-            }
-            else
-            {
-                return $this->redirectToRoute('app_magie_troisieme_sort', [ 'alert' => 1 ]);
+            } else {
+                return $this->redirectToRoute('app_magie_troisieme_sort', ['alert' => 1]);
             }
         }
 
@@ -109,7 +105,7 @@ final class MagieController extends AbstractController
     }
 
     #[Route('/catacombe/magie/stele', name: 'app_magie_catacombe_stele') ]
-    public function magie_stele(Request $request, SessionService $sessionService, InventaireService $inventaireService, #[MapQueryParameter] int $alert = 0) : Response
+    public function magie_stele(Request $request, SessionService $sessionService, InventaireService $inventaireService, #[MapQueryParameter] int $alert = 0): Response
     {
         $defaultData = null;
         $form = $this->createFormBuilder($defaultData)
@@ -123,17 +119,15 @@ final class MagieController extends AbstractController
             $data = $form->getData();
             $pass0 = $data['pass0'];
 
-            if($pass0 === '212324'  )
-            {
+            if ('212324' === $pass0) {
                 $crane = new ObjetAventure(Constantes::crane(), "C'est dorée, ça brille oooh", "Hooo! T'es une pie ?");
                 $inventaire = $sessionService->getCurrentInventaire($request->getSession());
                 $inventaireService->addOrReplace(Constantes::crane(), $crane, $inventaire);
                 $sessionService->setCurrentInventaire($request->getSession(), $inventaire);
-                return $this->redirectToRoute('app_magie_catacombe_stele', [ 'alert' => 2 ]);
-            }
-            else
-            {
-                return $this->redirectToRoute('app_magie_catacombe_stele', [ 'alert' => 1 ]);
+
+                return $this->redirectToRoute('app_magie_catacombe_stele', ['alert' => 2]);
+            } else {
+                return $this->redirectToRoute('app_magie_catacombe_stele', ['alert' => 1]);
             }
         }
 
@@ -142,8 +136,9 @@ final class MagieController extends AbstractController
             'alert' => $alert,
         ]);
     }
+
     #[Route('/catacombe/magie/pilier', name: 'app_magie_catacombe_pilier') ]
-    public function magie_pilier(Request $request, SessionService $sessionService, InventaireService $inventaireService, #[MapQueryParameter] int $alert = 0) : Response
+    public function magie_pilier(Request $request, SessionService $sessionService, InventaireService $inventaireService, #[MapQueryParameter] int $alert = 0): Response
     {
         $defaultData = null;
         $form = $this->createFormBuilder($defaultData)
@@ -156,39 +151,34 @@ final class MagieController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $data = $form->getData();
             $jaune = $data['color1'];
             $bleu = $data['color2'];
             $violet = $data['color0'];
 
-            $endYellow = hexdec('#FFF61D') ;
+            $endYellow = hexdec('#FFF61D');
             $startYellow = hexdec('#DEAC1D');
             $currentYellow = hexdec($jaune);
 
-            $endBlue = hexdec('#67F0F6') ;
+            $endBlue = hexdec('#67F0F6');
             $startBlue = hexdec('#0002F6');
             $currentBlue = hexdec($bleu);
 
-            $endViolet = hexdec('#FEF0ED') ;
+            $endViolet = hexdec('#FEF0ED');
             $startViolet = hexdec('#8E00FE');
             $currentViolet = hexdec($violet);
 
-
-
-            if(($currentYellow >= $startYellow && $currentYellow <= $endYellow) &&
-                ($currentBlue >= $startBlue && $currentBlue <= $endBlue) &&
-                ($currentViolet >= $startViolet && $currentViolet <= $endViolet))
-            {
-                $coffre = new ObjetAventure(Constantes::coffre(), "Un jolie coffre", "Il n'y a pas de serrure dans ce coffre !");
+            if (($currentYellow >= $startYellow && $currentYellow <= $endYellow)
+                && ($currentBlue >= $startBlue && $currentBlue <= $endBlue)
+                && ($currentViolet >= $startViolet && $currentViolet <= $endViolet)) {
+                $coffre = new ObjetAventure(Constantes::coffre(), 'Un jolie coffre', "Il n'y a pas de serrure dans ce coffre !");
                 $inventaire = $sessionService->getCurrentInventaire($request->getSession());
                 $inventaireService->addOrReplace(Constantes::coffre(), $coffre, $inventaire);
                 $sessionService->setCurrentInventaire($request->getSession(), $inventaire);
-                return $this->redirectToRoute('app_magie_catacombe_pilier', [ 'alert' => 2 ]);
-            }
-            else
-            {
-                return $this->redirectToRoute('app_magie_catacombe_pilier', [ 'alert' => 1 ]);
+
+                return $this->redirectToRoute('app_magie_catacombe_pilier', ['alert' => 2]);
+            } else {
+                return $this->redirectToRoute('app_magie_catacombe_pilier', ['alert' => 1]);
             }
         }
 

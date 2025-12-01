@@ -23,8 +23,7 @@ class ObjetAventure
     }
     private string $moreInformation;
 
-
-    public function __construct(string $name , string $description, string $moreInformation)
+    public function __construct(string $name, string $description, string $moreInformation)
     {
         $this->name = $name;
         $this->description = $description;

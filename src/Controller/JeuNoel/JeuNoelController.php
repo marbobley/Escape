@@ -12,8 +12,8 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/noel')]
 final class JeuNoelController extends AbstractController
 {
-    #[Route('', name: 'app_noel_index', methods: ['GET','POST'])]
-    public function index( Request $request, #[MapQueryParameter]  int $alert = 0): Response
+    #[Route('', name: 'app_noel_index', methods: ['GET', 'POST'])]
+    public function index(Request $request, #[MapQueryParameter] int $alert = 0): Response
     {
         $form = $this->createForm(WordPasswordType::class, ['label']);
 
@@ -23,13 +23,10 @@ final class JeuNoelController extends AbstractController
             $data = $form->getData();
             $pass = $data['pass'];
 
-            if( $pass === '031225')
-            {
-                return $this->redirectToRoute('app_noel_index', [ 'alert' => 58789639 ]);
-            }
-            else
-            {
-                return $this->redirectToRoute('app_noel_index', [ 'alert' => 1 ]);
+            if ('031225' === $pass) {
+                return $this->redirectToRoute('app_noel_index', ['alert' => 58789639]);
+            } else {
+                return $this->redirectToRoute('app_noel_index', ['alert' => 1]);
             }
         }
 
@@ -39,14 +36,14 @@ final class JeuNoelController extends AbstractController
         ]);
     }
 
-    #[Route('/premier_jeu', name: 'app_noel_jeu_un', methods: ['GET','POST'])]
-    public function premierJeu( Request $request, #[MapQueryParameter]  int $alert = 0): Response
+    #[Route('/premier_jeu', name: 'app_noel_jeu_un', methods: ['GET', 'POST'])]
+    public function premierJeu(Request $request, #[MapQueryParameter] int $alert = 0): Response
     {
         return $this->render('JeuNoel/premier-jeu.html.twig');
     }
 
-    #[Route('/premier_jeu/elf-trouve', name: 'app_noel_jeu_deux', methods: ['GET','POST'])]
-    public function deuxiemeJeu( Request $request, #[MapQueryParameter]  int $alert = 0): Response
+    #[Route('/premier_jeu/elf-trouve', name: 'app_noel_jeu_deux', methods: ['GET', 'POST'])]
+    public function deuxiemeJeu(Request $request, #[MapQueryParameter] int $alert = 0): Response
     {
         return $this->render('JeuNoel/deuxieme-jeu.html.twig');
     }

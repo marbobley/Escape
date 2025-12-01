@@ -2,25 +2,20 @@
 
 namespace App\Controller\JeuCommunaute;
 
-use App\Model\Constantes;
-use App\Model\ObjetAventure;
 use App\Service\SessionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Attribute\Route;
-use function PHPUnit\Framework\stringContains;
 
 final class CatacombeNiveauDeuxController extends AbstractController
 {
-
     #[Route('/catacombe/deux/exclamer', name: 'app_catacombe_deux_exclamer')]
-    public function exclamer(SessionService $sessionService, Request $request, #[MapQueryParameter]  int $alert = 0) : Response{
-
+    public function exclamer(SessionService $sessionService, Request $request, #[MapQueryParameter] int $alert = 0): Response
+    {
         $defaultData = null;
         $form = $this->createFormBuilder($defaultData)
             ->add('pass0', TextType::class, ['label' => 'Viiiiite : '])
@@ -33,27 +28,27 @@ final class CatacombeNiveauDeuxController extends AbstractController
             $data = $form->getData();
             $pass0 = $data['pass0'];
 
-            if( $pass0 === '5')
-            {
+            if ('5' === $pass0) {
                 $sessionService->initMonstreCompa($request->getSession());
                 $sessionService->initMagie($request->getSession(), 4);
-                return $this->redirectToRoute('app_catacombe_deux_exclamer', [ 'alert' => 58789639 ]);
-            }
-            else
-            {
-                return $this->redirectToRoute('app_catacombe_deux_exclamer', [ 'alert' => 1 ]);
+
+                return $this->redirectToRoute('app_catacombe_deux_exclamer', ['alert' => 58789639]);
+            } else {
+                return $this->redirectToRoute('app_catacombe_deux_exclamer', ['alert' => 1]);
             }
         }
 
         $sessionService->initMaitreExclamer($request->getSession());
+
         return $this->render('JeuCommunaute/catacombe_deux/exclamer.html.twig', [
             'form' => $form,
             'alert' => $alert,
         ]);
     }
-    #[Route('/catacombe/deux/traverser', name: 'app_catacombe_deux_traverser')]
-    public function traverser(Request $request, #[MapQueryParameter]  int $alert = 0){
 
+    #[Route('/catacombe/deux/traverser', name: 'app_catacombe_deux_traverser')]
+    public function traverser(Request $request, #[MapQueryParameter] int $alert = 0)
+    {
         $defaultData = null;
         $form = $this->createFormBuilder($defaultData)
             ->add('pass0', TextType::class, ['label' => 'Le lieu : '])
@@ -66,13 +61,10 @@ final class CatacombeNiveauDeuxController extends AbstractController
             $data = $form->getData();
             $pass0 = $data['pass0'];
 
-            if( str_contains(strtoupper($pass0), 'TRABUC'))
-            {
-                return $this->redirectToRoute('app_catacombe_deux_traverser', [ 'alert' => 33259492 ]);
-            }
-            else
-            {
-                return $this->redirectToRoute('app_catacombe_deux_traverser', [ 'alert' => 1 ]);
+            if (str_contains(strtoupper($pass0), 'TRABUC')) {
+                return $this->redirectToRoute('app_catacombe_deux_traverser', ['alert' => 33259492]);
+            } else {
+                return $this->redirectToRoute('app_catacombe_deux_traverser', ['alert' => 1]);
             }
         }
 
@@ -83,7 +75,7 @@ final class CatacombeNiveauDeuxController extends AbstractController
     }
 
     #[Route('/catacombe/deux/entree', name: 'app_catacombe_deux_index')]
-    public function index(Request $request,#[MapQueryParameter]  int $alert = 0) : Response
+    public function index(Request $request, #[MapQueryParameter] int $alert = 0): Response
     {
         $defaultData = null;
         $form = $this->createFormBuilder($defaultData)
@@ -92,8 +84,6 @@ final class CatacombeNiveauDeuxController extends AbstractController
             ->add('save', SubmitType::class, ['label' => 'Repondre'])
             ->getForm();
 
-
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -101,13 +91,10 @@ final class CatacombeNiveauDeuxController extends AbstractController
             $pass0 = $data['pass0'];
             $pass1 = $data['pass1'];
 
-            if(strtoupper($pass0) === 'INFINI' && (strtoupper($pass1) === 'DOREE' || strtoupper($pass1) === strtoupper('Dorée')))
-            {
-                return $this->redirectToRoute('app_catacombe_deux_index', [ 'alert' => 22546569 ]);
-            }
-            else
-            {
-                return $this->redirectToRoute('app_catacombe_deux_index', [ 'alert' => 1 ]);
+            if ('INFINI' === strtoupper($pass0) && ('DOREE' === strtoupper($pass1) || strtoupper($pass1) === strtoupper('Dorée'))) {
+                return $this->redirectToRoute('app_catacombe_deux_index', ['alert' => 22546569]);
+            } else {
+                return $this->redirectToRoute('app_catacombe_deux_index', ['alert' => 1]);
             }
         }
 

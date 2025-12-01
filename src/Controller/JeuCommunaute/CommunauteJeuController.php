@@ -29,12 +29,12 @@ final class CommunauteJeuController extends AbstractController
     {
         $session = $request->getSession();
         $startDay = $session->get('start');
-        if(!isset($startDay)) {
+        if (!isset($startDay)) {
             $session->set('start', new \DateTimeImmutable('now'));
         }
 
         $inventaire = $session->get('inventaire');
-        if(!isset($inventaire)) {
+        if (!isset($inventaire)) {
             $session->set('inventaire', new Inventaire());
         }
 
@@ -42,11 +42,11 @@ final class CommunauteJeuController extends AbstractController
     }
 
     #[Route('/premier_niveau/premier_pierre_descendre', name: 'app_communaute_jeu_premier_pierre_descendre', methods: ['GET'])]
-    public function premiere_pierre_descendre(Request $request, InventaireService $inventaireService, SessionService $sessionService) : Response
+    public function premiere_pierre_descendre(Request $request, InventaireService $inventaireService, SessionService $sessionService): Response
     {
         $session = $request->getSession();
         $clef4 = $inventaireService->getInventaireObject(Constantes::clef4());
-        if(isset($clef4)){
+        if (isset($clef4)) {
             return $this->render('JeuCommunaute/communaute-jeu/premier_niveau_deuxieme_pierre_descendre.html.twig', []);
         }
 
@@ -56,38 +56,38 @@ final class CommunauteJeuController extends AbstractController
     }
 
     #[Route('/premier_niveau/premier_pierre_enlever', name: 'app_communaute_jeu_premier_pierre_enlever', methods: ['GET'])]
-    public function premiere_pierre_enlever(Request $request, InventaireService $inventaireService, SessionService $sessionService) : Response
+    public function premiere_pierre_enlever(Request $request, InventaireService $inventaireService, SessionService $sessionService): Response
     {
         $keyFound = new ObjetAventure(Constantes::clef33(), 'Au fond du trou', 'ça peut toujours servir !');
 
         $currentInventaire = $sessionService->getCurrentInventaire($request->getSession());
-        $inventaireService->addOrReplace(Constantes::clef33(), $keyFound ,$currentInventaire);
+        $inventaireService->addOrReplace(Constantes::clef33(), $keyFound, $currentInventaire);
         $sessionService->setCurrentInventaire($request->getSession(), $currentInventaire);
 
         return $this->render('JeuCommunaute/communaute-jeu/premier_niveau_premier_pierre_enlever.html.twig');
     }
 
     #[Route('/premier_niveau/deuxieme_pierre_descendre', name: 'app_communaute_jeu_deuxieme_pierre_descendre', methods: ['GET'])]
-    public function deuxieme_pierre_descendre(Request $request) : Response
+    public function deuxieme_pierre_descendre(Request $request): Response
     {
         return $this->render('JeuCommunaute/communaute-jeu/premier_niveau_deuxieme_pierre_descendre.html.twig');
     }
 
     #[Route('/premier_niveau/deuxieme_pierre_enlever', name: 'app_communaute_jeu_deuxieme_pierre_enlever', methods: ['GET'])]
-    public function deuxieme_pierre_enlever(Request $request, InventaireService $inventaireService, SessionService $sessionService) : Response
+    public function deuxieme_pierre_enlever(Request $request, InventaireService $inventaireService, SessionService $sessionService): Response
     {
         $keyFound = new ObjetAventure(Constantes::clef4(), 'Au fond du trou', 'ça peut toujours servir !');
 
         $currentInventaire = $sessionService->getCurrentInventaire($request->getSession());
-        $inventaireService->addOrReplace(Constantes::clef4(), $keyFound ,$currentInventaire);
+        $inventaireService->addOrReplace(Constantes::clef4(), $keyFound, $currentInventaire);
         $sessionService->setCurrentInventaire($request->getSession(), $currentInventaire);
+
         return $this->render('JeuCommunaute/communaute-jeu/premier_niveau_deuxieme_pierre_enlever.html.twig');
     }
 
-
-    #[Route('/premier_niveau/deuxieme_niveau', name: 'app_communaute_jeu_deux_ouvert', methods: ['GET','POST'])]
-    public function jeu_deux(Request $request): Response{
-
+    #[Route('/premier_niveau/deuxieme_niveau', name: 'app_communaute_jeu_deux_ouvert', methods: ['GET', 'POST'])]
+    public function jeu_deux(Request $request): Response
+    {
         $defaultData = null;
         $form = $this->createFormBuilder($defaultData)
             ->add('pass', TextType::class, ['label' => 'Mot de passe : '])
@@ -99,23 +99,23 @@ final class CommunauteJeuController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $pass = $data['pass'];
-            if($pass === '33-4')
-            {
+            if ('33-4' === $pass) {
                 return $this->redirectToRoute('app_communaute_jeu_deux_bon_pass');
-            }
-            else
-            {
+            } else {
                 return $this->redirectToRoute('app_communaute_jeu_deux_mauvais_pass');
             }
         }
 
         return $this->render('JeuCommunaute/communaute-jeu/deuxieme_niveau_ouverture.html.twig', [
-            'form' => $form
+            'form' => $form,
         ]);
     }
+
     #[Route('/premier_niveau/deuxieme_niveau_brute', name: 'app_communaute_jeu_deux_brute', methods: ['GET'])]
-    public function jeu_deux_brute(Request $request, SessionService $sessionService): Response{
+    public function jeu_deux_brute(Request $request, SessionService $sessionService): Response
+    {
         $sessionService->increaseDeath($request->getSession());
+
         return $this->render('JeuCommunaute/communaute-jeu/deuxieme_niveau_brute.html.twig', []);
     }
 
@@ -123,6 +123,7 @@ final class CommunauteJeuController extends AbstractController
     public function jeu_deux_bon_pass(EscalierService $escalierService): Response
     {
         $escalierService->initEscalier();
+
         return $this->render('JeuCommunaute/communaute-jeu/deuxieme_niveau_bon_pass.html.twig', []);
     }
 
@@ -130,6 +131,7 @@ final class CommunauteJeuController extends AbstractController
     public function jeu_deux_mauvais_pass(Request $request, SessionService $sessionService): Response
     {
         $sessionService->increaseDeath($request->getSession());
+
         return $this->render('JeuCommunaute/communaute-jeu/deuxieme_niveau_mauvais_pass.html.twig', []);
     }
 }

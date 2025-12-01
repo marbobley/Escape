@@ -18,30 +18,32 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class EscalierController extends AbstractController
 {
-    const JEU_COMMUNAUTE_ESCALIER_INDEX_HTML_TWIG = 'JeuCommunaute/escalier/index.html.twig';
+    public const JEU_COMMUNAUTE_ESCALIER_INDEX_HTML_TWIG = 'JeuCommunaute/escalier/index.html.twig';
 
     #[Route('/escalier', name: 'app_escalier')]
-    public function index( EscalierService $escalierService) : Response
+    public function index(EscalierService $escalierService): Response
     {
         $escalierService->initEscalier();
+
         return $this->render(self::JEU_COMMUNAUTE_ESCALIER_INDEX_HTML_TWIG);
     }
 
     #[Route('/escalier/retour', name: 'app_escalier_retour')]
-    public function escalier_retour() : Response
+    public function escalier_retour(): Response
     {
         return $this->render(self::JEU_COMMUNAUTE_ESCALIER_INDEX_HTML_TWIG);
     }
 
     #[Route('/escalier/metre/sortie/fin', name: 'app_escalier_sortie_fin')]
-    public function escalier_sortie_fin(SessionService $sessionService) : Response
+    public function escalier_sortie_fin(SessionService $sessionService): Response
     {
         $sessionService->initStop();
+
         return $this->render('JeuCommunaute/endgame/fin.html.twig');
     }
 
     #[Route('/escalier/metre/sortie', name: 'app_escalier_sortie')]
-    public function escalier_sortie(Request $request, #[MapQueryParameter]  int $alert = 0) : Response
+    public function escalier_sortie(Request $request, #[MapQueryParameter] int $alert = 0): Response
     {
         $defaultData = null;
         $form = $this->createFormBuilder($defaultData)
@@ -55,13 +57,10 @@ final class EscalierController extends AbstractController
             $data = $form->getData();
             $pass0 = $data['pass0'];
 
-            if( $pass0 === '666')
-            {
-                return $this->redirectToRoute('app_escalier_sortie', [ 'alert' => 32546824 ]);
-            }
-            else
-            {
-                return $this->redirectToRoute('app_escalier_sortie', [ 'alert' => 1 ]);
+            if ('666' === $pass0) {
+                return $this->redirectToRoute('app_escalier_sortie', ['alert' => 32546824]);
+            } else {
+                return $this->redirectToRoute('app_escalier_sortie', ['alert' => 1]);
             }
         }
 
@@ -72,7 +71,7 @@ final class EscalierController extends AbstractController
     }
 
     #[Route('/escalier/metre', name: 'app_escalier_metre')]
-    public function escalier_metre(Request $request, #[MapQueryParameter]  int $alert = 0) : Response
+    public function escalier_metre(Request $request, #[MapQueryParameter] int $alert = 0): Response
     {
         $defaultData = null;
         $form = $this->createFormBuilder($defaultData)
@@ -86,13 +85,10 @@ final class EscalierController extends AbstractController
             $data = $form->getData();
             $pass0 = $data['pass0'];
 
-            if( $pass0 === '12')
-            {
-                return $this->redirectToRoute('app_escalier_metre', [ 'alert' => 85214589 ]);
-            }
-            else
-            {
-                return $this->redirectToRoute('app_escalier_metre', [ 'alert' => 1 ]);
+            if ('12' === $pass0) {
+                return $this->redirectToRoute('app_escalier_metre', ['alert' => 85214589]);
+            } else {
+                return $this->redirectToRoute('app_escalier_metre', ['alert' => 1]);
             }
         }
 
@@ -101,8 +97,9 @@ final class EscalierController extends AbstractController
             'alert' => $alert,
         ]);
     }
+
     #[Route('/escalier/monter', name: 'app_escalier_monter')]
-    public function monter( EscalierService $escalierService) : Response
+    public function monter(EscalierService $escalierService): Response
     {
         $escalierService->increaseEscalier();
 
@@ -110,35 +107,37 @@ final class EscalierController extends AbstractController
     }
 
     #[Route('/escalier/descendre', name: 'app_escalier_descendre')]
-    public function descendre( EscalierService $escalierService) : Response
+    public function descendre(EscalierService $escalierService): Response
     {
         $escalierService->decreaseEscalier();
+
         return $this->render(self::JEU_COMMUNAUTE_ESCALIER_INDEX_HTML_TWIG);
     }
 
     #[Route('/escalier/regarder', name: 'app_escalier_regarder')]
-    public function regarder(EscalierService $escalierService) : Response
+    public function regarder(EscalierService $escalierService): Response
     {
         $escalier = $escalierService->getEscalier();
 
-        $filename = 'images/jeu_escalier_' .  $escalier . '.wepb';
+        $filename = 'images/jeu_escalier_'.$escalier.'.wepb';
 
         return $this->render('JeuCommunaute/escalier/regarder.html.twig', [
-            'filename' => $filename
+            'filename' => $filename,
         ]);
     }
+
     #[Route('/escalier/cailloux', name: 'app_escalier_cailloux')]
-    public function cailloux() : Response
+    public function cailloux(): Response
     {
         return $this->render('JeuCommunaute/escalier/cailloux.html.twig');
     }
 
     #[Route('escalier/coffre_romain', name: 'app_escalier_coffre')]
     public function coffre(Request $request,
-                           SessionService $sessionService,
-                           InventaireService $inventaireService,
-                           #[MapQueryParameter] int $tentativeCoffreOpen = 0,
-                           #[MapQueryParameter] bool $coffreOpen = false) : Response
+        SessionService $sessionService,
+        InventaireService $inventaireService,
+        #[MapQueryParameter] int $tentativeCoffreOpen = 0,
+        #[MapQueryParameter] bool $coffreOpen = false): Response
     {
         $defaultData = null;
         $form = $this->createFormBuilder($defaultData)
@@ -151,25 +150,24 @@ final class EscalierController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $pass = $data['pass'];
-            if($pass === 20.0)
-            {
-                $lunette = new ObjetAventure(Constantes::lunette(), "Permet de voir plus", "Quel charisme avec!");
+            if (20.0 === $pass) {
+                $lunette = new ObjetAventure(Constantes::lunette(), 'Permet de voir plus', 'Quel charisme avec!');
                 $inventaire = $sessionService->getCurrentInventaire($request->getSession());
                 $inventaireService->addOrReplace(Constantes::lunette(), $lunette, $inventaire);
                 $sessionService->setCurrentInventaire($request->getSession(), $inventaire);
+
                 return $this->redirectToRoute('app_escalier_coffre', ['coffreOpen' => true]);
-            }
-            else
-            {
-                $tentativeCoffreOpen++;
-                return $this->redirectToRoute('app_escalier_coffre',['tentativeCoffreOpen' => $tentativeCoffreOpen] );
+            } else {
+                ++$tentativeCoffreOpen;
+
+                return $this->redirectToRoute('app_escalier_coffre', ['tentativeCoffreOpen' => $tentativeCoffreOpen]);
             }
         }
 
         return $this->render('JeuCommunaute/escalier/coffre.html.twig', [
             'form' => $form,
             'tentativeCoffreOpen' => $tentativeCoffreOpen,
-            'coffreOpen' => $coffreOpen
+            'coffreOpen' => $coffreOpen,
         ]);
     }
 }

@@ -14,9 +14,8 @@ use Symfony\Component\Routing\Attribute\Route;
 final class MiniBossController extends AbstractController
 {
     #[Route('/miniboss/casse-tete', name: 'app_miniboss_cassetete')]
-    public function cassetete(Request $request, SessionService $sessionService, #[MapQueryParameter]  int $alert = 0) : Response
+    public function cassetete(Request $request, SessionService $sessionService, #[MapQueryParameter] int $alert = 0): Response
     {
-
         $defaultData = null;
         $form = $this->createFormBuilder($defaultData)
             ->add('pass0', TextType::class, ['label' => ' '])
@@ -29,14 +28,12 @@ final class MiniBossController extends AbstractController
             $data = $form->getData();
             $pass0 = $data['pass0'];
 
-            if( $pass0 === '5')
-            {
+            if ('5' === $pass0) {
                 $sessionService->initCombatFinal($request->getSession());
-                return $this->redirectToRoute('app_miniboss_cassetete', [ 'alert' => 784599871 ]);
-            }
-            else
-            {
-                return $this->redirectToRoute('app_miniboss_cassetete', [ 'alert' => 1 ]);
+
+                return $this->redirectToRoute('app_miniboss_cassetete', ['alert' => 784599871]);
+            } else {
+                return $this->redirectToRoute('app_miniboss_cassetete', ['alert' => 1]);
             }
         }
 
@@ -47,9 +44,8 @@ final class MiniBossController extends AbstractController
     }
 
     #[Route('/miniboss/mathematique', name: 'app_miniboss_mathematique')]
-    public function mathematique(Request $request, SessionService $sessionService, #[MapQueryParameter]  int $alert = 0) : Response
+    public function mathematique(Request $request, SessionService $sessionService, #[MapQueryParameter] int $alert = 0): Response
     {
-
         $defaultData = null;
         $form = $this->createFormBuilder($defaultData)
             ->add('pass0', TextType::class, ['label' => ' '])
@@ -62,14 +58,12 @@ final class MiniBossController extends AbstractController
             $data = $form->getData();
             $pass0 = $data['pass0'];
 
-            if( $pass0 === '5')
-            {
+            if ('5' === $pass0) {
                 $sessionService->initCombatFinal($request->getSession());
-                return $this->redirectToRoute('app_miniboss_mathematique', [ 'alert' => 784599871 ]);
-            }
-            else
-            {
-                return $this->redirectToRoute('app_miniboss_mathematique', [ 'alert' => 1 ]);
+
+                return $this->redirectToRoute('app_miniboss_mathematique', ['alert' => 784599871]);
+            } else {
+                return $this->redirectToRoute('app_miniboss_mathematique', ['alert' => 1]);
             }
         }
 
@@ -78,6 +72,4 @@ final class MiniBossController extends AbstractController
             'alert' => $alert,
         ]);
     }
-
-
 }

@@ -15,6 +15,7 @@ class InventaireService
     {
         $this->requestStack = $requestStack;
     }
+
     public function getInventaireObjects() : Inventaire|null{
         $inventaire = $this->requestStack->getSession()->get('inventaire');
 

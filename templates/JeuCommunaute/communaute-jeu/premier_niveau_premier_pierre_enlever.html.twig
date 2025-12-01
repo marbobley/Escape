@@ -5,17 +5,17 @@
     <div class="container-fluid text-center">
         <article>
             <h1>Vous trouvez une clef</h1>
-            <img class="img-fluid" src="{{ asset('images/clef-33.webp')}}" alt="clef avec marqué 33 dessus" width="200" >
+            <img   src="{{ asset('images/clef-33.webp')}}" alt="clef avec marqué 33 dessus" width="200" >
             {% include 'JeuCommunaute/communaute-jeu/_deuxieme-pierre.html.twig' %}
             <div>
                 {% set clef4 = serviceInventaire.inventaireObject(Constantes.clef4) %}
                 {% if clef4 %}
-                    <img class="img-fluid"
+                    <img
                          src="{{ asset('images/premier_niveau_sans_premiere_deuxieme_pierre.webp') }}"
                          alt="photo d'un trou, avec de vieilles pierres represantant le premier niveau"
                          usemap="#workmap">
                 {% else %}
-                    <img class="img-fluid"
+                    <img
                          src="{{ asset('images/premier_niveau_sans_premiere_pierre.webp') }}"
                          alt="photo d'un trou, avec de vieilles pierres represantant le premier niveau"
                          usemap="#workmap">

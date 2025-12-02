@@ -1,0 +1,117 @@
+:root{
+    --goth-black:#0b0b0c;
+    --goth-deep:#2b0f17; /* bordeaux très sombre */
+    --goth-red:#8b0016; /* rouge vin */
+    --goth-ivory:#f5efe6; /* ivoire */
+    --goth-gray:#a5a1a1;
+    --goth-gold:#b1986d;
+}
+
+.body-gothique{
+    background: radial-gradient(1200px 600px at 20% -10%, rgba(139,0,22,.18), transparent 60%),
+    radial-gradient(900px 500px at 120% 10%, rgba(177,152,109,.12), transparent 50%),
+    var(--goth-black);
+    color: var(--goth-ivory);
+    font-family: "Playfair Display", Georgia, serif;
+    line-height: 1.6;
+}
+
+/* Barre de navigation héritée */
+.navbar.main-color{
+    background: linear-gradient(180deg, #12060a, #1a0a10);
+    border-bottom: 1px solid rgba(177,152,109,.35);
+}
+.navbar a.navbar-brand,
+.navbar .nav-link,
+.navbar .dropdown-item{
+    color: var(--goth-ivory) !important;
+    font-family: Cinzel, serif;
+    letter-spacing: .5px;
+}
+.navbar .dropdown-menu{
+    background-color: #14090d;
+    border: 1px solid rgba(177,152,109,.25);
+}
+
+/* Encadrements gothiques réutilisables */
+.goth-frame{
+    position: relative;
+    padding: 2.2rem 1.8rem;
+    border: 1px solid rgba(177,152,109,.35);
+    background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+    box-shadow: 0 0 0 1px rgba(139,0,22,.25) inset, 0 10px 30px rgba(0,0,0,.45);
+}
+.goth-frame:before, .goth-frame:after{
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px dashed rgba(177,152,109,.25);
+    pointer-events: none;
+}
+
+.goth-title{
+    font-family: Cinzel, serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--goth-ivory);
+}
+
+.goth-accent{ color: var(--goth-gold); }
+.blood{ color: var(--goth-red); }
+
+/* Héro */
+.hero-goth{
+    position: relative;
+    padding: 6rem 1rem;
+    background:
+        radial-gradient(50% 60% at 50% 0%, rgba(139,0,22,.25), transparent 70%),
+        url('https://images.unsplash.com/photo-1504805572947-34fad45aed93?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
+    border-bottom: 1px solid rgba(177,152,109,.25);
+}
+.hero-goth .veil{
+    position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.65), rgba(11,11,12,.85));
+}
+.hero-goth .content{
+    position: relative; max-width: 980px; margin: 0 auto; text-align: center;
+}
+.hero-goth h1{
+    font-family: Cinzel, serif; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: .4rem;
+}
+.hero-goth p.lead{
+    color: var(--goth-gray); font-style: italic; font-size: 1.15rem;
+}
+
+/* Boutons */
+.btn-goth{
+    display: inline-block;
+    padding: .65rem 1.25rem;
+    border: 1px solid rgba(177,152,109,.45);
+    color: var(--goth-ivory);
+    background: linear-gradient(180deg, rgba(139,0,22,.35), rgba(139,0,22,.15));
+    text-decoration: none;
+    transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn-goth:hover{ transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.4); }
+
+/* Sections */
+.section{
+    padding: 3rem 1rem;
+}
+.section .container{
+    max-width: 1050px; margin: 0 auto;
+}
+
+.card-goth{
+    background: #12080c;
+    border: 1px solid rgba(177,152,109,.25);
+    padding: 1.25rem; height: 100%;
+}
+.muted{ color: var(--goth-gray); }
+hr.divider{ border: none; border-top: 1px solid rgba(177,152,109,.25); margin: 2rem 0; }
+
+/* Pied de page spécial mariage */
+.wedding-footer{
+    text-align: center; padding: 2rem 1rem; color: var(--goth-gray);
+    border-top: 1px solid rgba(177,152,109,.25);
+    background: linear-gradient(180deg, #0f0d0e, #0b0b0c);
+}

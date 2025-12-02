@@ -20,6 +20,10 @@ return [
         'path' => './assets/appDD.js',
         'entrypoint' => true,
     ],
+    'appWedding' => [
+        'path' => './assets/appWedding.js',
+        'entrypoint' => true,
+    ],
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
     ],

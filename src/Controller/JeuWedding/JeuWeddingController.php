@@ -15,4 +15,10 @@ class JeuWeddingController extends AbstractController
     {
         return $this->render('wedding/home/home.html.twig');
     }
+
+    #[Route('/jeu-wedding/serments', name: 'app_wedding_serments')]
+    public function serments(): Response
+    {
+        return $this->render('wedding/home/serment.html.twig');
+    }
 }

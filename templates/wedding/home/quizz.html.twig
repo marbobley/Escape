@@ -10,12 +10,12 @@
                 <p class="muted">Réponds aux questions !</p>
 
                 <div style="margin: .5rem 0 0;">
-                    <a href="{{ path('app_wedding_home') }}" class="btn-goth" aria-label="Revenir à l'accueil des jeux de mariage">← Retour à l'accueil</a>
+                    <a href="{{ path('app_wedding_home') }}" class="btn-goth" aria-label="← Retour à l'accueil">← Retour à l'accueil</a>
                 </div>
 
                 {# Messages d'état selon le paramètre 'alert' fourni par le contrôleur #}
                 {% if alert is defined and alert == 2 %}
-                    <div role="status" aria-live="polite" class="card-goth" style="margin-top:1rem; border-color: rgba(71,177,110,.45); background: #0d1410;">
+                    <div role="alert" class="card-goth" style="margin-top:1rem; border-color: rgba(71,177,110,.45); background: #0d1410;">
                         <strong class="goth-title" style="font-size:1rem; color:#9be7b6;">Bonne réponse</strong>
                         <p class="muted" style="margin:.25rem 0 0;">Ton savoir perce les ombres. Continue…12</p>
                     </div>

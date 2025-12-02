@@ -10,12 +10,12 @@
                 <p class="muted">Entre le mot secret trouvé parmi les vœux. Un seul mot, un seul destin…</p>
 
                 <div style="margin: .5rem 0 0;">
-                    <a href="{{ path('app_wedding_home') }}" class="btn-goth" aria-label="Revenir à l'accueil des jeux de mariage">← Retour à l'accueil</a>
+                    <a href="{{ path('app_wedding_home') }}" class="btn-goth" aria-label="← Retour à l'accueil">← Retour à l'accueil</a>
                 </div>
 
                 {# Affichage du message selon le paramètre alert passé par le contrôleur #}
                 {% if alert is defined and alert == 2 %}
-                    <div role="status" aria-live="polite" class="card-goth" style="margin-top:1rem; border-color: rgba(71,177,110,.45); background: #0d1410;">
+                    <div role="alert" aria-live="polite" class="card-goth" style="margin-top:1rem; border-color: rgba(71,177,110,.45); background: #0d1410;">
                         <strong class="goth-title" style="font-size:1rem; color:#9be7b6;">Succès</strong>
                         <p class="muted" style="margin:.25rem 0 0;">Le mot d'amour est trouvé F.</p>
                     </div>

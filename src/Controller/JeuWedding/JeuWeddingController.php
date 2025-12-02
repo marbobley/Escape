@@ -6,6 +6,7 @@ namespace App\Controller\JeuWedding;
 
 use App\Form\WordPasswordType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
@@ -51,6 +52,9 @@ class JeuWeddingController extends AbstractController
         $defaultData = null;
         $form = $this->createFormBuilder($defaultData)
             ->add('question1', TextType::class, ['label' => 'Mon deuxieme prénom : '])
+            ->add('question2', TextType::class, ['label' => 'Mon troiseme prénom : '])
+            ->add('question3', TextType::class, ['label' => 'Ma passion : '])
+            ->add('question4', NumberType::class, ['label' => 'Le nombre de tatouage : '])
             ->add('save', SubmitType::class, ['label' => 'Repondre'])
             ->getForm();
 
@@ -58,9 +62,15 @@ class JeuWeddingController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $pass = $data['question1'];
+            $questionDeuximePrenom = $data['question1'];
+            $questionTroisiemePrenom = $data['question2'];
+            $questionPassion = $data['question3'];
+            $questionTatoo = $data['question4'];
 
-            if ('love' === $pass) {
+            if ('MICHEL' === strtoupper($questionDeuximePrenom)
+                && 'JEAN-JACQUES' === strtoupper($questionTroisiemePrenom)
+                && 'MONA' === strtoupper($questionPassion)
+                && 4.0 === $questionTatoo) {
                 return $this->redirectToRoute('app_wedding_quizz', ['alert' => 2]);
             } else {
                 return $this->redirectToRoute('app_wedding_quizz', ['alert' => 1]);

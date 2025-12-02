@@ -22,6 +22,12 @@ class JeuWeddingController extends AbstractController
         return $this->render('wedding/home/home.html.twig');
     }
 
+    #[Route('/jeu-wedding/fin', name: 'app_wedding_fin')]
+    public function fin(): Response
+    {
+        return $this->render('wedding/home/fin.html.twig');
+    }
+
     #[Route('/jeu-wedding/serments', name: 'app_wedding_serments')]
     public function serments(Request $request, #[MapQueryParameter] int $alert = 0): Response
     {
@@ -55,6 +61,7 @@ class JeuWeddingController extends AbstractController
             ->add('question2', TextType::class, ['label' => 'Mon troiseme prénom : '])
             ->add('question3', TextType::class, ['label' => 'Ma passion : '])
             ->add('question4', NumberType::class, ['label' => 'Le nombre de tatouage : '])
+            ->add('question5', NumberType::class, ['label' => 'Nombre étude supérieur : '])
             ->add('save', SubmitType::class, ['label' => 'Repondre'])
             ->getForm();
 
@@ -66,11 +73,13 @@ class JeuWeddingController extends AbstractController
             $questionTroisiemePrenom = $data['question2'];
             $questionPassion = $data['question3'];
             $questionTatoo = $data['question4'];
+            $questionEtude = $data['question5'];
 
             if ('MICHEL' === strtoupper($questionDeuximePrenom)
                 && 'JEAN-JACQUES' === strtoupper($questionTroisiemePrenom)
                 && 'MONA' === strtoupper($questionPassion)
-                && 4.0 === $questionTatoo) {
+                && 4.0 === $questionTatoo
+                && 5.0 === $questionEtude) {
                 return $this->redirectToRoute('app_wedding_quizz', ['alert' => 2]);
             } else {
                 return $this->redirectToRoute('app_wedding_quizz', ['alert' => 1]);

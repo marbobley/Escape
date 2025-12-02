@@ -1,0 +1,30 @@
+{% extends 'wedding/base_wedding.html.twig' %}
+{% block title %}Les jeux du mariage!{% endblock %}
+
+{% block body %}
+    <!-- Section: Fin de jeu / Épilogue -->
+    <section class="section" aria-labelledby="tit-fin">
+        <div class="container">
+            <div class="goth-frame text-center">
+                <h1 id="tit-fin" class="goth-title" style="margin-top:0;">C'est la fin !</h1>
+                <p class="lead" style="margin:.25rem 0 1rem;">Bravo, Amour. Tu as su trouver la voie vers la dernière énigme et la résoudre !</p>
+
+                <hr class="divider"/>
+
+                <div class="card-goth" style="max-width:760px; margin:0 auto;">
+                    <h2 class="goth-title" style="font-size:1.15rem; margin-top:0;">Félicitations</h2>
+                    <p class="muted" style="margin:.25rem 0 0;">
+                        Vos réponses et vos serments ont scellé le mariage. Que la nuit vous soit douce et la fête éternelle.
+                    </p>
+                </div>
+
+                <div style="display:flex; gap:.75rem; justify-content:center; flex-wrap:wrap; margin-top:1rem;">
+                    <a href="{{ path('app_wedding_home') }}" class="btn-goth" aria-label="Revenir à l'accueil des jeux de mariage">← Retour à l'accueil</a>
+                    <a href="{{ path('app_wedding_serments') }}" class="btn-goth" aria-label="Rejouer la chasse aux serments">Rejouer les serments</a>
+                    <a href="{{ path('app_wedding_quizz') }}" class="btn-goth" aria-label="Rejouer le quiz">Refaire le quiz</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

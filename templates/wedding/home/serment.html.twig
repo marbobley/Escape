@@ -7,7 +7,7 @@
         <div class="container">
             <div class="goth-frame">
                 <h1 id="tit-serment" class="goth-title" style="margin-top:0;">Chasse aux serments</h1>
-                <p class="muted">Entrez le mot secret trouvé parmi les vœux. Un seul mot, un seul destin…</p>
+                <p class="muted">Entre le mot secret trouvé parmi les vœux. Un seul mot, un seul destin…</p>
 
                 <div style="margin: .5rem 0 0;">
                     <a href="{{ path('app_wedding_home') }}" class="btn-goth" aria-label="Revenir à l'accueil des jeux de mariage">← Retour à l'accueil</a>
@@ -17,12 +17,12 @@
                 {% if alert is defined and alert == 2 %}
                     <div role="status" aria-live="polite" class="card-goth" style="margin-top:1rem; border-color: rgba(71,177,110,.45); background: #0d1410;">
                         <strong class="goth-title" style="font-size:1rem; color:#9be7b6;">Succès</strong>
-                        <p class="muted" style="margin:.25rem 0 0;">Le mot d'amour est trouvé.</p>
+                        <p class="muted" style="margin:.25rem 0 0;">Le mot d'amour est trouvé F.</p>
                     </div>
                 {% elseif alert is defined and alert == 1 %}
                     <div role="alert" class="card-goth" style="margin-top:1rem; border-color: rgba(177,0,22,.55); background: #140a0d;">
                         <strong class="goth-title" style="font-size:1rem; color:#ff9aa8;">Raté</strong>
-                        <p class="muted" style="margin:.25rem 0 0;">Le mot d'amour ne correspond pas. Réessayez.</p>
+                        <p class="muted" style="margin:.25rem 0 0;">Le mot d'amour ne correspond pas. Essaie encore.</p>
                     </div>
                 {% endif %}
 
@@ -42,7 +42,7 @@
                             {{ form_widget(form.pass, {
                                 attr: {
                                     id: 'pass-serment',
-                                    placeholder: 'Saisissez le mot',
+                                    placeholder: 'Saisir le mot',
                                     style: 'width:100%; margin-top:.35rem; padding:.6rem .8rem; background:#0f0b0d; color:var(--goth-ivory); border:1px solid rgba(177,152,109,.35);'
                                 }
                             }) }}

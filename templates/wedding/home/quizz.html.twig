@@ -7,7 +7,7 @@
         <div class="container">
             <div class="goth-frame">
                 <h1 id="tit-quiz" class="goth-title" style="margin-top:0;">Quiz des âmes sœurs</h1>
-                <p class="muted">Répondez aux questions !</p>
+                <p class="muted">Réponds aux questions !</p>
 
                 <div style="margin: .5rem 0 0;">
                     <a href="{{ path('app_wedding_home') }}" class="btn-goth" aria-label="Revenir à l'accueil des jeux de mariage">← Retour à l'accueil</a>
@@ -17,12 +17,12 @@
                 {% if alert is defined and alert == 2 %}
                     <div role="status" aria-live="polite" class="card-goth" style="margin-top:1rem; border-color: rgba(71,177,110,.45); background: #0d1410;">
                         <strong class="goth-title" style="font-size:1rem; color:#9be7b6;">Bonne réponse</strong>
-                        <p class="muted" style="margin:.25rem 0 0;">Votre savoir perce les ombres. Continuez…</p>
+                        <p class="muted" style="margin:.25rem 0 0;">Ton savoir perce les ombres. Continue…12</p>
                     </div>
                 {% elseif alert is defined and alert == 1 %}
                     <div role="alert" class="card-goth" style="margin-top:1rem; border-color: rgba(177,0,22,.55); background: #140a0d;">
                         <strong class="goth-title" style="font-size:1rem; color:#ff9aa8;">Mauvaise réponse</strong>
-                        <p class="muted" style="margin:.25rem 0 0;">Les ténèbres vous jouent des tours. Réessayez.</p>
+                        <p class="muted" style="margin:.25rem 0 0;">Les ténèbres te jouent des tours. Réessaie.</p>
                     </div>
                 {% endif %}
 
@@ -42,7 +42,7 @@
                             {{ form_widget(form.question1, {
                                 attr: {
                                     id: 'quiz-q1',
-                                    placeholder: 'Entrez votre réponse',
+                                    placeholder: 'Entre ta réponse',
                                     style: 'width:100%; margin-top:.35rem; padding:.6rem .8rem; background:#0f0b0d; color:var(--goth-ivory); border:1px solid rgba(177,152,109,.35);'
                                 }
                             }) }}
@@ -55,7 +55,7 @@
                             {{ form_widget(form.question2, {
                                 attr: {
                                     id: 'quiz-q2',
-                                    placeholder: 'Entrez votre réponse',
+                                    placeholder: 'Entre ta réponse',
                                     style: 'width:100%; margin-top:.35rem; padding:.6rem .8rem; background:#0f0b0d; color:var(--goth-ivory); border:1px solid rgba(177,152,109,.35);'
                                 }
                             }) }}
@@ -68,7 +68,7 @@
                             {{ form_widget(form.question3, {
                                 attr: {
                                     id: 'quiz-q3',
-                                    placeholder: 'Entrez votre réponse',
+                                    placeholder: 'Entre ta réponse',
                                     style: 'width:100%; margin-top:.35rem; padding:.6rem .8rem; background:#0f0b0d; color:var(--goth-ivory); border:1px solid rgba(177,152,109,.35);'
                                 }
                             }) }}
@@ -81,11 +81,24 @@
                             {{ form_widget(form.question4, {
                                 attr: {
                                     id: 'quiz-q4',
-                                    placeholder: 'Entrez votre réponse',
+                                    placeholder: 'Entre ta réponse',
                                     style: 'width:100%; margin-top:.35rem; padding:.6rem .8rem; background:#0f0b0d; color:var(--goth-ivory); border:1px solid rgba(177,152,109,.35);'
                                 }
                             }) }}
                             {{ form_errors(form.question4) }}
+                        </div>
+                        <div style="flex:1; min-width:260px;">
+                            {{ form_label(form.question5, 'Mon nombre d\'année d\'étude supérieur', {
+                                label_attr: { class: 'goth-title', style: 'font-size:.95rem; letter-spacing:1px; text-transform:none;' }
+                            }) }}
+                            {{ form_widget(form.question5, {
+                                attr: {
+                                    id: 'quiz-q4',
+                                    placeholder: 'Entre ta réponse',
+                                    style: 'width:100%; margin-top:.35rem; padding:.6rem .8rem; background:#0f0b0d; color:var(--goth-ivory); border:1px solid rgba(177,152,109,.35);'
+                                }
+                            }) }}
+                            {{ form_errors(form.question5) }}
                         </div>
                         <div>
                             {{ form_widget(form.save, { attr: { class: 'btn-goth' } }) }}

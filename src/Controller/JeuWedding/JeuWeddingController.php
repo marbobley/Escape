@@ -78,7 +78,7 @@ class JeuWeddingController extends AbstractController
             if ('MICHEL' === strtoupper($questionDeuximePrenom)
                 && 'JEAN-JACQUES' === strtoupper($questionTroisiemePrenom)
                 && 'MONA' === strtoupper($questionPassion)
-                && 4.0 === $questionTatoo
+                && 5.0 === $questionTatoo
                 && 5.0 === $questionEtude) {
                 return $this->redirectToRoute('app_wedding_quizz', ['alert' => 2]);
             } else {

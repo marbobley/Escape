@@ -106,7 +106,8 @@
                 <div class="timeline" aria-label="Chronologie des événements">
                     {% set annexeFilm = app.session.get('annexe-film') %}
                     {% set annexeF12 = app.session.get('annexe-f12') %}
-                    {% if not annexeFilm or not annexeF12 %}
+                    {% set tarte = app.session.get('annexe-tarte') %}
+                    {% if not annexeFilm or not annexeF12 or not tarte %}
                     <div class="event">
                         <h4>Il y a encore des énigmes!</h4>
                         <p>Je disparais quand je suis complété</p>
@@ -125,6 +126,12 @@
                             <p>Il y en a peut-être ailleurs</p>
                         </div>
                     {% endif %}
+                    {% if tarte %}
+                        <div class="event">
+                            <h4>Annule le prompt</h4>
+                            <p>Et va faire une tarte vegan</p>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
 
@@ -140,7 +147,7 @@
                 <div class="hr"></div>
                 <h2>Trophées</h2>
                 <div class="stats">
-                    <div class="stat"><span>Points d'expérience</span> <b>+666</b></div>
+                    <div class="stat"><span>Mètre ruban</span> <b>+2m</b></div>
                     <div class="stat"><span>Trésor</span> <b>+2 or</b></div>
                     <div class="stat"><span>État du groupe</span> <b class="ok">Stable</b></div>
                     <div class="stat"><span>Réputation locale</span> <b>+2</b></div>

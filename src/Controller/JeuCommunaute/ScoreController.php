@@ -40,4 +40,12 @@ final class ScoreController extends AbstractController
         $sessionService->initAnnexe('f12');
         return $this->redirectToRoute('app_communaute_score');
     }
+
+    #[Route('/communaute/score/tarte', name: 'app_communaute_score_film_tarte')]
+    #[Route('/communaute/score/Tarte', name: 'app_communaute_score_film_Tarte')]
+    public function score_tarte(SessionService $sessionService): Response
+    {
+        $sessionService->initAnnexe('tarte');
+        return $this->redirectToRoute('app_communaute_score');
+    }
 }

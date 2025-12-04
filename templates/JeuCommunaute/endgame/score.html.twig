@@ -104,11 +104,14 @@
                 <div class="hr"></div>
                 <h2>Quêtes secondaires</h2>
                 <div class="timeline" aria-label="Chronologie des événements">
-                    <div class="event">
-                        <h4>Pas encore mis en place</h4>
-                        <p>Ou peut-être que si...</p>
-                    </div>
                     {% set annexeFilm = app.session.get('annexe-film') %}
+                    {% set annexeF12 = app.session.get('annexe-f12') %}
+                    {% if not annexeFilm or not annexeF12 %}
+                    <div class="event">
+                        <h4>Il y a encore des énigmes!</h4>
+                        <p>Je disparais quand je suis complété</p>
+                    </div>
+                    {% endif %}
                     {% if annexeFilm %}
                         <div class="event">
                             <h4>Vous êtes cinéphiles ?</h4>
@@ -116,7 +119,6 @@
                         </div>
                     {% endif %}
 
-                    {% set annexeF12 = app.session.get('annexe-f12') %}
                     {% if annexeF12 %}
                         <div class="event">
                             <h4>La touche F12</h4>

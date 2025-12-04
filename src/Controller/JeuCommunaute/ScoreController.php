@@ -38,7 +38,6 @@ final class ScoreController extends AbstractController
     public function score_F12(SessionService $sessionService): Response
     {
         $sessionService->initAnnexe('f12');
-
         return $this->redirectToRoute('app_communaute_score');
     }
 }

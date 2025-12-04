@@ -3,16 +3,16 @@
 
 {% block body %}
     <div class="container-fluid text-center">
-        <p>Le gnome vous laisse passer</p>
-        <p>Vous déboulez devant un immense escalier</p>
-        <p>Alors, en haut , ou tout droit ?</p>
+        <p>Le gnome vous laisse passer.</p>
+        <p>Vous déboulez devant un immense escalier.</p>
+        <p>Alors, en haut, ou tout droit ?</p>
 
         {{ include('JeuCommunaute/escalier/_passage-sous-escalier.html.twig') }}
         {{ include('JeuCommunaute/escalier/_passage-escalier.html.twig') }}
         <div>
             <img
                  src="{{ asset('images/l-escalier-a-vis-du-donjon.webp') }}"
-                 alt="photo d'un escalier, avec de vieilles pierres represantant le passage vers le niveau suivante"
+                 alt="D'un escalier, avec de vieilles pierres représentant le passage vers le niveau suivante"
                  usemap="#workmap">
 
             <map name="workmap">

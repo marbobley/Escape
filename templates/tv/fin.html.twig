@@ -3,13 +3,22 @@
 {% block title %}Fin de l'émission{% endblock %}
 
 {% block body %}
+
+    {% if alert == 1 %}
+        <div class="alert alert-error"> Et non mauvais mot !.</div>
+    {% elseif alert == 2 %}
+        <div class="alert alert-success">JOYEUX ANNIVERSAIRE !!!</div>
+    {% endif %}
     <h2>Merci d'avoir participé !</h2>
     <p>L'émission touche à sa fin. Vous avez brillamment relevé les défis de notre plateau TV.</p>
 
-    <div style="margin-top:2rem; text-align:center; padding:3rem; border:2px dashed var(--tv-gold); border-radius: 15px; background: rgba(255, 215, 0, 0.05);">
-        <p style="font-size:2rem; font-family: 'Oswald', sans-serif; color: var(--tv-gold);">Score Final : ILLIMITÉ</p>
-        <p>A bientôt pour une nouvelle émission !</p>
-    </div>
+    <p>Une question finale.</p>
+    <p>Quel est le mot ?</p>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn-tv">Je valide !</button>
+    {{ form_end(form) }}
 
     <div style="margin-top:3rem; text-align:center;">
         <a href="{{ path('app_tv_home') }}" class="btn-tv">Rejouer</a>

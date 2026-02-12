@@ -14,7 +14,6 @@ class WordPasswordType extends AbstractType
     {
         $builder
             ->add('pass', TextType::class)
-            ->add('save', SubmitType::class)
         ;
     }
 

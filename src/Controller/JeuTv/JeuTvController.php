@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller\JeuTv;
 
-use App\Form\WordPasswordType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,20 +23,20 @@ class JeuTvController extends AbstractController
     #[Route('/jeu-tv/question-champion', name: 'app_tv_champion')]
     public function champion(Request $request, #[MapQueryParameter] int $alert = 0): Response
     {
-        $form = $this->createForm(WordPasswordType::class,
-            ['label' => 'Je suis un animateur emblématique, je porte souvent des lunettes et j\'anime ce jeu depuis des décennies. Qui suis-je ?']);
-
+        $form = $this->createFormBuilder()
+            ->add('reponse', TextType::class,)
+            ->getForm();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $pass = strtolower((string) $data['pass']);
+            $pass = strtolower((string) $data['reponse']);
 
-            if ('julien lepers' === $pass || 'lepers' === $pass) {
+            if ('oursinières' === $pass || 'Oursinières' === $pass || 'Oursinieres' === $pass|| 'oursinieres' === $pass) {
                 return $this->redirectToRoute('app_tv_champion', ['alert' => 2]);
-            } else {
-                return $this->redirectToRoute('app_tv_champion', ['alert' => 1]);
             }
+
+            return $this->redirectToRoute('app_tv_champion', ['alert' => 1]);
         }
 
         return $this->render('tv/questions_champion.html.twig', [
@@ -51,15 +49,15 @@ class JeuTvController extends AbstractController
     public function slam(Request $request, #[MapQueryParameter] int $alert = 0): Response
     {
         $form = $this->createFormBuilder()
-            ->add('reponse', TextType::class, ['label' => 'Complétez ce mot : C _ _ _ _ _ R (Indice : Cyril Féraud)'])
-            ->add('save', SubmitType::class, ['label' => 'Slammer !'])
+            ->add('reponse1', TextType::class, ['label' => 'Complétez ce mot : La V _ _ _ A  (Indice : Mandrot)'])
+            ->add('reponse2', TextType::class, ['label' => ' de l A _ _ _ _ _ E '])
             ->getForm();
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            if ('CLAVIER' === strtoupper((string) $data['reponse'])) {
+            if ('VILLA' === strtoupper((string) $data['reponse1']) && 'ARTAUDE' === strtoupper((string) $data['reponse2'])) {
                 return $this->redirectToRoute('app_tv_slam', ['alert' => 2]);
             }
 
@@ -77,23 +75,21 @@ class JeuTvController extends AbstractController
     {
         $form = $this->createFormBuilder()
             ->add('reponse', ChoiceType::class, [
-                'label' => 'C\'est votre dernier mot ? Quelle est la capitale de la France ?',
                 'choices' => [
-                    'Lyon' => 'lyon',
-                    'Marseille' => 'marseille',
-                    'Paris' => 'paris',
-                    'Lille' => 'lille',
+                    '273' => '273',
+                    '283' => '283',
+                    '293' => '293',
+                    '303' => '303',
                 ],
                 'expanded' => true,
             ])
-            ->add('save', SubmitType::class, ['label' => 'Valider'])
             ->getForm();
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            if ('paris' === $data['reponse']) {
+            if ('293' === $data['reponse']) {
                 return $this->redirectToRoute('app_tv_millions', ['alert' => 2]);
             }
 
@@ -110,15 +106,14 @@ class JeuTvController extends AbstractController
     public function intervilles(Request $request, #[MapQueryParameter] int $alert = 0): Response
     {
         $form = $this->createFormBuilder()
-            ->add('reponse', TextType::class, ['label' => 'Quel animal est l\'emblème d\'Intervilles ?'])
-            ->add('save', SubmitType::class, ['label' => 'Top à la vachette !'])
+            ->add('reponse', TextType::class,)
             ->getForm();
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            if ('VACHETTE' === strtoupper((string) $data['reponse'])) {
+            if ('PETIT PRE' === strtoupper((string) $data['reponse'])) {
                 return $this->redirectToRoute('app_tv_intervilles', ['alert' => 2]);
             }
 
@@ -132,8 +127,26 @@ class JeuTvController extends AbstractController
     }
 
     #[Route('/jeu-tv/fin', name: 'app_tv_fin')]
-    public function fin(): Response
+    public function fin(Request $request, #[MapQueryParameter] int $alert = 0): Response
     {
-        return $this->render('tv/fin.html.twig');
+        $form = $this->createFormBuilder()
+            ->add('reponse', TextType::class,)
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            if ('JEUX' === strtoupper((string) $data['reponse'])) {
+                return $this->redirectToRoute('app_tv_fin', ['alert' => 2]);
+            }
+
+            return $this->redirectToRoute('app_tv_fin', ['alert' => 1]);
+        }
+
+        return $this->render('tv/fin.html.twig', [
+            'form' => $form,
+            'alert' => $alert,
+        ]);
     }
 }

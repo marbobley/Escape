@@ -8,13 +8,14 @@
     {% if alert == 1 %}
         <div class="alert alert-error">La vachette vous a envoyé dans le décor ! Mauvaise réponse.</div>
     {% elseif alert == 2 %}
-        <div class="alert alert-success">Top à la vachette ! Excellente réponse, vous marquez des points pour votre ville !</div>
+        <div class="alert alert-success">Top à la vachette ! Excellente réponse, vous marquez des points pour votre ville ! Vous remportez la lettre J !</div>
     {% endif %}
 
-    <p>Top à la... ?</p>
+    <p>Que veut dire le Pradet (Lou Pichoun Prat) en provençal ?</p>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
+    <button type="submit" class="btn-tv">Je valide !</button>
     {{ form_end(form) }}
 
     <div style="margin-top:3rem;">

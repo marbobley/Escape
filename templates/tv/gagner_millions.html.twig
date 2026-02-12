@@ -8,13 +8,15 @@
     {% if alert == 1 %}
         <div class="alert alert-error">Oh non... ce n'était pas la bonne réponse. Vous repartez avec 0 euro.</div>
     {% elseif alert == 2 %}
-        <div class="alert alert-success">C'est votre dernier mot ? OUI ! Et c'est la bonne réponse !</div>
+        <div class="alert alert-success">C'est votre dernier mot ? OUI ! Et c'est la bonne réponse ! Vous remportez la lettre U !</div>
     {% endif %}
 
     <p>Une question pour un million d'euros.</p>
+    <p>A quel hauteur culmine le Pradet ?</p>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
+        <button type="submit" class="btn-tv">Je valide !</button>
     {{ form_end(form) }}
 
     <div style="margin-top:3rem;">

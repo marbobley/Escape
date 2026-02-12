@@ -8,13 +8,14 @@
     {% if alert == 1 %}
         <div class="alert alert-error">Le mot est incorrect. Les lettres ne correspondent pas !</div>
     {% elseif alert == 2 %}
-        <div class="alert alert-success">Slam ! Le mot CLAVIER est correct. Cyril Féraud vous félicite !</div>
+        <div class="alert alert-success">Slam ! La villa de l'Artaude, c'est bien ça. Théo vous félicite ! Vous remportez la lettre X !</div>
     {% endif %}
 
     <p>Remplissez la grille pour gagner la manche.</p>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
+    <button type="submit" class="btn-tv">Je slamm !</button>
     {{ form_end(form) }}
 
     <div style="margin-top:3rem;">

@@ -50,8 +50,10 @@ h1, h2, h3 {
     font-family: 'Oswald', sans-serif;
     color: var(--tv-gold);
     text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.3);
+    letter-spacing: 3px;
+    text-shadow:
+        2px 2px 0px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(255, 215, 0, 0.5);
     margin-top: 0;
 }
 
@@ -170,10 +172,11 @@ label {
 
 header.tv-header {
     text-align: center;
-    padding: 2.5rem 2rem;
-    background: linear-gradient(to bottom, #151540, #0a0a20);
-    border-bottom: 2px solid var(--tv-gold);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    padding: 3rem 2rem;
+    background: radial-gradient(circle at center, #1e1e60 0%, #0a0a20 100%);
+    border-bottom: 3px solid var(--tv-gold);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.7);
+    color: whitesmoke;
 }
 
 footer.tv-footer {

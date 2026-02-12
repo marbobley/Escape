@@ -1,0 +1,27 @@
+{% extends 'tv/base_tv.html.twig' %}
+
+{% block title %}Questions pour un Champion{% endblock %}
+
+{% block body %}
+    <h2>Questions pour un Champion</h2>
+
+    {% if alert == 1 %}
+        <div class="alert alert-error">Ah non ! Ce n'est pas la bonne réponse. Retentez votre chance pour le Face à Face !</div>
+    {% elseif alert == 2 %}
+        <div class="alert alert-success">C'est gagné ! Julien Lepers valide votre réponse. Vous remportez le grand dictionnaire !</div>
+    {% endif %}
+
+    <p>Je passe, je passe...</p>
+
+    {{ form_start(form) }}
+        <div class="form-row">
+            {{ form_label(form.pass) }}
+            {{ form_widget(form.pass) }}
+        </div>
+        <button type="submit" class="btn-tv">Je valide !</button>
+    {{ form_end(form) }}
+
+    <div style="margin-top:3rem;">
+        <a href="{{ path('app_tv_home') }}" class="btn-tv btn-secondary">Retour à l'accueil</a>
+    </div>
+{% endblock %}

@@ -24,14 +24,18 @@ return [
         'path' => './assets/appWedding.js',
         'entrypoint' => true,
     ],
-    '@hotwired/stimulus' => [
-        'version' => '3.2.2',
+    'appTv' => [
+        'path' => './assets/appTv.js',
+        'entrypoint' => true,
     ],
     '@symfony/stimulus-bundle' => [
         'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
     ],
+    '@hotwired/stimulus' => [
+        'version' => '3.2.2',
+    ],
     '@hotwired/turbo' => [
-        'version' => '7.3.0',
+        'version' => '8.0.23',
     ],
     'bootstrap' => [
         'version' => '5.3.8',
@@ -45,6 +49,5 @@ return [
     ],
     'bootstrap/dist/js/bootstrap.bundle.min.js' => [
         'version' => '5.3.8',
-        'type' => 'js',
-    ]
+    ],
 ];

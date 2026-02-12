@@ -1,0 +1,35 @@
+{% extends 'tv/base_tv.html.twig' %}
+
+{% block title %}Accueil - Jeux TV{% endblock %}
+
+{% block body %}
+    <h2>Bienvenue sur le plateau !</h2>
+    <p>Sélectionnez un jeu pour commencer votre parcours d'énigmes télévisuelles.</p>
+
+    <div class="tv-grid">
+        <div class="tv-card">
+            <h3>Questions pour un Champion</h3>
+            <p>Le célèbre "Face à Face".</p>
+            <a href="{{ path('app_tv_champion') }}" class="btn-tv">Jouer</a>
+        </div>
+        <div class="tv-card">
+            <h3>Slam</h3>
+            <p>Remplissez la grille.</p>
+            <a href="{{ path('app_tv_slam') }}" class="btn-tv">Jouer</a>
+        </div>
+        <div class="tv-card">
+            <h3>Qui veut gagner des Millions</h3>
+            <p>C'est votre dernier mot ?</p>
+            <a href="{{ path('app_tv_millions') }}" class="btn-tv">Jouer</a>
+        </div>
+        <div class="tv-card">
+            <h3>Intervilles</h3>
+            <p>Attention à la vachette !</p>
+            <a href="{{ path('app_tv_intervilles') }}" class="btn-tv">Jouer</a>
+        </div>
+    </div>
+
+    <div style="margin-top:3rem; text-align:center;">
+        <a href="{{ path('app_tv_fin') }}" class="btn-tv btn-secondary">Quitter le plateau</a>
+    </div>
+{% endblock %}

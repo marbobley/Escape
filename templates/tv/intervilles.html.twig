@@ -1,0 +1,23 @@
+{% extends 'tv/base_tv.html.twig' %}
+
+{% block title %}Intervilles{% endblock %}
+
+{% block body %}
+    <h2>Intervilles</h2>
+
+    {% if alert == 1 %}
+        <div class="alert alert-error">La vachette vous a envoyé dans le décor ! Mauvaise réponse.</div>
+    {% elseif alert == 2 %}
+        <div class="alert alert-success">Top à la vachette ! Excellente réponse, vous marquez des points pour votre ville !</div>
+    {% endif %}
+
+    <p>Top à la... ?</p>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    <div style="margin-top:3rem;">
+        <a href="{{ path('app_tv_home') }}" class="btn-tv btn-secondary">Retour à l'accueil</a>
+    </div>
+{% endblock %}

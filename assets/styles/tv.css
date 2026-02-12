@@ -1,0 +1,198 @@
+:root {
+    --tv-bg: #050510;
+    --tv-accent: #00d4ff;
+    --tv-gold: #ffd700;
+    --tv-gold-glow: rgba(255, 215, 0, 0.4);
+    --tv-card-bg: rgba(20, 20, 50, 0.8);
+    --tv-border: #1e3a5f;
+    --tv-text: #ffffff;
+    --tv-success: #00ff88;
+    --tv-error: #ff3366;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--tv-bg);
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(0, 212, 255, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.05) 0%, transparent 40%);
+    color: var(--tv-text);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.tv-container {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2.5rem;
+    background: var(--tv-card-bg);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--tv-border);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 212, 255, 0.2) inset;
+    position: relative;
+    overflow: hidden;
+}
+
+.tv-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--tv-accent), var(--tv-gold), var(--tv-accent), transparent);
+}
+
+h1, h2, h3 {
+    font-family: 'Oswald', sans-serif;
+    color: var(--tv-gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.3);
+    margin-top: 0;
+}
+
+.btn-tv {
+    display: inline-block;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, var(--tv-gold), #b8860b);
+    color: #000;
+    text-decoration: none;
+    font-weight: 800;
+    font-family: 'Oswald', sans-serif;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-tv:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 0 20px var(--tv-gold-glow);
+    background: linear-gradient(135deg, #fff200, var(--tv-gold));
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--tv-border);
+    color: var(--tv-accent);
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 212, 255, 0.1);
+    border-color: var(--tv-accent);
+}
+
+.form-row {
+    margin-bottom: 1.5rem;
+}
+
+input[type="text"], input[type="number"], select {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 2px solid var(--tv-border);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--tv-accent);
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: bold;
+    color: var(--tv-accent);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+/* Grille de sélection des jeux */
+.tv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.tv-card {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--tv-border);
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.tv-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: var(--tv-gold);
+    transform: translateY(-5px);
+}
+
+.alert {
+    padding: 15px 20px;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    font-weight: bold;
+    border-left: 5px solid transparent;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.alert-error {
+    background-color: rgba(255, 51, 102, 0.15);
+    color: #ffcccc;
+    border-color: var(--tv-error);
+}
+
+.alert-success {
+    background-color: rgba(0, 255, 136, 0.15);
+    color: #ccffea;
+    border-color: var(--tv-success);
+}
+
+header.tv-header {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    background: linear-gradient(to bottom, #151540, #0a0a20);
+    border-bottom: 2px solid var(--tv-gold);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+footer.tv-footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: auto;
+    border-top: 1px solid var(--tv-border);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.tv-footer small {
+    color: #a0a8c0;
+    letter-spacing: 1px;
+}
+
+/* Styles spécifiques pour les quiz "Millions" */
+.choice-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 1rem;
+}

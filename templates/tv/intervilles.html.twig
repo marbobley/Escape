@@ -4,11 +4,14 @@
 
 {% block body %}
     <h2>Intervilles</h2>
-
     {% if alert == 1 %}
-        <div class="alert alert-error">La vachette vous a envoyé dans le décor ! Mauvaise réponse.</div>
+        <div class="alert alert-danger" role="alert">
+            La vachette vous a envoyé dans le décor ! Mauvaise réponse.
+        </div>
     {% elseif alert == 2 %}
-        <div class="alert alert-success">Top à la vachette ! Excellente réponse, vous marquez des points pour votre ville ! Vous remportez la lettre J !</div>
+        <div class="alert alert-success" role="alert">
+            Top à la vachette ! Excellente réponse, vous marquez des points pour votre ville ! Vous remportez la lettre J !
+        </div>
     {% endif %}
 
     <p>Que veut dire le Pradet (Lou Pichoun Prat) en provençal ?</p>

@@ -5,9 +5,13 @@
 {% block body %}
 
     {% if alert == 1 %}
-        <div class="alert alert-error"> Et non mauvais mot !.</div>
+        <div class="alert alert-danger" role="alert">
+            Et non mauvais mot !.
+        </div>
     {% elseif alert == 2 %}
-        <div class="alert alert-success">JOYEUX ANNIVERSAIRE !!!</div>
+        <div class="alert alert-success" role="alert">
+            JOYEUX ANNIVERSAIRE !!!
+        </div>
     {% endif %}
     <h2>Merci d'avoir participé !</h2>
     <p>L'émission touche à sa fin. Vous avez brillamment relevé les défis de notre plateau TV.</p>

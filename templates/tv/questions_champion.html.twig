@@ -6,9 +6,13 @@
     <h2>Questions pour un Champion</h2>
 
     {% if alert == 1 %}
-        <div class="alert alert-error">Ah non ! Ce n'est pas la bonne réponse. Retentez votre chance pour le Face à Face !</div>
+        <div class="alert alert-danger" role="alert">
+            Ah non ! Ce n'est pas la bonne réponse. Retentez votre chance pour le Face à Face !
+        </div>
     {% elseif alert == 2 %}
-        <div class="alert alert-success">C'est gagné ! Julien Lepers valide votre réponse. Vous remportez la lettre E !</div>
+        <div class="alert alert-success" role="alert">
+            C'est gagné ! Julien Lepers valide votre réponse. Vous remportez la lettre E !
+        </div>
     {% endif %}
 
     <p>Petit hameau appartenant au Pradet, je suis connu pour mon petit port typiquement méditerranéen !</p>

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\JeuTv;
 
+use App\Service\NormalizerString;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -14,6 +15,10 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class JeuTvController extends AbstractController
 {
+    public function __construct(private NormalizerString $normalizer)
+    {
+    }
+
     #[Route('/jeu-tv', name: 'app_tv_home')]
     public function index(): Response
     {
@@ -24,15 +29,20 @@ class JeuTvController extends AbstractController
     public function champion(Request $request, #[MapQueryParameter] int $alert = 0): Response
     {
         $form = $this->createFormBuilder()
-            ->add('reponse', TextType::class,)
+            ->add('reponse', TextType::class)
             ->getForm();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $pass = strtolower((string) $data['reponse']);
+            $pass = $this->normalizer->normalizeStringToUpperCaseWithNoAccent($data['reponse']);
+            $responseNormalized = $this->normalizer->normalizeStringToUpperCaseWithNoAccent('OURSINIERES');
+            $responseNormalized2 = $this->normalizer->normalizeStringToUpperCaseWithNoAccent('LES OURSINIERES');
+            $responseNormalized3 = $this->normalizer->normalizeStringToUpperCaseWithNoAccent('le port des OURSINIERES');
 
-            if ('oursinières' === $pass || 'Oursinières' === $pass || 'Oursinieres' === $pass|| 'oursinieres' === $pass) {
+            if ($responseNormalized === $pass
+                || $responseNormalized2 == $pass
+                || $responseNormalized3 == $pass) {
                 return $this->redirectToRoute('app_tv_champion', ['alert' => 2]);
             }
 
@@ -57,7 +67,15 @@ class JeuTvController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            if ('VILLA' === strtoupper((string) $data['reponse1']) && 'ARTAUDE' === strtoupper((string) $data['reponse2'])) {
+
+            $pass1 = $this->normalizer->normalizeStringToUpperCaseWithNoAccent($data['reponse1']);
+            $pass2 = $this->normalizer->normalizeStringToUpperCaseWithNoAccent($data['reponse2']);
+            $responseNormalized1 = $this->normalizer->normalizeStringToUpperCaseWithNoAccent('VILLA');
+            $responseNormalized2 = $this->normalizer->normalizeStringToUpperCaseWithNoAccent('ARTAUDE');
+
+
+
+            if ($responseNormalized1 === $pass1 && $responseNormalized2 === $pass2) {
                 return $this->redirectToRoute('app_tv_slam', ['alert' => 2]);
             }
 
@@ -106,14 +124,19 @@ class JeuTvController extends AbstractController
     public function intervilles(Request $request, #[MapQueryParameter] int $alert = 0): Response
     {
         $form = $this->createFormBuilder()
-            ->add('reponse', TextType::class,)
+            ->add('reponse', TextType::class)
             ->getForm();
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            if ('PETIT PRE' === strtoupper((string) $data['reponse'])) {
+
+
+            $pass = $this->normalizer->normalizeStringToUpperCaseWithNoAccent($data['reponse']);
+            $responseNormalized1 = $this->normalizer->normalizeStringToUpperCaseWithNoAccent('LE PETIT PRE');
+
+            if ($responseNormalized1 === $pass) {
                 return $this->redirectToRoute('app_tv_intervilles', ['alert' => 2]);
             }
 
@@ -130,14 +153,18 @@ class JeuTvController extends AbstractController
     public function fin(Request $request, #[MapQueryParameter] int $alert = 0): Response
     {
         $form = $this->createFormBuilder()
-            ->add('reponse', TextType::class,)
+            ->add('reponse', TextType::class)
             ->getForm();
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            if ('JEUX' === strtoupper((string) $data['reponse'])) {
+
+            $pass = $this->normalizer->normalizeStringToUpperCaseWithNoAccent($data['reponse']);
+            $responseNormalized1 = $this->normalizer->normalizeStringToUpperCaseWithNoAccent('JEUX');
+
+            if ($responseNormalized1 === $pass) {
                 return $this->redirectToRoute('app_tv_fin', ['alert' => 2]);
             }
 

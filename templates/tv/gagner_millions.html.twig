@@ -6,9 +6,13 @@
     <h2>Qui veut gagner des Millions</h2>
 
     {% if alert == 1 %}
-        <div class="alert alert-error">Oh non... ce n'était pas la bonne réponse. Vous repartez avec 0 euro.</div>
+        <div class="alert alert-danger" role="alert">
+            Oh non... ce n'était pas la bonne réponse. Vous repartez avec 0 euro.
+        </div>
     {% elseif alert == 2 %}
-        <div class="alert alert-success">C'est votre dernier mot ? OUI ! Et c'est la bonne réponse ! Vous remportez la lettre U !</div>
+        <div class="alert alert-success" role="alert">
+            C'est votre dernier mot ? OUI ! Et c'est la bonne réponse ! Vous remportez la lettre U !
+        </div>
     {% endif %}
 
     <p>Une question pour un million d'euros.</p>
